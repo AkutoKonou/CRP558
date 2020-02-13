@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+	<title>Assignment1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	body {
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.navbar {
+	  overflow: hidden;
+	  background-color:blue;
+	}
+	
+	.navbar a {
+	  float: left;
+	  font-size: 18px;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	.dropdown {
+	  float: left;
+	  overflow: hidden;
+	}
+	
+	.dropdown .dropbtn {
+	  font-size: 16px;  
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 14px 16px;
+	  background-color: inherit;
+	  font-family: inherit;
+	  margin: 0;
+	}
+	
+	.navbar a:hover, .dropdown:hover .dropbtn {
+	  background-color: red;
+	}
+	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	
+	.dropdown-content a {
+	  float: none;
+	  color: Gray;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: left;
+	}
+	
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	}
+	
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+	</style>
+	</head>
+	<body>
+	
+	<div class="navbar">
+  <a href="https://github.com/AkutoKonou">Home</a>
+  <a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
+	  <div class="dropdown">
+	    <button class="dropbtn">Exercise
+	      <i class="fa fa-caret-down"></i>
+	    </button>
+	    <div class="dropdown-content">
+      <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+      <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+      <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
+	  </div>
+	</div>
+	</div>
+	<h1>Assignment 1</h1>
+
+	<h2>1. Functions Example</h2>
+
+<p>This is a function which performs the addition of 12 to 3 and returns the result:</p>
+
+<p id="cal"></p>
+
+<script>
+function myFunction(p1, p2) {
+  return p1 + p2;
+}
+document.getElementById("cal").innerHTML = myFunction(12, 3);
+</script>
+
+	<h2>2. Arrays Example</h2>
+<p>This is a list of multiple GISSoftwares stored in single value with array:</p>
+
+<p id="gis"></p>
+
+<script>
+var GISSoftwares = ["ArcGISpro", "Qgis", "MapServer", "Openmap"];
+document.getElementById("gis").innerHTML = GISSoftwares;
+</script>
+
+	<h2>3. Object Creation Example</h2>
+<p>This example shows the creation of our current course object and the display of 
+some data of the course:</p>
+
+<p id="crp"></p>
+
+<script>
+// Create an object:
+var course = {
+  college: "Design",
+  department: "CRP",
+  number: 558,
+  prof: "Hanson"
+};
+
+// Display some data from the object:
+document.getElementById("crp").innerHTML =
+course.number + " is the " + course.department + " class teached by Prof "
++ course.prof + ". ";
+</script>
+
+
+<h2>4. For/In Loop Example</h2>
+
+<p>Use of the for/in loops through the properties of an object I created:</p>
+
+<p id="lom"></p>
+
+<script>
+var txt = "";
+var city = {name:"Lome", country:"Togo", pop:2000000}; 
+var x;
+for (x in city) {
+  txt += city[x] + " ";
+}
+document.getElementById("lom").innerHTML = txt;
+</script>
+
+
+<h2>5. For/If else Example</h2>
+
+<p>This example shows the right greeting according to the condition "time":</p> 
+
+<p id="tim">Good Evening!</p>
+
+<script>
+if (time < 12) {
+    greeting = "Good morning";
+  } else if (time < 18) {
+    greeting = "Good day";
+  } else {
+    greeting = "Good evening";
+  }
+document.getElementById("tim").innerHTML = txt;
+</script>
+
+
+<h2>6.1. Buttons Example</h2>
+<p>We are going to use the example 5 to add a button to click on to display the the 
+right greeting according to the condition "time":</p> 
+
+<p>Click the button to get a greeting based on the time:</p>
+
+<button onclick="myFunction()">Click me to greet!</button>
+
+<p id="cliktim"></p>
+
+<script>
+function myFunction() {
+  var greeting;
+  var time = new Date().getHours();
+  if (time < 12) {
+    greeting = "Good morning";
+  } else if (time < 18) {
+    greeting = "Good day";
+  } else {
+    greeting = "Good evening";
+  }
+  document.getElementById("cliktim").innerHTML = greeting;
+}
+</script>
+
+
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+</style>
+</head>
+<body>
+
+<h2>6.2. Clickable State Button</h2>
+<p>Click on the button to open three US States names.</p>
+
+<div class="Sta">
+  <button id="myBtn" class="dropbtn">State</button>
+  <div id="mySta" class="dropdown-content">
+    <a href="#Iowa">Iowa</a>
+    <a href="#California">California</a>
+    <a href="#Massachusetts">Massachusetts</a>
+  </div>
+</div>
+
+<script>
+// Get the button and execute myFunction when user clicks 
+document.getElementById("myBtn").onclick = function() {myFunction()};
+
+/* myFunction toggles between adding and removing the show class */
+function myFunction() {
+  document.getElementById("mySta").classList.toggle("show");
+}
+</script>
+
+<h2>7. User Inputs Example</h2>
+
+<p><i>Please, indicate your race</i></p>
+<form action="/action_page.php">
+  <input type="radio" name="race" value="white" checked> White<br>
+  <input type="radio" name="race" value="black"> Black<br>
+  <input type="radio" name="race" value="hispanic"> Hispanic<br>
+  <input type="radio" name="race" value="other"> Other
+  <br><br>
+  <input type="submit">
+  <input type="reset">
+</form>
+
+<p><i>Please provide your birth information</i></p>
+<form action="/action_page.php">
+Date of birth (mm/dd/yy):
+<input type="text" name="Date of birth" value="">
+<br><br>
+Place of birth:
+<input type="text" name="Place of birth" value="">
+<br><br>
+<input type="submit" value="Submit">
+<input type="reset">
+
+<h2>8. Output to Console Log Example</h2>
+
+<div id='hiden'>
+<i><b>Please, indicate your race</strong></i></b><br>
+  <input type="radio" name="race" value="white" checked> White<br>
+  <input type="radio" name="race" value="black"> Black<br>
+  <input type="radio" name="race" value="hispanic"> Hispanic<br>
+  <input type="radio" name="race" value="other"> Other
+  <br><br>
+</div>
+
+<b><i>Please provide your birth information</i></b>
+<br><br>
+Date of birth (mm/dd/yy):
+<input type="text" name="Date of birth" value="11/23/82"><br>
+Place of birth:
+<input type="text" name="Place of birth" value="Ames">
+<br><br>
+
+<i><b>Update display</i></b><br>
+  <button onclick="displayFunction()">Update</button>
+<p id="upd"></p>
+<script>
+let Date of birth = document.getElementById("Date of birth").value;
+let Place of birth = document.getElementById("Place of birth").value;
+document.getElementById("upd").innerHTML = Place of birth;
+</script>
+
+
+</body>
+</html>
