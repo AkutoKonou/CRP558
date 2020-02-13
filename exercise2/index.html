@@ -1,88 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Most Popular Monuments in Lome, Togo</title>
-</head>
-    <style>
-        h1 {
-            text-align: center;
-            font-family: century gothic;
-            font-size: 50px;
-            color: green;
-        }
-    </style>
-
-    <style>
-        h4 {
-            text-align: center;
-            font-family: century gothic;
-            font-size: 30px;
-            color: purple;
-        }
-    </style>   
-    
-<body>
-    <style>
-        body {
-              background-color: lightGray;
-          }
-    </style>
-  
-<h1>Togo Independence Monument</h1>
-    <p>
-      <em>
-            <br> The place is the one of the Independence Monument of Togo, in Lome.</br>
-            <br> I chose it because it is an important place to my country history. </br>
-          
-                 This are aerial and facial pictures, and an OSM map showing this monument:
-      </em>
-    </p>
-    <br>  
-  
-<h4>Togo Independence Monument Picture</h4>
- 
-    <p><a href="https://farm5.static.flickr.com/4124/5014923998_a0894294d0_b.jpg" target="_blank">https://farm5.static.flickr.com/4124/5014923998_a0894294d0_b.jpg</a>
-    <br>
-      
-<h4>Togo Independence Place Map Image</h4>
-    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-        img {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-        }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: blue;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 </style>
-        
-<img src="ImageTG.JPG" width="1449" height="850" alt="Independence Monument of Togo" style="width:auto;">
-    <br>
+</head>
+<body>
 
-  <h4>Togo Independence Place OSM Map</h4>
-<p style="text-align: center;">
-          <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.2119400501251223%2C6.127572545609632%2C1.2190210819244385%2C6.132431587456714&amp;layer=mapnik" style="border: 1px solid black">
-          </iframe>
-          <br/>
-          <small>
-          <a href="https://www.openstreetmap.org/#map=18/6.13000/1.21548">View Larger Map</a>
-          </small>
+<div class="navbar">
+  <a href="https://github.com/AkutoKonou">Home</a>
+  <a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
+  <div class="dropdown">
+    <button class="dropbtn">Exercise 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+      <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+    </div>
+  </div> 
+</div>
 
+<h3>Dropdown Menu inside a Navigation Bar</h3>
+<p>Hover over the "Dropdown" link to see the dropdown menu.</p>
 
-
-
-<p>
-     <style>
-        p {
-            font-weight: bold;
-            text-align: center;
-            font-family: century gothic;
-            font-size: 20px;
-            color: FireBrick;
-        }
-    </style>
-    
-    Thanks for visiting!
-</p>  
-
-  
 </body>
 </html>
+
