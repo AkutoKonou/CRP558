@@ -1,6 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	body {
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.navbar {
+	  overflow: hidden;
+	  background-color:blue;
+	}
+	
+	.navbar a {
+	  float: left;
+	  font-size: 18px;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	.dropdown {
+	  float: left;
+	  overflow: hidden;
+	}
+	
+	.dropdown .dropbtn {
+	  font-size: 16px;  
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 14px 16px;
+	  background-color: inherit;
+	  font-family: inherit;
+	  margin: 0;
+	}
+	
+	.navbar a:hover, .dropdown:hover .dropbtn {
+	  background-color: red;
+	}
+	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	
+	.dropdown-content a {
+	  float: none;
+	  color: Gray;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: left;
+        z-index: 99
+	}
+	
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	}
+	
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+	</style>
+	</head>
+	<body>
+	
+	<div class="navbar">
+  	<a href="https://github.com/AkutoKonou">Home</a>
+  	<a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
+	<div class="dropdown">
+	    <button class="dropbtn">Exercise
+	      <i class="fa fa-caret-down"></i>
+	    </button>
+	    <div class="dropdown-content">
+      <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+      <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise5/">Exercise 5</a>
+      <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
+	</div>
+</div>
+</div>
+	
 <title>Most Popular Monuments in Lome, Togo</title>
 </head>
     <style>
@@ -39,6 +129,7 @@
       <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
       <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
       <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+	<a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 5</a>
       <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
 	</div>
 </div>
