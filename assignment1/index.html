@@ -89,21 +89,23 @@
 	</div>
 </div>
 </div>
-<h1>Assignment 1</h1>
+<h1><i>Assignment 1</i></h1>
 
-<h2>1. Functions Example</h2>
-<p>This is a function which performs the addition of 12 to 3 and returns the result:</p>
-
-<p id="cal"></p>
-
+<h2><i>1. Functions Example</i></h2>
+<p>Writing a message.</p>
 <script>
-function myFunction(p1, p2) {
-  return p1 + p2;
-}
-document.getElementById("cal").innerHTML = myFunction(12, 3);
-</script>
+// Function definition 
+function welcomeMsg(firstname) { 
+   document.write("Hi " + firstname + " welcome to CRP558"); 
+} 
+// Creating a variable 
+var nameVal = "Prof"; 
+// Calling the function 
+welcomeMsg(nameVal); 
+</script> 
 
-<h2>2. Arrays Example</h2>
+
+<h2><i>2. Arrays Example</i></h2>
 <p>This is a list of multiple GISSoftwares stored in single value with array:</p>
 
 <p id="gis"></p>
@@ -113,7 +115,7 @@ var GISSoftwares = ["ArcGISpro", "Qgis", "MapServer", "Openmap"];
 document.getElementById("gis").innerHTML = GISSoftwares;
 </script>
 
-<h2>3. Object Creation Example</h2>
+<h2><i>3. Object Creation Example</i></h2>
 <p>This example shows the creation of our current course object and the display of 
 some data of the course:</p>
 
@@ -134,7 +136,7 @@ course.number + " is the " + course.department + " class teached by Prof "
 + course.prof + ". ";
 </script>
 
-<h2>4. For/In Loop Example</h2>
+<h2><i>4. For/In Loop Example</i></h2>
 
 <p>Use of the for/in loops through the properties of an object I created:</p>
 
@@ -150,55 +152,44 @@ for (x in city) {
 document.getElementById("lom").innerHTML = txt;
 </script>
 
-<h2>5. For/If else Example</h2>
+<h2><i>5. For/If else Example</i></h2>
 
-<p>This example shows the right greeting according to the condition "time":</p> 
-
-<p id="tim">Good Evening!</p>
-
+<p>This example wishes nice day/weekend:</p>
 <script>
-if (time < 12) {
-    greeting = "Good morning";
-  } else if (time < 18) {
-    greeting = "Good day";
-  } else {
-    greeting = "Good evening";
-  }
-document.getElementById("tim").innerHTML = txt;
+var now = new Date();
+// Sunday - Saturday : 0 - 6
+var dayOfWeek = now.getDay(); 
+if(dayOfWeek == 6) {
+document.write("Have a nice weekend!");
+} else {
+document.write("Have a nice day!");
+}
 </script>
 
-<h2>6. Buttons Example</h2>
+<h2><i>6. Buttons Example</i></h2>
 <p>Click on the button to display today's GMT date and time.</p>
 <button type="button"
 onclick="document.getElementById('but').innerHTML = Date()">
 Click me for GMT</button>
 <p id="but"></p>
 
-<h2>7. User Inputs Example</h2>
+<h2><i>7. User Inputs Example</i></h2>
 
-<p><i>Please, indicate your race</i></p>
-<form action="/action_page.php">
-  <input type="radio" name="race" value="white" checked> White<br>
-  <input type="radio" name="race" value="black"> Black<br>
-  <input type="radio" name="race" value="hispanic"> Hispanic<br>
-  <input type="radio" name="race" value="other"> Other
-  <br><br>
-  <input type="submit">
-  <input type="reset">
-</form>
+<p>The prompt box appears when the user clicks on the button</p>
+<button onclick="myFunction()">Click me</button>
+<p id="greetings"></p>
 
-<p><i>Please provide your birth information</i></p>
-<form action="/action_page.php">
-Date of birth (mm/dd/yy):
-<input type="text" name="Date of birth" value="">
-<br><br>
-Place of birth:
-<input type="text" name="Place of birth" value="">
-<br><br>
-<input type="submit" value="Submit">
-<input type="reset">
+<script>
+function myFunction() {
+  var person = prompt("Please enter your firstname", "Roly");
+  if (person != null) {
+    document.getElementById("greetings").innerHTML =
+    "Hello " + person + "! How are you today?";
+  }
+}
+</script>
 
-<h2>8. Output to Console Log Example</h2>
+<h2><i>8. Output to Console Log Example</i></h2>
 
 <div id='hiden'>
 <i><b>Please, indicate your race</strong></i></b><br>
@@ -217,15 +208,8 @@ Place of birth:
 <input type="text" name="Place of birth" value="Ames">
 <br><br>
 
-<i><b>Update display</i></b><br>
-  <button onclick="displayFunction()">Update</button>
-<p id="upd"></p>
-<script>
-let Date of birth = document.getElementById("Date of birth").value;
-let Place of birth = document.getElementById("Place of birth").value;
-document.getElementById("upd").innerHTML = Place of birth;
-</script>
-
+<i><b>Confirm input</i></b><br>
+<button onclick="myFunction2()">Display</button>
 
 </body>
 </html>
