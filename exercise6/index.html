@@ -117,11 +117,6 @@
 
 <body>
     <div id='map'></div>
-    
-    <br>Pan to <a href="javascript:frasier()">Fraiser, Kpalime</a><br>
-    <a href="javascript:zoomOut()">Zoom out to level 5</a><br>
-    <button id="domedomeBtn">Come to Domedome</button>
-
     <script>
         var map = L.map('map').setView([46.520278, 6.565556], 12);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
