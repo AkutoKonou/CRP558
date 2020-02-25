@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+<title>Exercise5</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	body {
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.navbar {
+	  overflow: hidden;
+	  background-color:blue;
+	}
+	
+	.navbar a {
+	  float: left;
+	  font-size: 18px;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	.dropdown {
+	  float: left;
+	  overflow: hidden;
+	}
+	
+	.dropdown .dropbtn {
+	  font-size: 16px;  
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 14px 16px;
+	  background-color: inherit;
+	  font-family: inherit;
+	  margin: 0;
+	}
+	
+	.navbar a:hover, .dropdown:hover .dropbtn {
+	  background-color: red;
+	}
+	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	
+	.dropdown-content a {
+	  float: none;
+	  color: Gray;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: left;
+        z-index: 99
+	}
+	
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	}
+	
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+	</style>
+	</head>
+	<body>
+	
+	<div class="navbar">
+  	<a href="https://github.com/AkutoKonou">Home</a>
+  	<a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
+	<div class="dropdown">
+	    <button class="dropbtn">Exercise
+	      <i class="fa fa-caret-down"></i>
+	    </button>
+	    <div class="dropdown-content">
+      <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+      <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+      <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
+      <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
+	</div>
+</div>
+</div>
+    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Getting Started with Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    <style>
+        #map {
+            width: 800px;
+            height: 600px;
+            z-index: -99
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <div id='map'></div>
+    
+    <br>Pan to <a href="javascript:frasier()">Fraiser, Kpalime</a><br>
+
+    <a href="javascript:zoomOut()">Zoom out to level 5</a><br>
+
+    <button id="domedomeBtn">Come to Domedome</button>
+
+
+    <script>
+        var map = L.map('map').setView([6.9, 0.633333], 9);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            // This is a my token
+            accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
+        }).addTo(map);
+
+        L.marker([6.872513, 0.647528]).addTo(map)
+            .bindPopup("My Home Town")
+            .openPopup();
+   
+  //----------Adding multiple town markers----------
+
+        //an array of towns
+        var towns = [
+            [7.466944, 0.916944, "Amlame"],
+            [7.128147, 0.730591, "Adeta"],
+            [7.25, 0.95, "Atakpame"]
+        ];
+
+        //loop through the array and add a marker for each
+        for (var i = 0; i < towns.length; i++) {
+            marker = new L.marker([towns[i][0], towns[i][1]])
+                .bindPopup(towns[i][2])
+                .addTo(map);
+        }
+
+
+        //----------Links below the Map----------
+
+        //Pan to Frasier, Domedome
+        function frasier() {
+            map.panTo(new L.LatLng(7.33, 0.647330));
+        }
+
+        //set Zoom
+        function zoomOut() {
+            map.setZoom(5);
+        };
+
+
+        //add an event listener for a click event on the button
+        document.getElementById("domedomeBtn").addEventListener("click", domedome);
+
+        //Kpalime center function Domedome
+        function domedome() {
+            map.setView(new L.LatLng(6.9, 0.633333), 15);
+        };    
+    </script>
+
+</body>
+</html>
