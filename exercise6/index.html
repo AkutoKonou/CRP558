@@ -88,7 +88,7 @@
       <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
       <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
       <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
-      <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
+            <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
       <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
 	</div>
 </div>
@@ -106,8 +106,8 @@
 
     <style>
         #map {
-            width: 800px;
-            height: 600px;
+            width: 665px;
+            height: 500px;
             z-index: -99
         }
         
@@ -119,64 +119,54 @@
     <div id='map'></div>
     
     <br>Pan to <a href="javascript:frasier()">Fraiser, Kpalime</a><br>
-
     <a href="javascript:zoomOut()">Zoom out to level 5</a><br>
-
     <button id="domedomeBtn">Come to Domedome</button>
 
-
     <script>
-        var map = L.map('map').setView([6.9, 0.633333], 9);
-
+        var map = L.map('map').setView([46.520278, 6.565556], 12);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
-            // This is a my token
             accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
         }).addTo(map);
-
-        L.marker([6.872513, 0.647528]).addTo(map)
-            .bindPopup("My Home Town")
+        L.marker([46.524875, 6.643273]).addTo(map)
+            .bindPopup("CHUV")
             .openPopup();
    
-  //----------Adding multiple town markers----------
+//----------Adding other layers----------
 
-        //an array of towns
-        var towns = [
-            [7.466944, 0.916944, "Amlame"],
-            [7.128147, 0.730591, "Adeta"],
-            [7.25, 0.95, "Atakpame"]
-        ];
+//Adding circle marker
+var exampleMarker = new L.circleMarker([46.536667, 6.588611], {
+    radius: 20,  //in pixels
+	fillColor: 'yellow',
+	color: "#FFF",
+	weight: 2,
+	opacity: 3,
+	fillOpacity: 0.9    
+}).bindPopup("This is a circle marker").addTo(map);
 
-        //loop through the array and add a marker for each
-        for (var i = 0; i < towns.length; i++) {
-            marker = new L.marker([towns[i][0], towns[i][1]])
-                .bindPopup(towns[i][2])
-                .addTo(map);
-        }
+//Adding regular circle
+ L.circle([46.51, 6.62], {
+	radius: 500,
+	fill: true,
+	color: 'purple',
+	fillColor: 'lightpurple',
+	fillOpacity: 0.3
+ }).bindPopup("This is a circle").addTo(map);
 
+//Adding a polyline ddrawing a route linking the three locations
+var latlngs = [
+    [46.536667, 6.588611],
+    [46.524875, 6.643273],
+    [46.51, 6.62]
+];
+var polyline = L.polyline(latlngs, {color: 'green'}).addTo(map);
 
-        //----------Links below the Map----------
+// create a red polygon from an array of LatLng points
+var latlngs = [[46.50, 6.65],[46.53, 6.63],[46.54, 6.6], [46.5, 6.6]];
+var polygon = L.polygon(latlngs, {color: 'orange'}).addTo(map);
 
-        //Pan to Frasier, Domedome
-        function frasier() {
-            map.panTo(new L.LatLng(7.33, 0.647330));
-        }
-
-        //set Zoom
-        function zoomOut() {
-            map.setZoom(5);
-        };
-
-
-        //add an event listener for a click event on the button
-        document.getElementById("domedomeBtn").addEventListener("click", domedome);
-
-        //Kpalime center function Domedome
-        function domedome() {
-            map.setView(new L.LatLng(6.9, 0.633333), 15);
-        };    
     </script>
 
 </body>
