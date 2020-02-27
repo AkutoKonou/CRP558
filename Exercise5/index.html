@@ -1,174 +1,150 @@
-<
-!DOCTYPE html >
-    <
-    html >
+<!DOCTYPE html>
+<html>
 
-    <
-    head >
+<head>
+    
+<title>Exercise5</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	body {
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.navbar {
+	  overflow: hidden;
+	  background-color:blue;
+	}
+	
+	.navbar a {
+	  float: left;
+	  font-size: 18px;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	.dropdown {
+	  float: left;
+	  overflow: hidden;
+	}
+	
+	.dropdown .dropbtn {
+	  font-size: 16px;  
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 14px 16px;
+	  background-color: inherit;
+	  font-family: inherit;
+	  margin: 0;
+	}
+	
+	.navbar a:hover, .dropdown:hover .dropbtn {
+	  background-color: red;
+	}
+	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	
+	.dropdown-content a {
+	  float: none;
+	  color: Gray;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: left;
+	}
+	
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	}
+	
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+    
+    #map {
+            width: 665px;
+            height: 500px;
+        }
+    
+	</style>
+	</head>
+	<body>
+	
+	<div class="navbar">
+  	<a href="https://github.com/AkutoKonou">Home</a>
+  	<a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
+	<div class="dropdown">
+	    <button class="dropbtn">Exercise
+	      <i class="fa fa-caret-down"></i>
+	    </button>
+	    <div class="dropdown-content">
+      <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+      <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+      <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
+      <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
+            <a href="https://akutokonou.github.io/CRP558/exercise7/">Exercise 7</a>
+      <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
+	</div>
+</div>
+</div>
+    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Getting Started with Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+</head>
 
-
-    <
-    title > Exercise5 < /title> <
-meta name = "viewport"
-content = "width=device-width, initial-scale=1" >
-    <
-    link rel = "stylesheet"
-href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
-    <
-    style >
-    body {
-        font - family: Arial, Helvetica, sans - serif;
-    }
-
-    .navbar {
-        overflow: hidden;
-        background - color: blue;
-    }
-
-    .navbar a {
-        float: left;
-        font - size: 18 px;
-        color: white;
-        text - align: center;
-        padding: 14 px 16 px;
-        text - decoration: none;
-    }
-
-    .dropdown {
-        float: left;
-        overflow: hidden;
-    }
-
-    .dropdown.dropbtn {
-        font - size: 16 px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14 px 16 px;
-        background - color: inherit;
-        font - family: inherit;
-        margin: 0;
-    }
-
-    .navbar a: hover, .dropdown: hover.dropbtn {
-        background - color: red;
-    }
-
-    .dropdown - content {
-        display: none;
-        position: absolute;
-        background - color: white;
-        min - width: 160 px;
-        box - shadow: 0 px 8 px 16 px 0 px rgba(0, 0, 0, 0.2);
-        z - index: 1;
-    }
-
-    .dropdown - content a {
-        float: none;
-        color: Gray;
-        padding: 12 px 16 px;
-        text - decoration: none;
-        display: block;
-        text - align: left;
-        z - index: 99
-    }
-
-    .dropdown - content a: hover {
-        background - color: #ddd;
-    }
-
-    .dropdown: hover.dropdown - content {
-        display: block;
-    }
-
-#map {
-    width: 665 px;
-    height: 500 px;
-    z - index: -99
-}
-
-<
-/style> < /
-head > <
-    body >
-
-    <
-    div class = "navbar" >
-    <
-    a href = "https://github.com/AkutoKonou" > Home < /a> <
-a href = "https://github.com/AkutoKonou/CRP558" > CRP / LA558 < /a> <
-div class = "dropdown" >
-    <
-    button class = "dropbtn" > Exercise <
-    i class = "fa fa-caret-down" > < /i> < /
-    button > <
-    div class = "dropdown-content" >
-    <
-    a href = "https://akutokonou.github.io/CRP558/exercise1/" > Exercise 1 < /a> <
-a href = "https://akutokonou.github.io/CRP558/exercise2/" > Exercise 2 < /a> <
-a href = "https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson" > Exercise 3 < /a> <
-a href = "https://akutokonou.github.io/CRP558/exercise4/" > Exercise 4 < /a> <
-a href = "https://akutokonou.github.io/CRP558/Exercise5/" > Exercise 5 < /a> <
-a href = "https://akutokonou.github.io/CRP558/exercise6/" > Exercise 6 < /a> <
-a href = "https://akutokonou.github.io/CRP558/assignment1/" > Assignment 1 < /a> < /
-    div > <
-    /div> < /
-    div > <
-    meta name = "description"
-content = "LA/CRP 458/558 Leaflet starter file - 2020" >
-    <
-    meta charset = "utf-8" >
-    <
-    meta name = "viewport"
-content = "width=device-width" >
-    <
-    title > Getting Started with Leaflet < /title> <
-link rel = "stylesheet"
-href = "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-integrity = "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-crossorigin = "" / >
-    <
-    script src = "https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-integrity = "sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-crossorigin = "" > < /script> < /
-    head >
-
-    <
-    body >
-    <
-    div id = 'map' > < /div> <
-script >
-    var map = L.map('map').setView([46.520278, 6.565556], 12);
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
-}).addTo(map);
-L.marker([46.524875, 6.643273]).addTo(map)
-    .bindPopup("CHUV")
-    .openPopup();
-
+<body>
+    <div id='map'></div>
+    <script>
+        var map = L.map('map').setView([46.520278, 6.565556], 12);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
+        }).addTo(map);
+        L.marker([46.524875, 6.643273]).addTo(map)
+            .bindPopup("CHUV")
+            .openPopup();
+   
 //----------Adding new layers----------
 
 //Adding circle marker
 var exampleMarker = new L.circleMarker([46.536667, 6.588611], {
     radius: 20,
-    fillColor: 'yellow',
-    color: "#FFF",
-    weight: 2,
-    opacity: 3,
-    fillOpacity: 0.9
+	fillColor: 'yellow',
+	color: "#FFF",
+	weight: 2,
+	opacity: 3,
+	fillOpacity: 0.9    
 }).bindPopup("This is a circle marker").addTo(map);
 
 //Adding regular circle
-L.circle([46.51, 6.62], {
-    radius: 500,
-    fill: true,
-    color: 'red',
-    fillColor: 'lightpurple',
-    fillOpacity: 0.3
-}).bindPopup("This is a circle").addTo(map);
+ L.circle([46.51, 6.62], {
+	radius: 500,
+	fill: true,
+	color: 'red',
+	fillColor: 'lightpurple',
+	fillOpacity: 0.3
+ }).bindPopup("This is a circle").addTo(map);
 
 //Adding a polyline ddrawing a route linking the three locations
 var latlngs = [
@@ -176,24 +152,13 @@ var latlngs = [
     [46.524875, 6.643273],
     [46.51, 6.62]
 ];
-var polyline = L.polyline(latlngs, {
-    color: 'green'
-}).addTo(map);
+var polyline = L.polyline(latlngs, {color: 'green'}).addTo(map);
 
 // Adding a polyligon
-var latlngs = [
-    [46.50, 6.65],
-    [46.53, 6.63],
-    [46.54, 6.6],
-    [46.5, 6.6]
-];
-var polygon = L.polygon(latlngs, {
-    color: 'pink'
-}).addTo(map);
+var latlngs = [[46.50, 6.65],[46.53, 6.63],[46.54, 6.6], [46.5, 6.6]];
+var polygon = L.polygon(latlngs, {color: 'pink'}).addTo(map);
 
-<
-/script>
+    </script>
 
-<
-/body> < /
-html >
+</body>
+</html>
