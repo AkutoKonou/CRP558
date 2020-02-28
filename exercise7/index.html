@@ -121,42 +121,42 @@
             id: 'mapbox/streets-v11',
             accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
         }).addTo(map);
-        L.marker([46.524875, 6.643273]).addTo(map)
-            .bindPopup("CHUV")
-            .openPopup();
-   
+            
 //----------Adding new layers----------
 
-//Adding circle marker
-var exampleMarker = new L.circleMarker([46.536667, 6.588611], {
-    radius: 20,
-	fillColor: 'yellow',
-	color: "#FFF",
-	weight: 2,
-	opacity: 3,
-	fillOpacity: 0.9    
-}).bindPopup("This is a circle marker").addTo(map);
 
-//Adding regular circle
- L.circle([46.51, 6.62], {
-	radius: 500,
-	fill: true,
-	color: 'red',
-	fillColor: 'lightpurple',
-	fillOpacity: 0.3
- }).bindPopup("This is a circle").addTo(map);
+//------ Individual school markers
+var ecal = L.marker([46.536667, 6.588611]).bindPopup('This is ECAL').addTo(map);
+var chuv = L.marker([46.524875, 6.643273]).bindPopup('This is CHUV').addTo(map);
+var imd = L.marker([46.51, 6.62]).bindPopup('This is IMD').addTo(map);
 
-//Adding a polyline ddrawing a route linking the three locations
-var latlngs = [
-    [46.536667, 6.588611],
-    [46.524875, 6.643273],
-    [46.51, 6.62]
-];
-var polyline = L.polyline(latlngs, {color: 'green'}).addTo(map);
+var schoolLayerGroup = L.layerGroup([ecal, chuv, imd]);
+        
+var OpenStreetMap_CH = L.tileLayer('https://tile.osm.ch/switzerland/{z}/{x}/{y}.png', {
+	maxZoom: 18,
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	bounds: [[45, 5], [48, 11]]
+});     
+        
+var Hydda_Full = L.tileLayer('https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png', {
+	maxZoom: 18,
+	attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
 
-// Adding a polyligon
-var latlngs = [[46.50, 6.65],[46.53, 6.63],[46.54, 6.6], [46.5, 6.6]];
-var polygon = L.polygon(latlngs, {color: 'pink'}).addTo(map);
+
+//Layer control
+//var baseMaps = {
+//    "OpenStreetMap_CH": osm,
+//    "Hydda_Full": hydda_full
+//};
+       		
+var overlayMaps = {
+    "ECAL": ecal,
+    "CHUV": chuv,
+    "IMD": imd,
+    "All Schools": schoolLayerGroup
+};
+L.control.layers(overlayMaps).addTo(map);
 
     </script>
 
