@@ -2,10 +2,22 @@
 <html>
 
 <head>
-
 <title>Exercise5</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+<script src="https://AkutoKonou.github.io/CRP558/geojson/independence.geojson"></script>
+<script src="https://AkutoKonou.github.io/CRP558/geojson/nat1.geojson"></script>
+<script src="https://AkutoKonou.github.io/CRP558/geojson/grandlome.geojson"></script>
+    
 <style>
 	body {
 	  font-family: Arial, Helvetica, sans-serif;
@@ -78,7 +90,6 @@
         }
     
 	</style>
-	</head> 
     
 <div class="navbar">
   	<a href="https://github.com/AkutoKonou">Home</a>
@@ -96,32 +107,13 @@
             <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
 		    <a href="https://akutokonou.github.io/CRP558/exercise7/">Exercise 7</a>
             <a href="https://akutokonou.github.io/CRP558/exercise8/">Exercise 8</a>
-		    <a href="https://akutokonou.github.io/CRP558/exercise9/">Exercise 9</a>
-		    <a href="https://akutokonou.github.io/CRP558/exercise10/">Exercise 10</a>
+            <a href="https://akutokonou.github.io/CRP558/exercise9/">Exercise 9</a>
+            <a href="https://akutokonou.github.io/CRP558/exercise10/">Exercise 10</a>
             <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
 	</div>
 </div>
 </div>
-    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Getting Started with Leaflet</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
-
-    <script src="https://kutoKonou.github.io/CRP558/geojson/independence.geojson"></script>
-    <script src="https://kutoKonou.github.io/CRP558/geojson/grandlome.geojson"></script>
-    <script src="https://kutoKonou.github.io/CRP558/geojson/nat1.geojson"></script>
-    <script src="https://kutoKonou.github.io/CRP558/geojson/togo.geojson"></script>
     
-   
-    <!--  You can link to your geojson file using the file path (like example above) or using the full URL              
-    <script src="https://kutoKonou.github.io/CRP558/geojson/USA.geojson"></script>
-    -->
 </head>
 
 <body>
@@ -138,9 +130,8 @@
         }).addTo(map);
         
         L.geoJSON(independence).addTo(map);
-        L.geoJSON(grandlome).addTo(map);
         L.geoJSON(nat1).addTo(map);
-        L.geoJSON(togo).addTo(map);
+        L.geoJSON(grandlome).addTo(map);
 
         L.marker([6.165611, 1.254511]).addTo(map)
             .bindPopup("Airport")
