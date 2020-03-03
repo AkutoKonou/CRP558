@@ -1,0 +1,1 @@
+var lomeMarker = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"marker-color":"#0000ff","marker-size":"large","marker-symbol":"triangle","marker-name":"Lomé"},"geometry":{"type":"Point","coordinates":[1.2181091308593748,6.13031409606636]}}]}

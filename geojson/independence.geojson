@@ -1,0 +1,1 @@
+var independence = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"marker-color":"#ff0080","marker-size":"medium","marker-symbol":"star","marker-name":"Independence Place"},"geometry":{"type":"Point","coordinates":[1.2159419059753418,6.129962068974987]}}]}
