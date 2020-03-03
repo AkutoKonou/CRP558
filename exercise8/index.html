@@ -2,6 +2,104 @@
 <html>
 
 <head>
+
+<title>Exercise5</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	body {
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.navbar {
+	  overflow: hidden;
+	  background-color:blue;
+	}
+	
+	.navbar a {
+	  float: left;
+	  font-size: 18px;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	.dropdown {
+	  float: left;
+	  overflow: hidden;
+	}
+	
+	.dropdown .dropbtn {
+	  font-size: 16px;  
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 14px 16px;
+	  background-color: inherit;
+	  font-family: inherit;
+	  margin: 0;
+	}
+	
+	.navbar a:hover, .dropdown:hover .dropbtn {
+	  background-color: red;
+	}
+	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	
+	.dropdown-content a {
+	  float: none;
+	  color: Gray;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: left;
+	}
+	
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	}
+	
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+    
+        #map {
+            width: 700px;
+            height: 500px;
+            z-index: 0
+        }
+    
+	</style>
+	</head> 
+    
+<div class="navbar">
+  	<a href="https://github.com/AkutoKonou">Home</a>
+  	<a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
+	<div class="dropdown">
+	    <button class="dropbtn">Exercise
+	      <i class="fa fa-caret-down"></i>
+	    </button>
+	    <div class="dropdown-content">
+      <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+      <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+      <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+      <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
+            <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
+		    <a href="https://akutokonou.github.io/CRP558/exercise7/">Exercise 7</a>
+            <a href="https://akutokonou.github.io/CRP558/exercise8/">Exercise 8</a>
+            <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
+	</div>
+</div>
+</div>
     <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -13,45 +111,37 @@
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
 
-    <script src="../geojson/USA.geojson"></script>
-    <script src="../geojson/AutomatedWeatherObservingSystem.geojson"></script>
-    <script src="../geojson/USA_cities.geojson"></script>
+    <script src="https://kutoKonou.github.io/CRP558/geojson/independence.geojson"></script>
+    <script src="https://kutoKonou.github.io/CRP558/geojson/grandlome.geojson"></script>
+    <script src="https://kutoKonou.github.io/CRP558/geojson/nat1.geojson"></script>
+    <script src="https://kutoKonou.github.io/CRP558/geojson/togo.geojson"></script>
     
    
     <!--  You can link to your geojson file using the file path (like example above) or using the full URL              
-    <script src="https://baileyhanson.github.io/CRP558/geojson/USA.geojson"></script>
+    <script src="https://kutoKonou.github.io/CRP558/geojson/USA.geojson"></script>
     -->
-    
-    <style>
-        #map {
-            width: 700px;
-            height: 500px;
-        }
-        
-    </style>
-
 </head>
 
 <body>
     <div id='map'></div>
 
     <script>
-        var map = L.map('map').setView([42.0, -93.634], 3);
+        var map = L.map('map').setView([6.131944, 1.222778], 11);
 
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
-            // This is a unique access token, you must register for your own from https://account.mapbox.com/access-tokens/
-            accessToken: 'pk.eyJ1IjoiYmFoYW5zb24xIiwiYSI6Ijh4M01DV0EifQ.89guWCOKWC9A1vSbA7fiPg' 
+            accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
         }).addTo(map);
         
-        L.geoJSON(usa).addTo(map);
-        L.geoJSON(weatherObservingSystem).addTo(map);
-        L.geoJSON(cities).addTo(map);
+        L.geoJSON(independence).addTo(map);
+        L.geoJSON(grandlome).addTo(map);
+        L.geoJSON(nat1).addTo(map);
+        L.geoJSON(togo).addTo(map);
 
-        L.marker([42.00185, -93.63474]).addTo(map)
-            .bindPopup("My Office Location")
+        L.marker([6.165611, 1.254511]).addTo(map)
+            .bindPopup("Airport")
             .openPopup();
     </script>
 
