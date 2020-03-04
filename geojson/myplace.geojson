@@ -1,0 +1,1 @@
+var myAplace ={"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[-93.64335179328918,42.03993681770293]}}]}
