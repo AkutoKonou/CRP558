@@ -1,10 +1,8 @@
 
 <!DOCTYPE html>
 <html>
-
-<head>
-    
-<title>Exercise10</title>
+<head>  
+<title>Exercise10b</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -147,16 +145,11 @@ html, body,
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
         <script src="https://AkutoKonou.github.io/CRP558/geojson/myplace.geojson"></script>
-        <script src="https://AkutoKonou.github.io/CRP558/geojson/river.geojson"></script>
-       
+        <script src="https://AkutoKonou.github.io/CRP558/geojson/river.geojson"></script>    
 </head>
-
 <body>
-    
 <div id='map'></div>
-
 <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/statesData.js"></script>
-
 <script type="text/javascript">
 
         var map = L.map('map').setView([37.8, -96], 4);
@@ -270,36 +263,24 @@ var legend = L.control({
 legend.onAdd = function(map) {
 
   var div = L.DomUtil.create('div', 'info legend'),
-    densityP = ['d > 1000', 'd > 500', 'd > 200', 'd > 100', 'd > 50'],
-    labels = [''];
+    densityP = ['d > 1000', 'd > 500', 'd > 200', 'd > 100', 'd > 50', 'd <= 50'],
+    labels = [1001,1000,500,200,100,50,1];
 
 	
 	//console.log(feature.length);
 	
 	 div.innerHTML += "<b>Density</b><br>";
   // loop through items and generate a label with a colored square for each
+
   for (var i = 0; i < densityP.length; i++) {
-    div.innerHTML +=
-      '<i style="background:' + getColor(densityP[i]) + ' "></i> ' +
+	div.innerHTML +=
+      '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
       densityP[i] + (densityP ? '' + '<br>' : '');
   }
 
   return div;
 };
-legend.addTo(map);
-
-
-        
-//    	function getColor(d) {
-//		return d == 'd > 1000' ? '#7a0177' :
-//				d == 'd > 500'  ? '#c51b8a' :
-//				d == 'd > 200'  ? '#f768a1' :
-//				d == 'd > 100'   ? '#fa9fb5' :
-//				d == 'd > 50'   ? '#fcc5c0' :
-//							'#feebe2';
-    
-    
+legend.addTo(map);    
 </script>
-
 </body>
 </html>
