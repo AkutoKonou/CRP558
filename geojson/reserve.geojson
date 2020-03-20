@@ -1,0 +1,20 @@
+var reserve = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#008000",
+        "marker-size": "medium",
+        "marker-symbol": "park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.99803161621094,
+          -6.67449654245847
+        ]
+      }
+    }
+  ]
+}
