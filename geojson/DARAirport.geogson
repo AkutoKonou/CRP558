@@ -1,0 +1,20 @@
+DARAirport = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#ff0000",
+        "marker-size": "medium",
+        "marker-symbol": " DARAirport"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.207072257995605,
+          -6.873000744822356
+        ]
+      }
+    }
+  ]
+}
