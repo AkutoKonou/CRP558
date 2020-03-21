@@ -6,8 +6,8 @@ DARAirport = {
       "properties": {
         "marker-color": "#ff0000",
         "marker-size": "medium",
-        "marker-symbol": " DARAirport"
-        "marker-symbol": "airport"
+        "marker-symbol": " DARAirport",
+        "marker-symbol": "airport",
       },
       "geometry": {
         "type": "Point",
