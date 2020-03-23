@@ -11,8 +11,8 @@ var reserve = {
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -6.7798456,
-          39.1217689
+          39.1217689,
+          -6.7798456
         ]
       }
     }
