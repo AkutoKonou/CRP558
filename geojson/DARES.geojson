@@ -7,8 +7,6 @@ var DARES = {
         "stroke": "#ffffff",
         "stroke-width": 2,
         "stroke-opacity": 1,
-        "fill": "#005b00",
-        "fill-opacity": 0.5
       },
       "geometry": {
         "type": "Polygon",
@@ -940,8 +938,6 @@ var DARES = {
         "stroke": "#ffffff",
         "stroke-width": 2,
         "stroke-opacity": 1,
-        "fill": "#80ff80",
-        "fill-opacity": 0.5
       },
       "geometry": {
         "type": "Polygon",
@@ -1161,8 +1157,6 @@ var DARES = {
         "stroke": "#ffffff",
         "stroke-width": 2,
         "stroke-opacity": 1,
-        "fill": "#808000",
-        "fill-opacity": 0.5
       },
       "geometry": {
         "type": "Polygon",
