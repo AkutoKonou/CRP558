@@ -91,7 +91,8 @@
         html,
         body {
             height: 100%;
-            margin: 0;
+            width: 100%;
+            float: center;
         }
 
         #map {
@@ -100,12 +101,6 @@
             z-index: 0;
         }
 
-        html,
-        body,
-        #map {
-            width: 1520px;
-            height: 500px;
-        }
 
         .legend {
             line-height: 10px;
@@ -147,7 +142,20 @@
             font-size: 30px;
             color: lightseagreen;
         }
-    </style>
+    
+            p {
+                font-weight: none;
+                text-align: center;
+                font-family: Arial;
+                font-size: 20px;
+                color: gray;
+            }
+    
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 
@@ -155,7 +163,6 @@
 
 
     <div class="navbar1">
-        <a href="https://github.com/AkutoKonou">
             <p style="background-color:lightseagreen; font-weight: bolder;text-align: center; color: white; font-size: 71.5px; font-family: Ink Free;"><em>Urban Agriculture in Dar Es Salaam, Tanzania</em></p>
         </a>
     </div>
@@ -196,21 +203,16 @@
     <script src="https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson"></script>
     <script src="https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson"></script>
 
-    <div id='map'></div>
-    <input type="button" onclick="javascript:zoomOut()" value="Zoom to Dar es Salaam">
-    <input type="button" onclick="javascript:zoomIn()" value="Zoom to Tanzania">
-    <button id="beachBtn">Visit Dar es Salaam beach!</button>
+
+
+<input type="button" onclick="javascript:zoomOut()" value="Zoom out to Dar es Salaam">
+<input type="button" onclick="javascript:zoomIn()" value="Zoom in to Tanzania">
+<button id="beachBtn">Visit Dar es Salaam beach!</button>
     <br>
 
     <h4><i>A picture showing Urban Farming in Tanzania:</i></h4>
 
-    <style>
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+    
     <img src="UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;">
 
     <div id='map'></div>
@@ -403,7 +405,7 @@
         //*********External GeoJSON data with data sources listed in the map or on the bottom of the page (3 pts)
 
         // Adding my geojson features to map
-        L.geoJSON(DARES).addTo(map);
+ //       L.geoJSON(DARES).addTo(map);
         //    L.geoJSON(DARAirport).addTo(map);
         //    L.geoJSON(reserve).addTo(map);
 
@@ -426,9 +428,9 @@
             };
         }
 
-        L.geoJson(DARES, {
-            style: style
-        }).addTo(map);
+//        L.geoJson(DARES, {
+//            style: style
+//        }).addTo(map);
         //http://dataforall.org/dashboard/tanzania/
 
         //Adding individual layer markers and adding popup to them
@@ -442,7 +444,7 @@
         var DARAirport = L.marker([-6.8362708, 39.216618]).bindPopup('This is Julius Nyerere International Airport').addTo(map);
         var reserve = L.marker([-6.7798456, 39.1217689]).bindPopup('This is Pande Game Reserve').addTo(map);
 
-        var DARLayerGroup = L.layerGroup([DARAirport, reserve, DARES]);
+        var DARLayerGroup = L.layerGroup([DARAirport, reserve, DARES]).addTo(map);
 
 
         var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -506,15 +508,7 @@
 
     <p style="background-color:lightseagreen; color: white;"><strong>OUR MOTIVATION:</strong></p>
     <p>
-        <style>
-            p {
-                font-weight: none;
-                text-align: center;
-                font-family: Arial;
-                font-size: 20px;
-                color: gray;
-            }
-        </style>
+
         <i>"Farming looks mighty easy when your plow is a pencil and you're a thousand miles from the corn field".</i><br> ― Dwight D. Eisenhower<br>
         <br>
         <i>“When the kids see how amazing one seed turning in to beautiful flower<br> and transformation to a juicy red strawberries<br> then We are saving our future,<br> it is not a product anymore that they used to grab<br> in the supermarket but it is magic of life and with urban farming we doing this... ”.</i><br>― Baris Gencel <br>
@@ -534,7 +528,7 @@
             <a href="https://www.goodreads.com/quotes/tag/urban-farming" target="_blank">Baris Gencel quote</a>
             <br>
 
-            <p style="background-color:lightseagreen; color: white;"><em><i>Thank you for supporting our Urban Agriculture Website!</i></em></p>
+            <p style="background-color:lightseagreen; color: white;"><em><i>Thank you for supporting urban resilience through our Urban Agriculture Website!</i></em></p>
 
 </body>
 
