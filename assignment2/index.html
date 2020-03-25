@@ -3,532 +3,450 @@
 
 <head>
 
+    <!––Including Leaflet CSS file in the head section––>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!––CSS Details––>
+            <style>
+                body {
+                    font-family: Arial, Century Gothic, sans-serif;
+                }
 
-    <style>
-        body {
-            font-family: Arial, Century Gothic, sans-serif;
-        }
+                .navbar1 {
+                    overflow: hidden;
+                    background-color: whitesmoke;
+                }
 
-        .navbar1 {
-            overflow: hidden;
-            background-color: whitesmoke;
-        }
+                .navbar2 {
+                    overflow: hidden;
+                    background-color: whitesmoke;
+                }
 
-        .navbar2 {
-            overflow: hidden;
-            background-color: whitesmoke;
-        }
+                .navbar1 a {
+                    float: left;
+                    font-size: 30px;
+                    color: lightseagreen;
+                    text-align: center;
+                    padding: 20px 30px;
+                    text-decoration: inherit;
+                }
 
-        .navbar1 a {
-            float: left;
-            font-size: 30px;
-            color: lightseagreen;
-            text-align: center;
-            padding: 20px 30px;
-            text-decoration: inherit;
-        }
+                .navbar2 a {
+                    float: right;
+                    font-size: 18px;
+                    color: slategray;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
 
-        .navbar2 a {
-            float: right;
-            font-size: 18px;
-            color: slategray;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
+                .dropdown {
+                    float: right;
+                    overflow: hidden;
+                }
 
-        .dropdown {
-            float: right;
-            overflow: hidden;
-        }
+                .dropdown .dropbtn {
+                    font-size: 16px;
+                    border: none;
+                    outline: none;
+                    color: slategray;
+                    padding: 14px 16px;
+                    background-color: inherit;
+                    font-family: inherit;
+                    margin: 0;
+                }
 
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: slategray;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
+                .navbar a:hover,
+                .dropdown:hover .dropbtn {
+                    background-color: lightseagreen;
+                }
 
-        .navbar a:hover,
-        .dropdown:hover .dropbtn {
-            background-color: lightseagreen;
-        }
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: white;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
+                .dropdown-content a {
+                    float: none;
+                    color: Gray;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                    text-align: left;
+                    z-index: 99
+                }
 
-        .dropdown-content a {
-            float: none;
-            color: Gray;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            z-index: 99
-        }
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
 
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+                html,
+                body {
+                    height: 100%;
+                    width: 100%;
+                }
 
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-            float: center;
-        }
+                #map {
+                    width: 100%;
+                    height: 500px;
+                    z-index: 0;
+                }
 
-        #map {
-            width: 665px;
-            height: 500px;
-            z-index: 0;
-        }
+                .legend {
+                    line-height: 10px;
+                    color: #555;
+                }
 
+                .legend i {
+                    width: 18px;
+                    height: 20px;
+                    float: left;
+                    margin-right: 8px;
+                    opacity: 0.9;
+                }
 
-        .legend {
-            line-height: 10px;
-            color: #555;
-        }
+                .info {
+                    padding: 6px 8px;
+                    font: 10px/20px Arial, Century Gothic, sans-serif;
+                    background: rgba(255, 255, 255, 0.8);
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
 
-        .legend i {
-            width: 18px;
-            height: 20px;
-            float: left;
-            margin-right: 8px;
-            opacity: 0.9;
-        }
+                }
 
-        .info {
-            padding: 6px 8px;
-            font: 10px/20px Arial, Century Gothic, sans-serif;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
+                .info h4 {
+                    margin: 0 0 5px;
+                    color: #777;
+                }
 
-        }
+                h1 {
+                    text-align: center;
+                    font-family: century gothic;
+                    font-size: 50px;
+                    color: green;
+                }
 
-        .info h4 {
-            margin: 0 0 5px;
-            color: #777;
-        }
+                h4 {
+                    text-align: center;
+                    font-family: Arial;
+                    font-size: 30px;
+                    color: lightseagreen;
+                }
 
-        h1 {
-            text-align: center;
-            font-family: century gothic;
-            font-size: 50px;
-            color: green;
-        }
+                p {
+                    font-weight: none;
+                    text-align: center;
+                    font-family: Arial;
+                    font-size: 20px;
+                    color: gray;
+                }
 
-        h4 {
-            text-align: center;
-            font-family: Arial;
-            font-size: 30px;
-            color: lightseagreen;
-        }
-    
-            p {
-                font-weight: none;
-                text-align: center;
-                font-family: Arial;
-                font-size: 20px;
-                color: gray;
-            }
-    
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+                img {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            </style>
 </head>
 
 <body>
 
-
-    <div class="navbar1">
-            <p style="background-color:lightseagreen; font-weight: bolder;text-align: center; color: white; font-size: 71.5px; font-family: Ink Free;"><em>Urban Agriculture in Dar Es Salaam, Tanzania</em></p>
-        </a>
-    </div>
-    <div class="navbar2">
-        <a href="https://github.com/AkutoKonou">Home</a>
-        <a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
-        <div class="dropdown">
-            <button class="dropbtn">Exercise
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
-                <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
-                <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
-                <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
-                <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
-                <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
-                <a href="https://akutokonou.github.io/CRP558/exercise7/">Exercise 7</a>
-                <a href="https://akutokonou.github.io/CRP558/exercise8/">Exercise 8</a>
-                <a href="https://akutokonou.github.io/CRP558/exercise9/">Exercise 9</a>
-                <a href="https://akutokonou.github.io/CRP558/exercise10/">Exercise 10</a>
-                <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
-                <a href="https://akutokonou.github.io/CRP558/assignment2/">Assignment 2</a>
+    <!––Including content of navigation bar 1 and 2––>
+        <div class="navbar1">
+            <p style="background-color:lightseagreen; font-weight: bolder;text-align: center; color: white;
+                      font-size: 71.5px; font-family: Ink Free;"><em>Urban Agriculture in Dar es Salaam, Tanzania</em></p>
+            </a>
+        </div>
+        <div class="navbar2">
+            <a href="https://github.com/AkutoKonou">Home</a>
+            <a href="https://github.com/AkutoKonou/CRP558">CRP/LA558</a>
+            <div class="dropdown">
+                <button class="dropbtn">Exercise
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+                    <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+                    <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise7/">Exercise 7</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise8/">Exercise 8</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise9/">Exercise 9</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise10/">Exercise 10</a>
+                    <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
+                    <a href="https://akutokonou.github.io/CRP558/assignment2/">Assignment 2</a>
+                </div>
             </div>
         </div>
-    </div>
-
-
-    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Getting Started with Leaflet</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-
-
-    <script src="https://AkutoKonou.github.io/CRP558/geojson/DARAirport.geojson"></script>
-    <script src="https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson"></script>
-    <script src="https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson"></script>
-
-
-
-<input type="button" onclick="javascript:zoomOut()" value="Zoom out to Dar es Salaam">
-<input type="button" onclick="javascript:zoomIn()" value="Zoom in to Tanzania">
-<button id="beachBtn">Visit Dar es Salaam beach!</button>
-    <br>
-
-    <h4><i>A picture showing Urban Farming in Tanzania:</i></h4>
-
-    
-    <img src="UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;">
-
-    <div id='map'></div>
-    <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/"></script>
-    <script type="text/javascript">
-        var map = L.map('map').setView([-6.8, 39.283333], 4);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            // I used my token I got from my Mapbox account
-            accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
-        }).addTo(map);
 
-        var myPoints = [
-            ["22", -6.7859894280621935, 39.24797058105469, "Low", "urban"],
-            ["20", -6.807125853796739, 39.18205261230469, "Low", "urban"],
-            ["15", -6.691205055156477, 39.19853210449219, "Low", "urban"],
-            ["19", -6.863712339483681, 39.25483703613281, "Low", "urban"],
-            ["12", -6.665289567219158, 39.11476135253906, "Average", "intermediary"],
-            ["5", -6.755305869447786, 39.14634704589844, "Average", "intermediary"],
-            ["14", -6.848714164864813, 39.19647216796875, "Average", "intermediary"],
-            ["23", -6.913475618628448, 39.29878234863281, "Average", "intermediary"],
-            ["6", -6.8548498388072865, 39.34478759765625, "Average", "intermediary"],
-            ["14", -6.935288009015175, 39.428558349609375, "High", "peri_urban"],
-            ["14", -6.904614047238073, 39.18067932128906, "High", "peri_urban"],
-            ["14", -6.7859894280621935, 39.05776977539062, "High", "peri_urban"],
-        ];
-
-        //set color of marker
-        function getColorLand(d) {
-            return d == 'High' ? '#FF0000' :
-                d == 'Average' ? "#FF5733" :
-                d == 'Low' ? "#FFC300" :
-                "#FFFFFF";
-        }
-
-
-        function getColorLocation(d) {
-            return d == 'urban' ? 'forest' :
-                d == 'intermediary' ? "green" :
-                d == 'peri_urban' ? "#lime" :
-                "#FFFFFF"; //white
-        }
-
-
-
-        var LandLayerGroup = L.layerGroup([]);
-
-        for (var i = 0; i < myPoints.length; i++) {
-            marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
-                    radius: myPoints[i][0] / 2 + 5,
-                    fillColor: getColorLand(myPoints[i][3]),
-                    color: "#000",
-                    weight: 0,
-                    opacity: 1,
-                    fillOpacity: 0.9
-                })
-                .bindPopup("Category: " + myPoints[i][3]) //note there is no comma here
-                .addTo(LandLayerGroup);
-            LandLayerGroup.addTo(map);
-        }
-
-
-
-        var InterLayerGroup = L.layerGroup([]);
-
-        function style(feature) {
-            return {
-                weight: 1,
-                opacity: 1,
-                color: 'white',
-                fillOpacity: 0.7,
-                fillColor: getColorLocation(feature.properties.Location)
-            };
-        }
-
-
-
-        //Create individual Legends
-        var legend1 = L.control({
-            position: 'bottomleft'
-            //Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright'
-        });
-
-        legend1.onAdd = function(map) {
-
-            var div = L.DomUtil.create('div', 'info legend'),
-                land = ['low', 'average', 'high'],
-                labels = [''];
-
-            div.innerHTML += "<b>Land</b><br>";
-            // loop through items and generate a label with a colored square for each
-            for (var i = 0; i < land.length; i++) {
-                div.innerHTML +=
-                    '<i style="background:' + getColorLand(land[i]) + ' "></i> ' +
-                    land[i] + (land ? '' + '<br>' : '');
-            }
-
-            return div;
-        };
-        legend1.addTo(map);
-
-
-
-        var legend2 = L.control({
-            position: 'bottomleft'
-            //Possible values are 'topleft', 'topright', 'bottomleft' or 'bottomright'
-        });
-
-        legend2.onAdd = function(map) {
-
-            var div = L.DomUtil.create('div', 'info legend'),
-                land = ['urban', 'intermediary', 'peri_urban'],
-                labels = [''];
-
-            div.innerHTML += "<b>Location</b><br>";
-            // loop through items and generate a label with a colored square for each
-            for (var i = 0; i < land.length; i++) {
-                div.innerHTML +=
-                    '<i style="background:' + getColorLocation(land[i]) + ' "></i> ' +
-                    land[i] + (land ? '' + '<br>' : '');
-            }
-
-            return div;
-        };
-        legend2.addTo(map);
-
-
-        // Add and remove legend from layers when selected in control
-        map.on('overlayremove', function(eventLayer) {
-            console.log(eventLayer.name + " off");
-            if (eventLayer.name == "Land circles") {
-                this.removeControl(legend1);
-            } else if (eventLayer.name == "Inter features") {
-                this.removeControl(legend2);
-            }
-        });
-
-        map.on('overlayadd', function(eventLayer) {
-            console.log(eventLayer.name + " on");
-            if (eventLayer.name == "Land circles") {
-                legend1.addTo(this);
-            } else if (eventLayer.name == "Inter features") {
-                legend2.addTo(this);
-            }
-        });
-
-
-
-
-        function highlightFeature(e) {
-            var layer = e.target;
-
-            layer.setStyle({
-                weight: 1,
-                color: 'black',
-                dashArray: '',
-                fillOpacity: 0.7
-            });
-
-            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                layer.bringToFront();
-            }
-
-        }
-
-        var geojson;
-
-        function resetHighlight(e) {
-            geojson.resetStyle(e.target);
-        }
-
-        function zoomToFeature(e) {
-            map.fitBounds(e.target.getBounds());
-        }
-
-        function onEachFeature(feature, layer) {
-            layer.on({
-                click: zoomToFeature
-            });
-        }
-
-        map.attributionControl.addAttribution('Population data &copy; <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002</a>');
-
-
-
-
-        //*********External GeoJSON data with data sources listed in the map or on the bottom of the page (3 pts)
-
-        // Adding my geojson features to map
- //       L.geoJSON(DARES).addTo(map);
-        //    L.geoJSON(DARAirport).addTo(map);
-        //    L.geoJSON(reserve).addTo(map);
-
-        // Getting color depending on population area value
-        function getColor(d) {
-            return d > 400 ? '#238B45' :
-                d > 100 ? '#74C476' :
-                d > 50 ? '#BAE4B3' :
-                '#EDF8E9';
-        }
-
-        function style(feature) {
-            return {
-                fillColor: getColor(feature.properties.area),
-                weight: 2,
-                opacity: 0.1,
-                color: 'white',
-                dashArray: '3',
-                fillOpacity: 0
-            };
-        }
-
-//        L.geoJson(DARES, {
-//            style: style
-//        }).addTo(map);
-        //http://dataforall.org/dashboard/tanzania/
-
-        //Adding individual layer markers and adding popup to them
-        //var DARAirport = L.geoJSON(DARAirport).bindPopup('This is the Airport in Dar es Salaam').addTo(map);
-        //var reserve = L.geoJSON(reserve).bindPopup('This is Ruvu Forest').addTo(map);
-        var DARES = L.geoJson(DARES, {
-            style: style,
-            onEachFeature: onEachFeature
-        }).addTo(map);
-
-        var DARAirport = L.marker([-6.8362708, 39.216618]).bindPopup('This is Julius Nyerere International Airport').addTo(map);
-        var reserve = L.marker([-6.7798456, 39.1217689]).bindPopup('This is Pande Game Reserve').addTo(map);
-
-        var DARLayerGroup = L.layerGroup([DARAirport, reserve, DARES]).addTo(map);
-
-
-        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-        });
-
-        var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 19
-        });
-
-        var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        });
-
-        //Adding layer control
-        var baseMaps = {
-            "Esri_WorldImagery": Esri_WorldImagery,
-            "CartoDB_PositronNoLabels": CartoDB_PositronNoLabels,
-            "OpenMapSurfer_Roads": OpenMapSurfer_Roads
-
-        };
-
-        var overlayMaps = {
-            "DARAirport": DARAirport,
-            "reserve": reserve,
-            "DARES": DARES,
-            "Lands circles": LandLayerGroup,
-            "Inter features": InterLayerGroup
-        };
-        L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-
-
-        //**********One point layer as graduated symbols, clusters or heat map (2 pts)**********
-        //**********Leaflet legend to help the reader understand the map -  legend should not display if layer is not displayed in map (4 pt)**********
-
-        //check
-
-        //set Zoom out event
-        function zoomOut() {
-            map.setZoom(10.49);
-        }
-
-        //set Zoom
-        function zoomIn() {
-            map.setZoom(4);
-        };
-
-
-        //add an event listener for a click event on the button
-        document.getElementById("beachBtn").addEventListener("click", beach);
-
-        //Dar es Salaam beach function
-        function beach() {
-            map.setView(new L.LatLng(-6.8, 39.283333), 15);
-        };
-    </script>
-
-    <p style="background-color:lightseagreen; color: white;"><strong>OUR MOTIVATION:</strong></p>
-    <p>
-
-        <i>"Farming looks mighty easy when your plow is a pencil and you're a thousand miles from the corn field".</i><br> ― Dwight D. Eisenhower<br>
-        <br>
-        <i>“When the kids see how amazing one seed turning in to beautiful flower<br> and transformation to a juicy red strawberries<br> then We are saving our future,<br> it is not a product anymore that they used to grab<br> in the supermarket but it is magic of life and with urban farming we doing this... ”.</i><br>― Baris Gencel <br>
-        <br>
-        These quotes introduce a little the background of our platform.<br>
-        Indeed, "<a href="https://en.wikipedia.org/wiki/Urban_agriculture" target="_blank">Urban agriculture/farming/gardening</a>" is becoming a subject more and more treated at all levels of society.<br>
-        Even the dramatic situations of this beginning of decade which constitutes<br> the epidemic of <a href="https://www.cdc.gov/coronavirus/2019-ncov/about/index.html" target="_blank">Covid-19</a> raises the importance for each household<br> to have at least a small garden at home,<br> which could help in periods of containment or quarantine.<br>
-        Africa is a continent where several initiatives, even if described as "informal",<br> are taken in this field of urban agriculture.<br> Furthermore, the city of <a href="https://en.wikipedia.org/wiki/Dar_es_Salaam" target="_blank">Dar es Salaam</a> in <a href="https://en.wikipedia.org/wiki/Tanzania" target="_blank">Tanzania</a> benefits <br>from an institutional organization of this activity.<br> Our map shows the availability of farming land following the urban-rural gradient. <br>We will be updating the platform as our research results evolve.<br>
-
-        <p>Sources:<br>
-            <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002" target="_blank">Farming land use in Dar es Salaam map</a>
-            <br>
-            <a href="https://agronomossinfronteras.org/en/urban-farming-in-tanzania-2/" target="_blank">Urban farming in Tanzania picture</a>
-            <br>
-            <a href="https://www.quotemaster.org/urban+farming" target="_blank">Dwight D. Eisenhower quote</a>
-            <br>
-            <a href="https://www.goodreads.com/quotes/tag/urban-farming" target="_blank">Baris Gencel quote</a>
-            <br>
-
-            <p style="background-color:lightseagreen; color: white;"><em><i>Thank you for supporting urban resilience through our Urban Agriculture platform!</i></em></p>
+        <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Getting Started with Leaflet</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+
+        <!––Including Leaflet JavaScript file after Leaflet’s CSS––>
+            <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+            <!––Adding geojson files from github repository––>
+                <script src="https://AkutoKonou.github.io/CRP558/geojson/DARAirport.geojson">
+                    src = "https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson" >
+                </script>
+
+                <div id='map'></div>
+
+                <input type="button" onclick="javascript:zoomOut()" value="Zoom out to Dar es Salaam">
+                <input type="button" onclick="javascript:zoomIn()" value="Zoom in to Tanzania">
+                <button id="beachBtn">Visit Dar es Salaam beach!</button>
+                <br>
+
+                <h4><i>A picture showing Urban Farming in Tanzania:</i></h4>
+
+
+                <img src="UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;">
+
+
+                <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/"></script>
+                <script type="text/javascript">
+                    //Building the map with JavaScript part 
+                    var map = L.map('map').setView([-6.8, 39.283333], 4);
+
+                    //Accessing the map tile layers provided by Mapbox
+                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                        maxZoom: 18,
+                        id: 'mapbox/streets-v11',
+                        // I used my token I got from my Mapbox account
+                        accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
+                    }).addTo(map);
+
+                    //Adding dots and binds popup dialog to them
+
+                    var myPoints = [
+                        ["1", -6.7859894280621935, 39.24797058105469, "Low"],
+                        ["2", -6.807125853796739, 39.18205261230469, "Low"],
+                        ["3", -6.691205055156477, 39.19853210449219, "Low"],
+                        ["4", -6.863712339483681, 39.25483703613281, "Low"],
+                        ["5", -6.665289567219158, 39.11476135253906, "Average"],
+                        ["6", -6.755305869447786, 39.14634704589844, "Average"],
+                        ["7", -6.848714164864813, 39.19647216796875, "Average"],
+                        ["8", -6.913475618628448, 39.29878234863281, "Average"],
+                        ["9", -6.8548498388072865, 39.34478759765625, "Average"],
+                        ["10", -6.935288009015175, 39.428558349609375, "High"],
+                        ["11", -6.904614047238073, 39.18067932128906, "High"],
+                        ["12", -6.7859894280621935, 39.05776977539062, "High"],
+                        ["13", -7.0845392834450545, 39.48005676269531, "High"],
+                    ];
+
+                    //Set dots parameters with graduated symbols style
+                    function getColor(d) {
+                        return d == 'High' ? '#0B5345' :
+                            d == 'Average' ? "#27AE60" :
+                            d == 'Low' ? "#ABEBC6" :
+                            "#FFFFFF";
+                    }
+                    //Adding dots to a layer group
+                    var LandLayerGroup = L.layerGroup([]);
+                    for (var i = 0; i < myPoints.length; i++) {
+                        marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
+                                radius: myPoints[i][0] / 2 + 5,
+                                fillColor: getColor(myPoints[i][3]),
+                                color: "#000",
+                                weight: 2,
+                                opacity: 0.5,
+                                fillOpacity: 0.9
+                            })
+                            .bindPopup("Category: " + myPoints[i][3])
+                            .addTo(LandLayerGroup);
+                        LandLayerGroup.addTo(map);
+                    }
+
+
+                    //Creating Legend
+                    var legend = L.control({
+                        position: 'bottomright'
+
+                    });
+
+                    legend.onAdd = function(map) {
+
+                        var div = L.DomUtil.create('div', 'info legend'),
+                            availability = ['High', 'Average', 'Low'],
+                            labels = [''];
+
+                        div.innerHTML += "<b>Farming Land Availability</b><br>";
+
+                        // loop through items and generate a label with a colored square for each
+                        for (var i = 0; i < availability.length; i++) {
+                            div.innerHTML +=
+                                '<i style="background:' + getColor(availability[i]) + ' "></i> ' +
+                                availability[i] + (availability ? '' + '<br>' : '');
+                        }
+                        return div;
+                    };
+
+                    legend.addTo(map);
+
+
+                    // Making possible to add and remove legend from layers when selected in control layer
+                    map.on('overlayremove', function(eventLayer) {
+                        console.log(eventLayer.name + " off");
+                        if (eventLayer.name == "Available Land") {
+                            this.removeControl(legend);
+                        }
+                    });
+
+                    map.on('overlayadd', function(eventLayer) {
+                        console.log(eventLayer.name + " on");
+                        if (eventLayer.name == "Available Land") {
+                            legend.addTo(this);
+                        }
+                    });
+
+                    //Highlight function creation
+                    function highlightFeature(e) {
+                        var layer = e.target;
+
+                        layer.setStyle({
+                            weight: 1,
+                            color: 'black',
+                            dashArray: '',
+                            fillOpacity: 0.7
+                        });
+
+                        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                            layer.bringToFront();
+                        }
+
+                    }
+
+                    var geojson;
+
+                    function resetHighlight(e) {
+                        geojson.resetStyle(e.target);
+                    }
+
+                    function zoomToFeature(e) {
+                        map.fitBounds(e.target.getBounds());
+                    }
+
+                    function onEachFeature(feature, layer) {
+                        layer.on({
+                            click: zoomToFeature
+                        });
+                    }
+
+                    map.attributionControl.addAttribution('Population data &copy; <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002</a>');
+
+
+                    // Getting color depending on area value
+                    function style(feature) {
+                        return {
+                            fillColor: getColor(feature.properties.area),
+                            weight: 2,
+                            opacity: 0.1,
+                            color: 'white',
+                            dashArray: '3',
+                            fillOpacity: 0
+                        };
+                    }
+
+                    //Adding Adding using the default blue icon to the map and binds popup dialog to them       
+                    var DARAirport = L.marker([-6.8362708, 39.216618]).bindPopup('This is Julius Nyerere International Airport').addTo(map);
+                    var reserve = L.marker([-6.7798456, 39.1217689]).bindPopup('This is a Mbezi river bassin').addTo(map);
+
+                    //Creating the layer group
+                    var DARLayerGroup = L.layerGroup([DARAirport, reserve]).addTo(map);
+
+                    //Adding 3 basemap layers
+                    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                    });
+
+                    var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                        subdomains: 'abcd',
+                        maxZoom: 19
+                    });
+
+                    var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    });
+
+                    //Adding layer control
+                    var baseMaps = {
+                        "Esri World Imagery": Esri_WorldImagery,
+                        "Carto DB Positron": CartoDB_PositronNoLabels,
+                        "Open Map Surfer Roads": OpenMapSurfer_Roads
+
+                    };
+
+                    var overlayMaps = {
+                        "Dar es Salaam Airport": DARAirport,
+                        "River bassin": reserve,
+                        "Available Land": LandLayerGroup,
+                    };
+                    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+                    //Setting Zoom out event
+                    function zoomOut() {
+                        map.setZoom(10.49);
+                    }
+
+                    //Setting Zoom
+                    function zoomIn() {
+                        map.setZoom(4);
+                    };
+
+
+                    //Adding an event listener for a click event on the button
+                    document.getElementById("beachBtn").addEventListener("click", beach);
+
+                    //Dar es Salaam beach zoom function
+                    function beach() {
+                        map.setView(new L.LatLng(-6.8, 39.283333), 15);
+                    };
+                </script>
+
+                <!––Writing the description text––>
+                    <p style="background-color:lightseagreen; color: white;"><strong>OUR MOTIVATION:</strong></p>
+                    <p>
+
+                        <i>"Farming looks mighty easy when your plow is a pencil and you're a thousand miles from the corn field".</i><br> ― Dwight D. Eisenhower<br>
+                        <br>
+                        <i>“When the kids see how amazing one seed turning in to beautiful flower<br> and transformation to a juicy red strawberries<br> then We are saving our future,<br> it is not a product anymore that they used to grab<br> in the supermarket but it is magic of life and with urban farming we doing this... ”.</i><br>― Baris Gencel <br>
+                        <br>
+                        These quotes introduce a little the background of our platform.<br>
+                        Indeed, "<a href="https://en.wikipedia.org/wiki/Urban_agriculture" target="_blank">Urban agriculture/farming/gardening</a>" is becoming a subject more and more treated at all levels of society.<br>
+                        Even the dramatic situations of this beginning of decade which constitutes<br> the epidemic of <a href="https://www.cdc.gov/coronavirus/2019-ncov/about/index.html" target="_blank">Covid-19</a> raises the importance for each household<br> to have at least a small garden at home,<br> which could help in periods of containment or quarantine.<br>
+                        Africa is a continent where several initiatives, even if described as "informal",<br> are taken in this field of urban agriculture.<br> Furthermore, the city of <a href="https://en.wikipedia.org/wiki/Dar_es_Salaam" target="_blank">Dar es Salaam</a> in <a href="https://en.wikipedia.org/wiki/Tanzania" target="_blank">Tanzania</a> benefits <br>from an institutional organization of this activity.<br> Our map shows the availability of farming land following the urban-rural gradient. <br>We will be updating the platform as our research results evolve.<br>
+
+                        //Adding the sources at the bottom of the page
+                        <p>Sources:<br>
+                            <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002" target="_blank">Farming land use in Dar es Salaam map</a>
+                            <br>
+                            <a href="https://agronomossinfronteras.org/en/urban-farming-in-tanzania-2/" target="_blank">Urban farming in Tanzania picture</a>
+                            <br>
+                            <a href="https://www.quotemaster.org/urban+farming" target="_blank">Dwight D. Eisenhower quote</a>
+                            <br>
+                            <a href="https://www.goodreads.com/quotes/tag/urban-farming" target="_blank">Baris Gencel quote</a>
+                            <br>
+
+                            <p style="background-color:lightseagreen; color: white;"><em><i>Thank you for supporting urban resilience through our Urban Agriculture Website!</i></em></p>
 
 </body>
 
