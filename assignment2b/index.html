@@ -210,23 +210,32 @@
             <!––Adding geojson files from github repository––>
                 <script src="https://AkutoKonou.github.io/CRP558/geojson/DARAirport.geojson"></script>
                 <script src="https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson"></script>
+
+    
+
+    
 </head>  
 <body>
+
+
     
 <div id='map'></div>
-<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/DARESAL.geojson"></script>
-<script type="text/javascript">
-    
     
                 <input type="button" onclick="javascript:zoomOut()" value="Zoom out to Dar es Salaam">
                 <input type="button" onclick="javascript:zoomIn()" value="Zoom in to Tanzania">
                 <button id="beachBtn">Visit Dar es Salaam beach!</button>
-                <br>
+                <br>           
 
-                <p style="background-color:lightseagreen; color: white; font-size: 30px;"><strong>A PICTURE SHOWING URBAN FARMING IN TANZANIA:<br>
+<p style="background-color:lightseagreen; color: white; font-size: 30px;"><strong>A PICTURE SHOWING URBAN FARMING IN TANZANIA:<br>
                         <br>
+<img src="image/UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;"></strong></p>    
+    
 
-                        <img src="image/UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;"></strong></p>
+<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/DARESAL.geojson"></script>
+<script type="text/javascript">
+<br>
+
+
 
 
                 <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/"></script>
@@ -514,7 +523,6 @@ legend1.addTo(map);
                     function beach() {
                         map.setView(new L.LatLng(-6.8, 39.283333), 15);
                     };
-                    
                     
 
                 </script>
