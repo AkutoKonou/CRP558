@@ -239,9 +239,9 @@
 
                             // get color depending on population density value
                             function getColor(d) {
-                                return d > \t400 ? '#C70039' :
-                                    d > \t100 ? ' #FF5733' :
-                                    d > \t50 ? '#FFC300' :
+                                return d > 400 ? '#C70039' :
+                                    d > 100 ? ' #FF5733' :
+                                    d > 50 ? '#FFC300' :
                                     '#FFFFFF';
                             }
 
@@ -356,7 +356,7 @@
 
                                     var div = L.DomUtil.create('div', 'info legend'),
                                         location = ['d>400', 'd>100', 'd>50', 'd<50'],
-                                        labels = [\t200, \t100, \t50];
+                                        labels = [200, 100, 50];
 
 
                                     //console.log(feature.length);
