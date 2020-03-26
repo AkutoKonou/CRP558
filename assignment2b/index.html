@@ -202,415 +202,428 @@
 
             <!––Adding geojson files from github repository––>
                 <script src="https://AkutoKonou.github.io/CRP558/geojson/DARAirport.geojson">
-                    src = "https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson">
-                        <script src="https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson"></script>
+                    src = "https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson" >
+                        <
+                        script src = "https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson" >
+                </script>
                 </script>
 
                 <div id='map'></div>
-            <!––Creating the button permiting to users to interact with the map––>
-                <input type="button" onclick="javascript:zoomOut()" value="Zoom out to Dar es Salaam">
-                <input type="button" onclick="javascript:zoomIn()" value="Zoom in to Tanzania">
-                <button id="beachBtn">Visit Dar es Salaam beach!</button>
-                <br>
-
-                <p style="background-color:lightseagreen; color: white; font-size: 30px;"><strong>A PICTURE SHOWING URBAN FARMING IN TANZANIA:<br>
-                        <br>
-
-                        <img src="image/UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;"></strong></p>
-
-                  <!––Building the map with JavaScript part––> 
-                <script type="text/javascript"
-                        src="https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson"></script>
-                <script type="text/javascript">
-                    var map = L.map('map').setView([-6.8, 39.283333], 4);
-              
-                    
-                    
-                    //Accessing the map tile layers provided by Mapbox
-                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                        maxZoom: 18,
-                        id: 'mapbox/streets-v11',
-                        // I used my token I got from my Mapbox account
-                        accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
-                    }).addTo(map);
-
-
-	// get color depending on population density value
-	function getColor(d) {
-		return d > 400 ? '#C70039' :
-				d > 100  ? ' #FF5733' :
-				d > 50  ? '#FFC300' :
-							'#FFFFFF';
-	}
-
-	function style(feature) {
-		return {
-			weight: 1,
-			opacity: 1,
-			color: 'white',
-			fillOpacity: 0.7,
-			fillColor: getColor(feature.properties.area)
-		};
-//	}
-
-//	var geojson;
-
-//	function resetHighlight(e) {
-//		geojson.resetStyle(e.target);
-//	}
-
-//	function zoomToFeature(e) {
-//		map.fitBounds(e.target.getBounds());
-//	}
-
-//	function onEachFeature(feature, layer) {
-//		layer.on({
-//			click: zoomToFeature
-//		});
-//	}
-
-//	map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');   
-                                   
-                    
-                    
-  //Create individual Legends
-//var legend1 = L.control({
-//  position: 'bottomleft'
-//});                 
-//legend1.onAdd = function(map) {
-
-    
-    
-//  var div = L.DomUtil.create('div', 'info legend'),
-//    land = ['low', 'average', 'high'],
-//    labels = [''];
-
-                    
-                    
-//	 div.innerHTML += "<b>Land</b><br>";
-  // loop through items and generate a label with a colored square for each
-  //for (var i = 0; i < land.length; i++) {
-  //  div.innerHTML +=
-  //    '<i style="background:' + getColorBreakfast(land[i]) + ' "></i> ' +
-   //   land[i] + (land ? '' + '<br>' : '');
-//  }
-
- // return div;
-//};
-//legend1.addTo(map);
-
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    //Adding dots and binds popup dialog to them
-
-                    var myPoints = [
-                        ["1", -6.7859894280621935, 39.24797058105469, "Low"],
-                        ["2", -6.807125853796739, 39.18205261230469, "Low"],
-                        ["3", -6.691205055156477, 39.19853210449219, "Low"],
-                        ["4", -6.863712339483681, 39.25483703613281, "Low"],
-                        ["5", -6.665289567219158, 39.11476135253906, "Average"],
-                        ["6", -6.755305869447786, 39.14634704589844, "Average"],
-                        ["7", -6.848714164864813, 39.19647216796875, "Average"],
-                        ["8", -6.913475618628448, 39.29878234863281, "Average"],
-                        ["9", -6.8548498388072865, 39.34478759765625, "Average"],
-                        ["10", -6.935288009015175, 39.428558349609375, "High"],
-                        ["11", -6.904614047238073, 39.18067932128906, "High"],
-                        ["12", -6.7859894280621935, 39.05776977539062, "High"],
-                        ["13", -7.0845392834450545, 39.48005676269531, "High"],
-                    ];
-
-                    //Set dots parameters with graduated symbols style
-                    function getColor(d) {
-                        return d == 'High' ? '#0B5345' :
-                            d == 'Average' ? "#27AE60" :
-                            d == 'Low' ? "#ABEBC6" :
-                            "#FFFFFF";
-                    }
-                    //Adding dots to a layer group
-                    var LandLayerGroup = L.layerGroup([]);
-                    for (var i = 0; i < myPoints.length; i++) {
-                        marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
-                                radius: myPoints[i][0] / 2 + 5,
-                                fillColor: getColor(myPoints[i][3]),
-                                color: "#000",
-                                weight: 2,
-                                opacity: 0.5,
-                                fillOpacity: 0.9
-                            })
-                            .bindPopup("Category: " + myPoints[i][3])
-                            .addTo(LandLayerGroup);
-                        LandLayerGroup.addTo(map);
-                    }
-
-
-                    
-                    
-                    
-                    
-//Create Legend1 and Legend2
-var legend1 = L.control({
-  position: 'bottomleft'
-});
-legend1.onAdd = function(map) {
-
-  var div = L.DomUtil.create('div', 'info legend'),
-    location = ['d>400','d>100','d>50','d<50'],
-    labels = [200,100,50];
-
-	
-	//console.log(feature.length);
-	
-	 div.innerHTML += "<b>Zones</b><br>";
-  // loop through items and generate a label with a colored square for each
-
-  for (var i = 0; i < location.length; i++) {
-	div.innerHTML +=
-      '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
-      location[i] + (location ? '' + '<br>' : '');
-  }
-
-  return div;
-};
-legend1.addTo(map); 
-        
-        
-        
-
-
-//var legend2 = L.control({
- // position: 'bottomleft'
-//});
-
-//legend2.onAdd = function(map) {
-
-//  var div = L.DomUtil.create('div', 'info legend'),
-//    land = ['urban', 'intermediary', 'peri_urban'],
-//    labels = [''];
-
-//	 div.innerHTML += "<b>Location</b><br>";
-  // loop through items and generate a label with a colored square for each
-//  for (var i = 0; i < land.length; i++) {
-//    div.innerHTML +=
-//      '<i style="background:' + getColorLocation(land[i]) + ' "></i> ' +
-//      land[i] + (land ? '' + '<br>' : '');
-//  }
-
-//  return div;
-//};
-//legend2.addTo(map);                  
-                    
-        
-        
-        
-        
-                    //Creating Legend
-                    var legend2 = L.control({
-                        position: 'bottomright'
-
-                    });
-
-                    legend2.onAdd = function(map) {
-
-                        var div = L.DomUtil.create('div', 'info legend'),
-                            availability = ['High', 'Average', 'Low'],
-                            labels = [''];
-
-                        div.innerHTML += "<b>Farming Land Availability</b><br>";
-
-                        // loop through items and generate a label with a colored square for each
-                        for (var i = 0; i < availability.length; i++) {
-                            div.innerHTML +=
-                                '<i style="background:' + getColor(availability[i]) + ' "></i> ' +
-                                availability[i] + (availability ? '' + '<br>' : '');
-                        }
-                        return div;
-                    };
-
-                    legend2.addTo(map);
-
-        
-// Add and remove legend from layers when selected in control
-map.on('overlayremove', function (eventLayer) {
-	console.log(eventLayer.name  + " off");
-	if (eventLayer.name == "Available Land") {
-		this.removeControl(legend1);
-	}else if (eventLayer.name == "DARES"){
-		this.removeControl(legend2);
-	}
-});
-
-map.on('overlayadd', function (eventLayer) {
-	console.log(eventLayer.name + " on");
-	if (eventLayer.name == "Available Land") {
-		 legend1.addTo(this);
-	}else if (eventLayer.name == "DARES"){
-		 legend2.addTo(this);
-	}	
-});        
-        
-
-                    // Making possible to add and remove legend from layers when selected in control layer
-//                    map.on('overlayremove', function(eventLayer) {
-//                        console.log(eventLayer.name + " off");
-//                        if (eventLayer.name == "Available Land") {
-//                            this.removeControl(legend);
-//                        }
-//                    });
-
- //                   map.on('overlayadd', function(eventLayer) {
- //                       console.log(eventLayer.name + " on");
- //                       if (eventLayer.name == "Available Land") {
- //                           legend.addTo(this);
- //                       }
- //                   });
-
-                    //Highlight function creation
-                    function highlightFeature(e) {
-                        var layer = e.target;
-
-                        layer.setStyle({
-                            weight: 1,
-                            color: 'black',
-                            dashArray: '',
-                            fillOpacity: 0.7
-                        });
-
-                        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                            layer.bringToFront();
-                        }
-
-                    }
-
-                    var geojson;
-
-                    function resetHighlight(e) {
-                        geojson.resetStyle(e.target);
-                    }
-
-                    function zoomToFeature(e) {
-                        map.fitBounds(e.target.getBounds());
-                    }
-
-                    function onEachFeature(feature, layer) {
-                        layer.on({
-                            click: zoomToFeature
-                        });
-                    }
-
-                    map.attributionControl.addAttribution('Population data &copy; <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002</a>');
-
-
-                    // Getting color depending on area value
-                    function style(feature) {
-                        return {
-                            fillColor: getColor(feature.properties.area),
-                            weight: 2,
-                            opacity: 0.1,
-                            color: 'white',
-                            dashArray: '3',
-                            fillOpacity: 0
-                        };
-                    }
-
-                    //Adding Adding using the default blue icon to the map and binds popup dialog to them       
-                    var DARAirport = L.marker([-6.8362708, 39.216618]).bindPopup('This is Julius Nyerere International Airport').addTo(map);
-                    var reserve = L.marker([-6.7798456, 39.1217689]).bindPopup('This is a Mbezi river bassin').addTo(map);
-
-var DARES = L.geoJson(DARES, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);
-                    
-                    
-                    //Creating the layer group
-                    var DARLayerGroup = L.layerGroup([DARAirport, reserve, DARES]).addTo(map);
-                    
-                    
-                    //Adding 3 basemap layers
-                    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-                    });
-
-                    var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                        subdomains: 'abcd',
-                        maxZoom: 19
-                    });
-
-                    var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    });
-
-                    //Adding layer control
-                    var baseMaps = {
-                        "Esri World Imagery": Esri_WorldImagery,
-                        "Carto DB Positron": CartoDB_PositronNoLabels,
-                        "Open Map Surfer Roads": OpenMapSurfer_Roads
-
-                    };
-
-                    var overlayMaps = {
-                        "Dar es Salaam Airport": DARAirport,
-                        "River bassin": reserve,
-                        "Available Land": LandLayerGroup,
-                        "DARES": DARES,
-                    };
-                    L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-
-                    //Setting Zoom out event
-                    function zoomOut() {
-                        map.setZoom(10.49);
-                    }
-
-                    //Setting Zoom
-                    function zoomIn() {
-                        map.setZoom(4);
-                    };
-
-
-                    //Adding an event listener for a click event on the button
-                    document.getElementById("beachBtn").addEventListener("click", beach);
-
-                    //Dar es Salaam beach zoom function
-                    function beach() {
-                        map.setView(new L.LatLng(-6.8, 39.283333), 15);
-                    };
-
-
-                <!––Writing the description text––>
-                    <h4>OUR MOTIVATION</h4>
-
-                    <p style="background-color:slategray; color: white;"><i>"Farming looks mighty easy when your plow is a pencil and you're a thousand miles from the corn field".</i><br> ― Dwight D. Eisenhower<br>
-                        <br>
-                        <i>“When the kids see how amazing one seed turning in to beautiful flower<br> and transformation to a juicy red strawberries<br> then We are saving our future,<br> it is not a product anymore that they used to grab<br> in the supermarket but it is magic of life and with urban farming we doing this... ”.</i><br>― Baris Gencel <br>
-                        <br>
-                        These quotes introduce a little the background of our platform.<br>
-                        Indeed, "<a href="https://en.wikipedia.org/wiki/Urban_agriculture" target="_blank">Urban agriculture/farming/gardening</a>" is becoming a subject more and more treated at all levels of society.<br>
-                        Even the dramatic situations of this beginning of decade which constitutes<br> the epidemic of <a href="https://www.cdc.gov/coronavirus/2019-ncov/about/index.html" target="_blank">Covid-19</a> raises the importance for each household<br> to have at least a small garden at home,<br> which could help in periods of containment or quarantine.<br>
-                        Africa is a continent where several initiatives, even if described as "informal",<br> are taken in this field of urban agriculture.<br> Furthermore, the city of <a href="https://en.wikipedia.org/wiki/Dar_es_Salaam" target="_blank">Dar es Salaam</a> in <a href="https://en.wikipedia.org/wiki/Tanzania" target="_blank">Tanzania</a> benefits <br>from an institutional organization of this activity.<br> Our map shows the availability of farming land following the urban-rural gradient. <br>We will be updating the platform as our research results evolve.<br></p>
-
-                    <!--Adding the sources at the bottom of the page-->
-                    <p><em>Sources:</em><br>
-                        <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002" target="_blank">Farming land use in Dar es Salaam map</a>
-                        <br>
-                        <a href="https://agronomossinfronteras.org/en/urban-farming-in-tanzania-2/" target="_blank">Urban farming in Tanzania picture</a>
-                        <br>
-                        <a href="https://www.quotemaster.org/urban+farming" target="_blank">Dwight D. Eisenhower quote</a>
-                        <br>
-                        <a href="https://www.goodreads.com/quotes/tag/urban-farming" target="_blank">Baris Gencel quote</a>
-                        <br>
-
-                        <p style="background-color:lightseagreen; color: white; font-size: 30px;"><em><i>THANK YOU FOR SUPPORTING OUR URBAN AGRICULTURE PLATFORM!</i></em></p>
-
-</body>
-
-</html>
+                <!––Creating the button permiting to users to interact with the map––>
+                    <input type="button" onclick="javascript:zoomOut()" value="Zoom out to Dar es Salaam">
+                    <input type="button" onclick="javascript:zoomIn()" value="Zoom in to Tanzania">
+                    <button id="beachBtn">Visit Dar es Salaam beach!</button>
+                    <br>
+
+                    <p style="background-color:lightseagreen; color: white; font-size: 30px;"><strong>A PICTURE SHOWING URBAN FARMING IN TANZANIA:<br>
+                            <br>
+
+                            <img src="image/UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;"></strong></p>
+
+                    <!––Building the map with JavaScript part––>
+                        <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson"></script>
+                        <script type="text/javascript">
+                            var map = L.map('map').setView([-6.8, 39.283333], 4);
+
+
+
+                            //Accessing the map tile layers provided by Mapbox
+                            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                                maxZoom: 18,
+                                id: 'mapbox/streets-v11',
+                                // I used my token I got from my Mapbox account
+                                accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
+                            }).addTo(map);
+
+
+                            // get color depending on population density value
+                            function getColor(d) {
+                                return d > 400 ? '#C70039' :
+                                    d > 100 ? ' #FF5733' :
+                                    d > 50 ? '#FFC300' :
+                                    '#FFFFFF';
+                            }
+
+                            function style(feature) {
+                                return {
+                                    weight: 1,
+                                    opacity: 1,
+                                    color: 'white',
+                                    fillOpacity: 0.7,
+                                    fillColor: getColor(feature.properties.area)
+                                };
+                                //	}
+
+                                //	var geojson;
+
+                                //	function resetHighlight(e) {
+                                //		geojson.resetStyle(e.target);
+                                //	}
+
+                                //	function zoomToFeature(e) {
+                                //		map.fitBounds(e.target.getBounds());
+                                //	}
+
+                                //	function onEachFeature(feature, layer) {
+                                //		layer.on({
+                                //			click: zoomToFeature
+                                //		});
+                                //	}
+
+                                //	map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');   
+
+
+
+                                //Create individual Legends
+                                //var legend1 = L.control({
+                                //  position: 'bottomleft'
+                                //});                 
+                                //legend1.onAdd = function(map) {
+
+
+
+                                //  var div = L.DomUtil.create('div', 'info legend'),
+                                //    land = ['low', 'average', 'high'],
+                                //    labels = [''];
+
+
+
+                                //	 div.innerHTML += "<b>Land</b><br>";
+                                // loop through items and generate a label with a colored square for each
+                                //for (var i = 0; i < land.length; i++) {
+                                //  div.innerHTML +=
+                                //    '<i style="background:' + getColorBreakfast(land[i]) + ' "></i> ' +
+                                //   land[i] + (land ? '' + '<br>' : '');
+                                //  }
+
+                                // return div;
+                                //};
+                                //legend1.addTo(map);
+
+
+
+
+                                //Adding dots and binds popup dialog to them
+
+                                var myPoints = [
+                                    ["1", -6.7859894280621935, 39.24797058105469, "Low"],
+                                    ["2", -6.807125853796739, 39.18205261230469, "Low"],
+                                    ["3", -6.691205055156477, 39.19853210449219, "Low"],
+                                    ["4", -6.863712339483681, 39.25483703613281, "Low"],
+                                    ["5", -6.665289567219158, 39.11476135253906, "Average"],
+                                    ["6", -6.755305869447786, 39.14634704589844, "Average"],
+                                    ["7", -6.848714164864813, 39.19647216796875, "Average"],
+                                    ["8", -6.913475618628448, 39.29878234863281, "Average"],
+                                    ["9", -6.8548498388072865, 39.34478759765625, "Average"],
+                                    ["10", -6.935288009015175, 39.428558349609375, "High"],
+                                    ["11", -6.904614047238073, 39.18067932128906, "High"],
+                                    ["12", -6.7859894280621935, 39.05776977539062, "High"],
+                                    ["13", -7.0845392834450545, 39.48005676269531, "High"],
+                                ];
+
+                                //Set dots parameters with graduated symbols style
+                                function getColor(d) {
+                                    return d == 'High' ? '#0B5345' :
+                                        d == 'Average' ? "#27AE60" :
+                                        d == 'Low' ? "#ABEBC6" :
+                                        "#FFFFFF";
+                                }
+                                //Adding dots to a layer group
+                                var LandLayerGroup = L.layerGroup([]);
+                                for (var i = 0; i < myPoints.length; i++) {
+                                    marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
+                                            radius: myPoints[i][0] / 2 + 5,
+                                            fillColor: getColor(myPoints[i][3]),
+                                            color: "#000",
+                                            weight: 2,
+                                            opacity: 0.5,
+                                            fillOpacity: 0.9
+                                        })
+                                        .bindPopup("Category: " + myPoints[i][3])
+                                        .addTo(LandLayerGroup);
+                                    LandLayerGroup.addTo(map);
+                                }
+
+
+
+
+                                //Create Legend1 and Legend2
+                                var legend1 = L.control({
+                                    position: 'bottomleft'
+                                });
+                                legend1.onAdd = function(map) {
+
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                        location = ['d>400', 'd>100', 'd>50', 'd<50'],
+                                        labels = [200, 100, 50];
+
+
+                                    //console.log(feature.length);
+
+                                    div.innerHTML += "<b>Zones</b><br>";
+                                    // loop through items and generate a label with a colored square for each
+
+                                    for (var i = 0; i < location.length; i++) {
+                                        div.innerHTML +=
+                                            '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
+                                            location[i] + (location ? '' + '<br>' : '');
+                                    }
+
+                                    return div;
+                                };
+                                legend1.addTo(map);
+
+
+
+
+                                //var legend2 = L.control({
+                                // position: 'bottomleft'
+                                //});
+
+                                //legend2.onAdd = function(map) {
+
+                                //  var div = L.DomUtil.create('div', 'info legend'),
+                                //    land = ['urban', 'intermediary', 'peri_urban'],
+                                //    labels = [''];
+
+                                //	 div.innerHTML += "<b>Location</b><br>";
+                                // loop through items and generate a label with a colored square for each
+                                //  for (var i = 0; i < land.length; i++) {
+                                //    div.innerHTML +=
+                                //      '<i style="background:' + getColorLocation(land[i]) + ' "></i> ' +
+                                //      land[i] + (land ? '' + '<br>' : '');
+                                //  }
+
+                                //  return div;
+                                //};
+                                //legend2.addTo(map);                  
+
+
+
+
+                                //Creating Legend
+                                var legend2 = L.control({
+                                    position: 'bottomright'
+
+                                });
+
+                                legend2.onAdd = function(map) {
+
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                        availability = ['High', 'Average', 'Low'],
+                                        labels = [''];
+
+                                    div.innerHTML += "<b>Farming Land Availability</b><br>";
+
+                                    // loop through items and generate a label with a colored square for each
+                                    for (var i = 0; i < availability.length; i++) {
+                                        div.innerHTML +=
+                                            '<i style="background:' + getColor(availability[i]) + ' "></i> ' +
+                                            availability[i] + (availability ? '' + '<br>' : '');
+                                    }
+                                    return div;
+                                };
+
+                                legend2.addTo(map);
+
+
+                                // Add and remove legend from layers when selected in control
+                                map.on('overlayremove', function(eventLayer) {
+                                    console.log(eventLayer.name + " off");
+                                    if (eventLayer.name == "Available Land") {
+                                        this.removeControl(legend1);
+                                    } else if (eventLayer.name == "DARES") {
+                                        this.removeControl(legend2);
+                                    }
+                                });
+
+                                map.on('overlayadd', function(eventLayer) {
+                                    console.log(eventLayer.name + " on");
+                                    if (eventLayer.name == "Available Land") {
+                                        legend1.addTo(this);
+                                    } else if (eventLayer.name == "DARES") {
+                                        legend2.addTo(this);
+                                    }
+                                });
+
+
+                                // Making possible to add and remove legend from layers when selected in control layer
+                                //                    map.on('overlayremove', function(eventLayer) {
+                                //                        console.log(eventLayer.name + " off");
+                                //                        if (eventLayer.name == "Available Land") {
+                                //                            this.removeControl(legend);
+                                //                        }
+                                //                    });
+
+                                //                   map.on('overlayadd', function(eventLayer) {
+                                //                       console.log(eventLayer.name + " on");
+                                //                       if (eventLayer.name == "Available Land") {
+                                //                           legend.addTo(this);
+                                //                       }
+                                //                   });
+
+                                //Highlight function creation
+                                function highlightFeature(e) {
+                                    var layer = e.target;
+
+                                    layer.setStyle({
+                                        weight: 1,
+                                        color: 'black',
+                                        dashArray: '',
+                                        fillOpacity: 0.7
+                                    });
+
+                                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                                        layer.bringToFront();
+                                    }
+
+                                }
+
+                                var geojson;
+
+                                function resetHighlight(e) {
+                                    geojson.resetStyle(e.target);
+                                }
+
+                                function zoomToFeature(e) {
+                                    map.fitBounds(e.target.getBounds());
+                                }
+
+                                function onEachFeature(feature, layer) {
+                                    layer.on({
+                                        click: zoomToFeature
+                                    });
+                                }
+
+                                map.attributionControl.addAttribution('Population data &copy; <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002</a>');
+
+
+                                // Getting color depending on area value
+                                function style(feature) {
+                                    return {
+                                        fillColor: getColor(feature.properties.area),
+                                        weight: 2,
+                                        opacity: 0.1,
+                                        color: 'white',
+                                        dashArray: '3',
+                                        fillOpacity: 0
+                                    };
+                                }
+
+                                //Adding Adding using the default blue icon to the map and binds popup dialog to them       
+                                var DARAirport = L.marker([-6.8362708, 39.216618]).bindPopup('This is Julius Nyerere International Airport').addTo(map);
+                                var reserve = L.marker([-6.7798456, 39.1217689]).bindPopup('This is a Mbezi river bassin').addTo(map);
+
+                                var DARES = L.geoJson(DARES, {
+                                    style: style,
+                                    onEachFeature: onEachFeature
+                                }).addTo(map);
+
+
+                                //Creating the layer group
+                                var DARLayerGroup = L.layerGroup([DARAirport, reserve, DARES]).addTo(map);
+
+
+                                //Adding 3 basemap layers
+                                var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                                    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                                });
+
+                                var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                                    subdomains: 'abcd',
+                                    maxZoom: 19
+                                });
+
+                                var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+                                    maxZoom: 19,
+                                    attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                });
+
+                                //Adding layer control
+                                var baseMaps = {
+                                    "Esri World Imagery": Esri_WorldImagery,
+                                    "Carto DB Positron": CartoDB_PositronNoLabels,
+                                    "Open Map Surfer Roads": OpenMapSurfer_Roads
+
+                                };
+
+                                var overlayMaps = {
+                                    "Dar es Salaam Airport": DARAirport,
+                                    "River bassin": reserve,
+                                    "Available Land": LandLayerGroup,
+                                    "DARES": DARES,
+                                };
+                                L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+                                //Setting Zoom out event
+                                function zoomOut() {
+                                    map.setZoom(10.49);
+                                }
+
+                                //Setting Zoom
+                                function zoomIn() {
+                                    map.setZoom(4);
+                                };
+
+
+                                //Adding an event listener for a click event on the button
+                                document.getElementById("beachBtn").addEventListener("click", beach);
+
+                                //Dar es Salaam beach zoom function
+                                function beach() {
+                                    map.setView(new L.LatLng(-6.8, 39.283333), 15);
+                                };
+
+
+                                <
+                                !––Writing the description text–– >
+                                    <
+                                    h4 > OUR MOTIVATION < /h4>
+
+                                    <
+                                    p style = "background-color:slategray; color: white;" > < i > "Farming looks mighty easy when your plow is a pencil and you're a thousand miles from the corn field". < /i><br> ― Dwight D. Eisenhower<br> <
+                                    br >
+                                    <
+                                    i > “When the kids see how amazing one seed turning in to beautiful flower < br > and transformation to a juicy red strawberries < br > then We are saving our future, < br > it is not a product anymore that they used to grab < br > in the supermarket but it is magic of life and with urban farming we doing this...”. < /i><br>― Baris Gencel <br> <
+                                    br >
+                                    These quotes introduce a little the background of our platform. < br >
+                                    Indeed, "<a href="
+                                https: //en.wikipedia.org/wiki/Urban_agriculture" target="_blank">Urban agriculture/farming/gardening</a>" is becoming a subject more and more treated at all levels of society.<br>
+                                    Even the dramatic situations of this beginning of decade which constitutes < br > the epidemic of < a href = "https://www.cdc.gov/coronavirus/2019-ncov/about/index.html"
+                                target = "_blank" > Covid - 19 < /a> raises the importance for each household<br> to have at least a small garden at home,<br> which could help in periods of containment or quarantine.<br>
+                                Africa is a continent where several initiatives, even
+                                if described as "informal", < br > are taken in this field of urban agriculture. < br > Furthermore, the city of < a href = "https://en.wikipedia.org/wiki/Dar_es_Salaam"
+                                target = "_blank" > Dar es Salaam < /a> in <a href="https:/ / en.wikipedia.org / wiki / Tanzania " target="
+                                _blank ">Tanzania</a> benefits <br>from an institutional organization of this activity.<br> Our map shows the availability of farming land following the urban-rural gradient. <br>We will be updating the platform as our research results evolve.<br></p>
+
+                                    <
+                                    !--Adding the sources at the bottom of the page-- >
+                                    <
+                                    p > < em > Sources: < /em><br> <
+                                    a href = "http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002"
+                                target = "_blank" > Farming land use in Dar es Salaam map < /a> <
+                                    br >
+                                    <
+                                    a href = "https://agronomossinfronteras.org/en/urban-farming-in-tanzania-2/"
+                                target = "_blank" > Urban farming in Tanzania picture < /a> <
+                                    br >
+                                    <
+                                    a href = "https://www.quotemaster.org/urban+farming"
+                                target = "_blank" > Dwight D.Eisenhower quote < /a> <
+                                    br >
+                                    <
+                                    a href = "https://www.goodreads.com/quotes/tag/urban-farming"
+                                target = "_blank" > Baris Gencel quote < /a> <
+                                    br >
+
+                                    <
+                                    p style = "background-color:lightseagreen; color: white; font-size: 30px;" > < em > < i > THANK YOU FOR SUPPORTING OUR URBAN AGRICULTURE PLATFORM! < /i></em > < /p>
+
+                                    <
+                                    /body>
+
+                                    <
+                                    /html>
