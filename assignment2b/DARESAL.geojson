@@ -9,7 +9,7 @@ var DARESAL = {
         "stroke-opacity": 1,
         "fill": "#005b00",
         "fill-opacity": 0.5,
-        "area": "\t408.67"
+        "area": "408.67"
       },
       "geometry": {
         "type": "Polygon",
@@ -943,7 +943,7 @@ var DARESAL = {
         "stroke-opacity": 1,
         "fill": "#80ff80",
         "fill-opacity": 0.5,
-        "area": "\t83.80"
+        "area": "83.80"
       },
       "geometry": {
         "type": "Polygon",
@@ -1165,7 +1165,7 @@ var DARESAL = {
         "stroke-opacity": 1,
         "fill": "#808000",
         "fill-opacity": 0.5,
-        "area": "\t164.88"
+        "area": "164.88"
       },
       "geometry": {
         "type": "Polygon",
