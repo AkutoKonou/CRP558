@@ -204,7 +204,7 @@
                 <script src="https://AkutoKonou.github.io/CRP558/geojson/DARAirport.geojson">
                     src = "https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson" >
                         <
-                        script src = "https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson" >
+                        script src = "https://AkutoKonou.github.io/CRP558/geojson/DARESA.geojson" >
                 </script>
                 </script>
 
@@ -221,7 +221,7 @@
                             <img src="image/UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;"></strong></p>
 
                     <!––Building the map with JavaScript part––>
-                        <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/DARES.geojson"></script>
+                        <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/DARESA.geojson"></script>
                         <script type="text/javascript">
                             var map = L.map('map').setView([-6.8, 39.283333], 4);
 
@@ -239,9 +239,9 @@
 
                             // get color depending on population density value
                             function getColor(d) {
-                                return d > 400 ? '#C70039' :
-                                    d > 100 ? ' #FF5733' :
-                                    d > 50 ? '#FFC300' :
+                                return d > \t400 ? '#C70039' :
+                                    d > \t100 ? ' #FF5733' :
+                                    d > \t50 ? '#FFC300' :
                                     '#FFFFFF';
                             }
 
@@ -356,7 +356,7 @@
 
                                     var div = L.DomUtil.create('div', 'info legend'),
                                         location = ['d>400', 'd>100', 'd>50', 'd<50'],
-                                        labels = [200, 100, 50];
+                                        labels = [\t200, \t100, \t50];
 
 
                                     //console.log(feature.length);
@@ -433,7 +433,7 @@
                                     console.log(eventLayer.name + " off");
                                     if (eventLayer.name == "Available Land") {
                                         this.removeControl(legend1);
-                                    } else if (eventLayer.name == "DARES") {
+                                    } else if (eventLayer.name == "DARESA") {
                                         this.removeControl(legend2);
                                     }
                                 });
@@ -442,7 +442,7 @@
                                     console.log(eventLayer.name + " on");
                                     if (eventLayer.name == "Available Land") {
                                         legend1.addTo(this);
-                                    } else if (eventLayer.name == "DARES") {
+                                    } else if (eventLayer.name == "DARESA") {
                                         legend2.addTo(this);
                                     }
                                 });
@@ -515,14 +515,14 @@
                                 var DARAirport = L.marker([-6.8362708, 39.216618]).bindPopup('This is Julius Nyerere International Airport').addTo(map);
                                 var reserve = L.marker([-6.7798456, 39.1217689]).bindPopup('This is a Mbezi river bassin').addTo(map);
 
-                                var DARES = L.geoJson(DARES, {
+                                var DARESA = L.geoJson(DARESA, {
                                     style: style,
                                     onEachFeature: onEachFeature
                                 }).addTo(map);
 
 
                                 //Creating the layer group
-                                var DARLayerGroup = L.layerGroup([DARAirport, reserve, DARES]).addTo(map);
+                                var DARLayerGroup = L.layerGroup([DARAirport, reserve, DARESA]).addTo(map);
 
 
                                 //Adding 3 basemap layers
@@ -553,7 +553,7 @@
                                     "Dar es Salaam Airport": DARAirport,
                                     "River bassin": reserve,
                                     "Available Land": LandLayerGroup,
-                                    "DARES": DARES,
+                                    "DARESA": DARESA,
                                 };
                                 L.control.layers(baseMaps, overlayMaps).addTo(map);
 
