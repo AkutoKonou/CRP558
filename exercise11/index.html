@@ -6,6 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+  
+    
 <style>
 	body {
 	  font-family: Arial, Helvetica, sans-serif;
@@ -85,6 +90,8 @@ html, body,
         #map { width: 800px; height: 500px; }
     
 	</style>
+    
+    </head>
 
 	<body>
 	
@@ -116,28 +123,26 @@ html, body,
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Leaflet plugin</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
+    
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""></script>
         <script src="https://AkutoKonou.github.io/CRP558/geojson/myplace.geojson"></script>
-        <script src="https://AkutoKonou.github.io/CRP558/geojson/river.geojson"></script> 
-        
+        <script src="https://AkutoKonou.github.io/CRP558/geojson/river.geojson"></script>       
     
-<script type="text/javascript" src="https://github.com/mapbox/leaflet-omnivore/blob/master/index.js"></script>
-omnivore.csv('a.csv').addTo(map);
-omnivore.polyline('a.txt').addTo(map);    
-<script type="text/javascript"
 
-</head>
+        
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+        <script src='../leaflet-omnivore.js'></script>
+     
+        
 <body>
 <div id='map'></div>
+<script>
 
-       var map = L.map('map').setView([42, -93], 7);
+var map = L.map('map', 'mapbox.streets').setView([42, -93], 7);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
@@ -149,13 +154,8 @@ omnivore.polyline('a.txt').addTo(map);
 /*  var map = L.mapbox.map('map', 'mapbox.streets')
     .setView([42, -93], 7);*/
     
-//Adding basemap layer
-var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-    
-//Adding overlay map    
+
+//Adding basemap map    
 var ortho_1930 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_1930/ImageServer/WMSServer", {
     layers: 'ortho_1930',
     format: 'image/jpg',
@@ -163,17 +163,22 @@ var ortho_1930 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/
     attribution: "Iowa State University GIS Facility &copy; 2020, Iowa DNR"
 });  
         
-    
-//Adding layer control
 var baseMaps = {
-    "OpenMapSurfer_Roads": OpenMapSurfer_Roads
-
+    "ortho_1930": ortho_1930
 };
 
-var overlayMaps = {
-    "ortho_1930": ortho_1930,
-};
-L.control.layers(baseMaps, overlayMaps).addTo(map);   
+    
+//Adding leaflet pluggins
+    
+    
+function log(_) {
+    if (typeof console == 'object') console.log(_);
+}    
+    
+omnivore.csv('a.csv').addTo(map);
+omnivore.kml('a.kml').addTo(map);        
+
+
 </script>
     
 </body>
