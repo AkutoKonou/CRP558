@@ -148,7 +148,7 @@ var map = L.map('map', 'mapbox.streets').setView([42, -93], 7);
 	
 	
 //Defining ortho_1930 as a basemap map    
-var ortho_2002 = L.tileLayer.wms("https://ortho.gis.iastate.edu/leaflet.html", {
+var ortho_2002 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_2002/ImageServer/WMSServer", {
     layers: 'ortho_2002',
     format: 'image/png',
     transparent: true,
