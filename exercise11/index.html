@@ -148,7 +148,7 @@ var map = L.map('map', 'mapbox.streets').setView([42, -93], 7);
 	
 	
 //Defining ortho_1930 as a basemap map    
-var ortho_2002 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_2002_cir/ImageServer/WMSServer?wmtver=1.0&request=map&bbox=199163,4451189,739163,4856189&width=600&height=450&layers=ortho_2002_cir&format=jpeg&srs=EPSG:26915&styles=", {
+var ortho_2002 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_2002/ImageServer/WMSServer", {
     layers: 'ortho_2002',
     format: 'image/png',
     transparent: true,
