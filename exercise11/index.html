@@ -147,9 +147,9 @@ var map = L.map('map', 'mapbox.streets').setView([42, -93], 7);
     
 	
 	
-//Defining ortho_1950 as a basemap map    
-var ortho_1950 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_1950/ImageServer/WMSServer", {
-    layers: 'ortho_1950',
+//Defining ortho_1990 as a basemap map    
+var ortho_1990 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_1990/ImageServer/WMSServer", {
+    layers: 'ortho_1990',
     format: 'image/png',
     transparent: true,
     attribution: "Iowa State University GIS Facility &copy; 2020, Iowa DNR"
@@ -157,12 +157,12 @@ var ortho_1950 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/
 
 //Adding basemap map 
 var baseMaps = {
-    "ortho_1950": ortho_1950
+    "ortho_1990": ortho_1990
 };
-ortho_1950.addTo(map);
+ortho_1990.addTo(map);
 
 //Uploading CSV file with leaflet pluggin
-omnivore.csv('Impaired_Lakes_2008.csv').addTo(map);			
+omnivore.csv('NorthIowaImpaired_Lakes_2008.csv').addTo(map);			
 	
 </script>
     
