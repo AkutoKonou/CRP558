@@ -150,7 +150,7 @@ var map = L.map('map', 'mapbox.streets').setView([42, -93], 7);
     .setView([42, -93], 7);*/
     
 
-//Adding basemap map    
+//Adding ortho_1930 as a basemap map    
 var ortho_1930 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_1930/ImageServer/WMSServer", {
     layers: 'ortho_1930',
     format: 'image/png',
@@ -164,11 +164,9 @@ var baseMaps = {
 baseMaps.addTo(map);
     
 //Adding leaflet pluggins
-    
-    
-/*function log(_) {
-    if (typeof console == 'object') console.log(_);
-}*/    
+function log(_) {
+	if (typeof console == 'object') console.log(_);
+}    
     
 omnivore.csv('Impaired_Lakes_2008.csv').addTo(map);
 
