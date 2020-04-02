@@ -161,14 +161,14 @@ var ortho_1930 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/
 var baseMaps = {
     "ortho_1930": ortho_1930
 };
-
+ortho_1930.addTo(map);
     
 //Adding leaflet pluggins
     
     
-function log(_) {
+/*function log(_) {
     if (typeof console == 'object') console.log(_);
-}    
+}*/    
     
 omnivore.csv('Impaired_Lakes_2008.csv').addTo(map);
 
