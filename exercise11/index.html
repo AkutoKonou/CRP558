@@ -154,7 +154,7 @@ omnivore.csv('Impaired_Lakes_2008.csv').addTo(map);
 var ortho_1930 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_1930/ImageServer/WMSServer", {
     layers: 'ortho_1930',
     format: 'image/png',
-    transparent: false,
+    transparent: true,
     attribution: "Iowa State University GIS Facility &copy; 2020, Iowa DNR"
 });  
         
