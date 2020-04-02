@@ -133,7 +133,6 @@ html, body,
 
         
 <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
-        <script src='../leaflet-omnivore.js'></script>
      
         
 <body>
@@ -175,8 +174,7 @@ function log(_) {
     if (typeof console == 'object') console.log(_);
 }    
     
-omnivore.csv('a.csv').addTo(map);
-omnivore.kml('a.kml').addTo(map);        
+omnivore.csv('Impaired_Lakes_2008.csv').addTo(map);
 
 
 </script>
