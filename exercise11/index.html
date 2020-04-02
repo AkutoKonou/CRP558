@@ -126,8 +126,8 @@ html, body,
     
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>    
-//Adding leaflet pluggin		
+        crossorigin=""></script>
+				
 <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
      
         
@@ -145,23 +145,24 @@ var map = L.map('map', 'mapbox.streets').setView([42, -93], 7);
             accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
         }).addTo(map);
     
-    
-//Uploading CSV file with leaflet pluggin
-omnivore.csv('Impaired_Lakes_2008.csv').addTo(map);
 	
 	
-//Adding ortho_1930 as a basemap map    
-var ortho_1930 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_1930/ImageServer/WMSServer", {
-    layers: 'ortho_1930',
+//Defining ortho_1930 as a basemap map    
+var ortho_2002 = L.tileLayer.wms("https://ortho.gis.iastate.edu/client.cgi?zoom=900&x0=469163&y0=4653689&layer=ortho_2002_cir&pwidth=600&pheight=450", {
+    layers: 'ortho_2002',
     format: 'image/png',
     transparent: true,
     attribution: "Iowa State University GIS Facility &copy; 2020, Iowa DNR"
 });  
-        
+
+//Uploading CSV file with leaflet pluggin
+omnivore.csv('Impaired_Lakes_2008.csv').addTo(map);	
+
+//Adding basemap map 
 var baseMaps = {
-    "ortho_1930": ortho_1930
+    "ortho_2002": ortho_2002
 };
-ortho_1930.addTo(map);
+ortho_2002.addTo(map);
 
 </script>
     
