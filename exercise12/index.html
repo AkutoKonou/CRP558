@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
-
+    
 <head>
-    <title>Exercise11</title>
+    <title>Exercise12 - Custom Mapbox Tile Layer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
     <style>
         body {
@@ -16,13 +17,14 @@
 
         .navbar {
             overflow: hidden;
-            background-color: blue;
+            background-color: slategrey;
         }
 
         .navbar a {
             float: left;
             font-size: 18px;
-            color: white;
+            color: cyan;
+            text-shadow: 2px 2px 4px #000000;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
@@ -37,7 +39,7 @@
             font-size: 16px;
             border: none;
             outline: none;
-            color: white;
+            color: cyan;
             padding: 14px 16px;
             background-color: inherit;
             font-family: inherit;
@@ -46,7 +48,7 @@
 
         .navbar a:hover,
         .dropdown:hover .dropbtn {
-            background-color: red;
+            background-color: gray;
         }
 
         .dropdown-content {
@@ -60,7 +62,7 @@
 
         .dropdown-content a {
             float: none;
-            color: Gray;
+            color: lightcyan;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -123,50 +125,40 @@
                 <a href="https://akutokonou.github.io/CRP558/assignment2/">Assignment 2</a>
             </div>
         </div>
-    </div>
-    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Custom Mapbox Tile Layer</title>
-
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-
-    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
-
 
     <body>
         <div id='map'></div>
         <script>
             var map = L.map('map', 'mapbox.streets').setView([6.131944, 1.222778], 12);
 
-            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            L.tileLayer('https://api.mapbox.com/styles/v1/akpedze/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 maxZoom: 18,
-                id: 'mapbox/streets-v11',
+                id: 'ck8stbh3o2hzt1it3o7567aqe',
                 // This is my token
                 accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
             }).addTo(map);
 
-
-
-            //Defining ortho_1990 as a basemap map    
-            var ortho_1990 = L.tileLayer.wms("https://ortho.gis.iastate.edu/arcgis/services/ortho/ortho_1990/ImageServer/WMSServer", {
-                layers: 'ortho_1990',
-                format: 'image/png',
-                transparent: true,
-                attribution: "Iowa State University GIS Facility &copy; 2020, Iowa DNR"
-            });
-
-            //Adding basemap map 
-            var baseMaps = {
-                "ortho_1990": ortho_1990
-            };
-            ortho_1990.addTo(map);
-
-            //Uploading CSV file with leaflet pluggin
-            omnivore.csv('North_IA_Impaired_Lakes_2008.csv').addTo(map);
+        L.marker([6.127645, 1.214083]).addTo(map)
+            .bindPopup('This is the "Hotel du 2 Février"')
+            .openPopup();
+        
         </script>
 
+       <!––Information about what you changed in the style template––>
+        <p style="color: cyan; text-shadow: 2px 2px 4px #000000;">MODIFICATION INFORMATION</p>
+
+        <p style="background-color:lightsteelblue; color: white;"><i>
+•	Changed the road colors from white to gray under Buildings component<br>
+•	Changed the amenities color from yellow to purple under Buildings component<br>
+•	Changed the parks and the water color from a light green and blue to more flashy ones<br>
+•	Changed the base color from a gray to a light yellow<br>
+•	Added a dot to national parks<br>
+•	Changed the opacity of land from 1 to 0.34<br>
+•	Changed the typography of Neighborhood from DIN Pro Regular to DIN Pro Bold.<br>
+•	Added a new layer: hillshade (1) from the source: Mapbox Terrain V2 and styled the color in red<br>
+</i></p>
+        
     </body>
 
 </html>
