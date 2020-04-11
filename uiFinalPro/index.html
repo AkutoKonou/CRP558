@@ -27,20 +27,20 @@ body, html {
 }
 
 /* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: url('https://github.com/AkutoKonou/CRP558/blob/master/uiFinalPro/sun.jpg');
+.parallax1 {
+  background-image: url('parallax1.jpg');
   min-height: 100%;
 }
 
 /* Second image (Portfolio) */
-.bgimg-2 {
-  background-image: url('https://github.com/AkutoKonou/CRP558/blob/master/uiFinalPro/schoolgirls.jpg');
+.parallax2 {
+  background-image: url('parallax2.jpg');
   min-height: 400px;
 }
 
 /* Third image (Contact) */
-.bgimg-3 {
-  background-image: url('https://github.com/AkutoKonou/CRP558/blob/master/uiFinalPro/montagou.jpg');
+.parallax3 {
+  background-image: url('parallax3.jpg');
   min-height: 400px;
 }
 
@@ -49,7 +49,7 @@ body, html {
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
+  .parallax1, .parallax2, .parallax3 {
     background-attachment: scroll;
     min-height: 400px;
   }
@@ -82,7 +82,7 @@ body, html {
 </div>
 
 <!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 display-container opacity-min" id="home">
+<div class="parallax1 display-container opacity-min" id="home">
   <div class="display-middle" style="white-space:nowrap;">
     <span class="center padding-large black xlarge wide animate-opacity">MY <span class="hide-small">WEBSITE</span> LOGO</span>
   </div>
@@ -99,7 +99,7 @@ body, html {
 </div>
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 display-container opacity-min">
+<div class="parallax2 display-container opacity-min">
   <div class="display-middle">
     <span class="xxlarge text-white wide">Maps | Cartes</span>
   </div>
@@ -128,7 +128,7 @@ body, html {
 </div>
 
 <!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 display-container opacity-min">
+<div class="parallax3 display-container opacity-min">
   <div class="display-middle">
      <span class="xxlarge text-white wide">Innovations</span>
   </div>
