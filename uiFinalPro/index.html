@@ -7,6 +7,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
+body,h1,h2,h3,h4,h5,h6 {font-family: "Poppins", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.parallax2, .parallax3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.parallax2 {
+  background-image: url('https://github.com/AkutoKonou/CRP558/blob/master/uiFinalPro/sun.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.parallax3 {
+  background-image: url('https://github.com/AkutoKonou/CRP558/blob/master/uiFinalPro/schoolgirls.jpg');
+  min-height: 400px;
+}
+
+.wide {letter-spacing: 10px;}
+.hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .parallax2, .parallax3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+} 
+ 
+ 
+ 
+ 
  /* Centered text */
 .centered {
   position: absolute;
@@ -210,7 +251,7 @@ body {
 </div>
   
 <!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 display-container opacity-min" id="home">
+<div class="parallax2 display-container opacity-min" id="home">
   <div class="display-middle" style="white-space:nowrap;">
     <span class="center padding-large black xlarge wide animate-opacity">MY <span class="hide-small">WEBSITE</span> LOGO</span>
   </div>
@@ -227,7 +268,7 @@ body {
 </div>
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 display-container opacity-min">
+<div class="parallax3 display-container opacity-min">
   <div class="display-middle">
     <span class="xxlarge text-white wide">Maps | Cartes</span>
   </div>
@@ -252,13 +293,6 @@ body {
   <div class="modal-content animate-zoom center transparent padding-64">
     <img id="img01" class="image">
     <p id="caption" class="opacity large"></p>
-  </div>
-</div>
-
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 display-container opacity-min">
-  <div class="display-middle">
-     <span class="xxlarge text-white wide">Innovations</span>
   </div>
 </div>
   
