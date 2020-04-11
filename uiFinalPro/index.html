@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
+ /* Centered text */
 .centered {
   position: absolute;
   top: 50%;
@@ -13,6 +14,13 @@
   transform: translate(-50%, -50%);
 }
 
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}  
+  
 * {
   box-sizing: border-box;
 }
@@ -190,6 +198,23 @@ body {
   
 <div class="container">
   <img src="sun.jpg" alt="Sunset" style="width:100%;">
+  
+  <!-- Navbar (sit on top) -->
+<div class="top">
+  <div class="bar", "top-left" id="myNavbar">
+    <a class="bar-item button hover-black hide-medium hide-large right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="bar-item button">Home</a>
+    <a href="#about" class="bar-item button hide-small"> Maps | Cartes</a>
+    <a href="#portfolio" class="bar-item button hide-small"> Innovations</a>
+    <a href="#contact" class="bar-item button hide-small"> Contact</a>
+    <a href="#" class="bar-item button hide-small right hover-red">
+      <a href="#" class="bar-item button">Search</a>
+    </a>
+  </div>  
+  
+  
   <div class="centered"><h1>a Home for Homeless</h1><br>
     <p style="color: white;">What place for homeless during a crisis like Covid-19?<br>
        H4H: a crowdsourcing map for Lomé, Togo (West Africa).</p></div>
