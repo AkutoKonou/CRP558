@@ -7,6 +7,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
+/* Create a Parallax Effect */
+.parallax2, .parallax3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.parallax2 {
+  background-image: url('parallax2.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.parallax3 {
+  background-image: url('parallax3.jpg');
+  min-height: 400px;
+}
+
+.wide {letter-spacing: 10px;}
+.hover-opacity {cursor: pointer;}
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1600px) {
@@ -221,33 +243,36 @@ body {
   <a href="#" style="float:right">Link</a>
 </div>
   
-<!-- First Parallax Image with Logo Text -->
-<div class="parallax2 display-container opacity-min" id="home">
-  <div class="display-middle" style="white-space:nowrap;">
-    <span class="center padding-large black xlarge wide animate-opacity">MY <span class="hide-small">WEBSITE</span> LOGO</span>
+
+
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="parallax3 display-container opacity-min">
+  <div class="display-middle">
+    <span class="xxlarge text-white wide">Maps | Cartes</span>
   </div>
 </div>
 
-<!-- Container (About Section) -->
-<div class="content container padding-64" id="about">
-  <h3 class="center">Maps | Cartes - Why? | Pourquoi?</h3>
-  <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-  <div class="row">
-    <div class="col m6 center padding-large">
-    </div>
+<!-- Container (Portfolio Section) -->
+<div class="content container padding-64" id="portfolio">
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="row-padding center">
+    
+  </div>
+
+  <div class="row-padding center section">
+   
   </div>
 </div>
 
-
-
-<!-- Modal for full size images on click
+<!-- Modal for full size images on click-->
 <div id="modal01" class="modal black" onclick="this.style.display='none'">
   <span class="button large black display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
   <div class="modal-content animate-zoom center transparent padding-64">
     <img id="img01" class="image">
     <p id="caption" class="opacity large"></p>
   </div>
-</div>-->
+</div>
   
   
 <div class="row">
@@ -277,6 +302,24 @@ body {
       <p>Some text..</p>
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
+    
+<!-- First Parallax Image with Logo Text -->
+<div class="parallax2 display-container opacity-min" id="home">
+  <div class="display-middle" style="white-space:nowrap;">
+    <span class="center padding-large black xlarge wide animate-opacity">MY <span class="hide-small">WEBSITE</span> LOGO</span>
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="content container padding-64" id="about">
+  <h3 class="center">Maps | Cartes - Why? | Pourquoi?</h3>
+  <p>We have created a fictional "personal" website/blog, and our fictional character is a hobby photographer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+  <div class="row">
+    <div class="col m6 center padding-large">
+    </div>
+  </div>
+</div>
+    
     
     
 <!-- Container (Contact Section) -->
