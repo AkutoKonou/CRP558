@@ -211,7 +211,15 @@ h10 {
   color: white;
   text-shadow: 2px 2px 4px #000000;
 }  
-  
+
+.myNavbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}  
+
 </style>
 </head>
 <body>
@@ -224,7 +232,7 @@ h10 {
       <i class="fa fa-bars"></i>
     </a>
         <div class="card bg-light text-dark">
-    <div class="card-body" position: fixed; top: 0;>
+    <div class="card-body">
     <a href="#home" class="bar-item button">H O M E               |</a>
     <a href="#about" class="bar-item button hide-small">M A P S              |</a>
     <a href="#portfolio" class="bar-item button hide-small">I N N O V A T I O N S               |</a>
