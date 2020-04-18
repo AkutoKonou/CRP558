@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>Exercise10</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Getting Started with Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+    
+    
+    
+<style>
+	
+    html, body {
+			height: 100%;
+			margin: 0;
+		}
+		
+        #map {
+			width: 1837px;
+			height: 800px;
+            z-index: 0;
+		}
+html, body,
+        #map { width: 1837px; height: 800px; }
+    
+.legend {
+    line-height: 10px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 20px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.9;
+}
+.info {
+    padding: 6px 8px;
+    font: 10px/20px Arial, Helvetica, sans-serif;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+    
+	</style>
+
+	<body>
+	
+
+        <!--<script src="https://AkutoKonou.github.io/CRP558/geojson/District.geojson"></script>-->
+        <script src="https://AkutoKonou.github.io/CRP558/geojson/Innov.geojson"></script>
+</head>
+<body>
+<div id='map'></div>
+<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/Dinnov.js"></script>
+<script type="text/javascript">
+
+        var map = L.map('map').setView([6.131944, 1.222778], 12);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            // This is my token
+            accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
+        }).addTo(map);
+
+	// get color depending on population density value
+	function getColor(d) {
+		return d > 26 ? '#7a0177' :
+				d > 16  ? '#c51b8a' :
+				d > 10  ? '#f768a1' :
+				d > 6   ? '#fa9fb5' :
+				d > 1   ? '#fcc5c0' :
+							'#feebe2';
+	}
+
+	function style(feature) {
+		return {
+			weight: 1,
+			opacity: 1,
+			color: 'white',
+			fillOpacity: 0.7,
+			fillColor: getColor(feature.properties.Join_Count)
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 2,
+			color: 'black',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+
+	}
+
+	var geojson;
+
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			click: zoomToFeature
+		});
+	}
+
+	map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+            
+//------ Individual layer geojson
+var Innov = L.geoJSON(Innov).bindPopup('Innovation Space').addTo(map);
+    var Dinnov = L.geoJson(Dinnov, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});
+    
+var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+});
+
+var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+    
+//Adding layer control
+var baseMaps = {
+    "Esri_WorldImagery": Esri_WorldImagery,
+    "CartoDB_PositronNoLabels": CartoDB_PositronNoLabels,
+    "OpenMapSurfer_Roads": OpenMapSurfer_Roads
+
+};
+
+var overlayMaps = {
+    "Dinnov": Dinnov,
+    "Innov": Innov,
+};
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+    
+    
+//Create Legend
+var legend = L.control({
+  position: 'bottomleft'
+});
+
+legend.onAdd = function(map) {
+
+  var div = L.DomUtil.create('div', 'info legend'),
+    densityP = ['d > 26', 'd > 16', 'd > 10', 'd > 6', 'd > 1', 'd <= 1'],
+    labels = [1001,1000,500,200,100,50,1];
+
+	
+	//console.log(feature.length);
+	
+	 div.innerHTML += "<b>Density</b><br>";
+  // loop through items and generate a label with a colored square for each
+
+  for (var i = 0; i < densityP.length; i++) {
+	div.innerHTML +=
+      '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
+      densityP[i] + (densityP ? '' + '<br>' : '');
+  }
+
+  return div;
+};
+legend.addTo(map);    
+</script>
+</body>
+</html>
