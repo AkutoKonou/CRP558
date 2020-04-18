@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>FINAL PROJECT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> 
+
+<style>
+
+ body {
+                    font-family: Calibri Light, Century Gothic, sans-serif;
+                }
+
+                .navbar1 {
+                    overflow: hidden;
+                    background-color: whitesmoke;
+                }
+
+                .navbar2 {
+                    overflow: hidden;
+                    background-color: whitesmoke;
+                }
+
+                .navbar1 a {
+                    float: left;
+                    font-size: 30px;
+                    color: lightseagreen;
+                    text-align: center;
+                    padding: 20px 30px;
+                    text-decoration: inherit;
+                }
+
+                .navbar2 a {
+                    float: right;
+                    font-size: 18px;
+                    color: slategray;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+
+                .dropdown {
+                    float: right;
+                    overflow: hidden;
+                }
+
+                .dropdown .dropbtn {
+                    font-size: 16px;
+                    border: none;
+                    outline: none;
+                    color: slategray;
+                    padding: 14px 16px;
+                    background-color: inherit;
+                    font-family: inherit;
+                    margin: 0;
+                }
+
+                .navbar a:hover,
+                .dropdown:hover .dropbtn {
+                    background-color: lightseagreen;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: white;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                }
+
+                .dropdown-content a {
+                    float: none;
+                    color: Gray;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    display: block;
+                    text-align: left;
+                    z-index: 99
+                }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                html,
+                body {
+                    height: 100%;
+                    width: 100%;
+                }
+
+                #map {
+                    width: 100%;
+                    height: 500px;
+                    z-index: 0;
+                }
+
+                .legend {
+                    line-height: 10px;
+                    color: #555;
+                }
+
+                 .legend1 {
+                    line-height: 10px;
+                    color: #555;
+                }               
+                
+                 .legend2 {
+                    line-height: 10px;
+                    color: #555;
+                }  
+                
+                .legend i {
+                    width: 18px;
+                    height: 20px;
+                    float: left;
+                    margin-right: 8px;
+                    opacity: 0.9;
+                }               
+                
+                .info {
+                    padding: 6px 8px;
+                    font: 10px/20px Calibri Light, Century Gothic, sans-serif;
+                    background: rgba(255, 255, 255, 0.8);
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
+
+                }
+
+                .info h2 {
+                    margin: 0 0 5px;
+                    color: #777;
+                }
+
+                h1 {
+                    text-align: center;
+                    font-family: Poppins;
+                    font-size: 50px;
+                    color: green;
+                }
+
+                h2 {
+                    text-align: center;
+                    font-family: Poppins;
+                    font-size: 30px;
+                    color: coral;
+                }
+
+                p {
+                    font-weight: none;
+                    text-align: center;
+                    font-family: Poppins;
+                    font-size: 20px;
+                    color: gray;
+                }
+
+                img {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }   
+    
+    
+    
+/* Create a Parallax Effect */
+.parallax2, .parallax3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Mont Agou) */
+.parallax2 {
+  background-image: url('image/parallax2.jpg');
+  min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.parallax3 {
+  background-image: url('image/parallax3.jpg');
+  min-height: 100%;
+}
+
+.wide {letter-spacing: 10px;}
+.hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .parallax2, .parallax3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+} 
+ 
+ 
+ /* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}  
+  
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  padding: 10px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+
+h10 {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+</style>
+  
+  <!-- Navbar (sit on top and fixed position ) -->
+
+<div class="top">
+  <div class="bar" id="myNavbar">
+    <a class="bar-item button hover-black hide-medium hide-large right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+        <!--<div class="card bg-light text-dark">
+    <div class="card-body">-->
+    <a href="#home" class="bar-item button">HOME |</a>
+    <a href="#about" class="bar-item button hide-small">MAPS |</a>
+    <a href="#portfolio" class="bar-item button hide-small">INNOVATIONS |</a>
+    <a href="#contact" class="bar-item button hide-small">CONTACT</a>
+       <!--<p style="float: right; color: gray">A CROWDSOURCING MAP FOR LOMÉ, TOGO (AFRICA)</p><br>-->
+    </a><!--</div>-->
+        </div>
+  </div>
+  
+
+
+<div class="container">
+  <img src="sun.jpg" alt="Sunset" style="width:100%;">
+  <div class="centered"><h1>a Home for Homeless</h1><br>
+      <!--<img src="LogoH4Hwhite.png" alt="logo" style="width:40%; z-index: 1;">-->
+  </div>
+</div> 
+ 
+
+<div class="navbar2">
+    <a href="https://github.com/AkutoKonou" style="float:right">Home</a>
+            <a href="https://github.com/AkutoKonou/CRP558" style="float:right">Source</a>
+            <div class="dropdown">
+                <button class="dropbtn">Pages
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="https://akutokonou.github.io/CRP558/finalproject/">FINAL PROJECT</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise1/">Exercise 1</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise2/">Exercise 2</a>
+                    <a href="https://github.com/AkutoKonou/CRP558/blob/master/exercise3/Air_IA.geojson">Exercise 3</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise4/">Exercise 4</a>
+                    <a href="https://akutokonou.github.io/CRP558/Exercise5/">Exercise 5</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise6/">Exercise 6</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise7/">Exercise 7</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise8/">Exercise 8</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise9/">Exercise 9</a>
+                    <a href="https://akutokonou.github.io/CRP558/exercise10/">Exercise 10</a>
+                    <a href="https://akutokonou.github.io/CRP558/assignment1/">Assignment 1</a>
+                    <a href="https://akutokonou.github.io/CRP558/assignment2/">Assignment 2</a>
+                </div>
+            </div>
+
+    
+</head>
+    
+    
+<body>
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2><font size="10">WHAT PLACE FOR HOMELESS DURING A CRISIS LIKE COVID-19?<br></h2>
+    </div>    
+    
+<div class="row">
+  <div class="column">
+    <h2>Our motivation</h2>
+    <p>“Stay home!” is currently the strongest catch phrase for confinement to fight the Covid-19 pandemic. But how do you respect it when you're homeless? Our platform helps to solve this equation by starting from the city of Lomé in Togo, by locating, analyzing and visualizing data and by allowing those who can help protect homeless people because they are indeed one of the most vulnerable strata of the population .<br>
+        “International human rights law recognizes everyone’s right to an adequate standard of living, including adequate housing. Despite the central place of this right within the global legal system, well over a billion people are not adequately housed. Millions around the world live in life- or health- threatening conditions ...”. <a href="https://en.wikipedia.org/wiki/Urban_agriculture" target="_blank">(UN Habitat, 2014)</a>. Therefore, living in decent and dignified housing is a basic human right recognized worldwide.</p>
+  </div>
+  
+  <div class="column">
+    <h2>Content</h2>
+    <p>For a few months, the whole earth has been in crisis, hit by a pandemic destabilizing all socio-cultural systems or economic and geopolitical forecasts. Measures have been taken to keep the population as far as possible confined to the home, to reduce the rate of spread of the disease. But a fringe of the population, the homeless, despite being among the people most exposed to all calamities, is not given priority or necessarily considered in these control measures. This makes them more fragile, and even potential rapid vectors of the virus. It is this reflection that led us to the question: how to contribute to the protection of the homeless in sensitive times? We chose to start with Lomé, the city that we know best.</p>
+  </div>
+  
+  <div class="column">
+    <h2>Perspectives</h2>
+    <p>Lomé, capital of Togo, is a city of more than 1 million inhabitants, on the West African Atlantic coast. This multi-purpose city and regional economic hub is not immune to the covid-19 pandemic, and we have yet to find a systematic study yet done on the homeless in Lomé. This is how we propose to create a participative web map platform for collecting geolocation data, evolving spatial studies of homeless people conditions in the city, site locations that can serve as reception camps for housing emergencies for homeless, but also publication and reception of any initiatives for them. “Home for Homeless” objective is to help homeless in Lomé reach better living conditions especially in exceptional periods like those which we live.</p>
+  </div>
+</div>
+
+<!-- First Parallax Image with Portfolio Text -->
+<div class="parallax3 display-container opacity-min">
+  <div class="display-middle">
+    <span class="xxlarge text-white wide"><h10>M A P S</h10></span>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div class="content container padding-64" id="portfolio">
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="row-padding center">
+    
+  </div>
+
+  <div class="row-padding center section">
+   
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="modal black" onclick="this.style.display='none'">
+  <span class="button large black display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="modal-content animate-zoom center transparent padding-64">
+    <img id="img01" class="image">
+    <p id="caption" class="opacity large"></p>
+  </div>
+</div>
+  
+  
+        <script>
+ 
+            
+        </script>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                <iframe width="100%" height="800" frameborder="0" src="file:///C:/Users/konou/Documents/Spring_2020/Webmapping/for_homeless.html" allowfullscreen
+            webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<!--        <iframe width="100%" height="800" frameborder="0" src="https://github.com/AkutoKonou/CRP558/tree/master/finalproject/homeless/" allowfullscreen
+            webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>-->
+    </div>
+    
+<!-- Second Parallax Image with Logo Text -->
+<div class="parallax2 display-container opacity-min" id="home">
+  <div class="display-middle" style="white-space:nowrap;">
+    <span class="center padding-large black xlarge wide animate-opacity"><span class="hide-small"><h10>I N N O V A T I O N S</h10></span>
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="content container padding-64" id="about">
+  <h3 class="center">Maps | Cartes - Why? | Pourquoi?</h3>
+<iframe width="100%" height="800" frameborder="0" src="https://akutokonou.carto.com/builder/f72f54ae-084f-4f50-a3a0-5f14a41a1c00/embed" allowfullscreen
+            webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> 
+  <div class="row">
+    <div class="col m6 center padding-large">
+    </div>
+  </div>
+</div>
+    
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        <iframe width="100%" height="800" frameborder="0" src="https://akutokonou.github.io/CRP558/finalproject/crowdmap/" allowfullscreen
+            webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    </div>    
+    
+    
+<!-- Container (Contact Section) -->
+    <div class="card">
+      <div class="fakeimg" style="height:350px;">
+<div class="content container padding-64" id="contact">
+  <h3 class="center"><center>Contact</center></h3>
+
+  <div class="row padding-32 section">
+    <div class="col m4 container">
+    </div>
+    <div class="col m8 panel">
+      <div class="large margin-bottom">
+        <center><i class="fa fa-map-marker fa-fw hover-text-black xlarge margin-right"></i> Lomé, Togo<br></center>
+        <center><i class="fa fa-phone fa-fw hover-text-black xlarge margin-right"></i> Phone/WhatsApp: +228 90 79 6996<br></center>
+        <center><i class="fa fa-envelope fa-fw hover-text-black xlarge margin-right"></i> Email: contact@akduarbiliterre.com<br></center>
+      </div>
+      <center><p><i>Want to suggest, encourage, donate? Please, send a message:<br>
+        Vous souhaitez suggérer, encourager, faire un don? S'il vous plaît envoyez nous un message:</i></p>
+      <form action="/action_page.php" target="_blank">
+        <div class="row-padding" style="margin:0 -16px 8px -16px">
+          <div class="half">
+            <center><input class="input border" type="text" placeholder="Name" required name="Name"></center>
+          </div>
+          <div class="half">
+            <center><input class="input border" type="text" placeholder="Email" required name="Email"></center>
+          </div>
+          </div>
+            <center><input class="input border" type="text" placeholder="Message" required name="Message"></center>
+        <button class="button black left section" type="submit">
+          <i class="fa fa-paper-plane"></i> Send message | Envoyer le message
+        </button>
+      </form>
+    </div>
+  </div>
+</div></div>
+    </div>
+  </div>
+ 
+
+                    <!--Adding the sources at the bottom of the page
+                    <p><em>Sources:</em><br>
+                        <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002" target="_blank">Farming land use in Dar es Salaam map</a>
+                        <br>
+                        <a href="https://agronomossinfronteras.org/en/urban-farming-in-tanzania-2/" target="_blank">Urban farming in Tanzania picture</a>
+                        <br>
+                        <a href="https://www.quotemaster.org/urban+farming" target="_blank">Dwight D. Eisenhower quote</a>
+                        <br>
+                        <a href="https://www.goodreads.com/quotes/tag/urban-farming" target="_blank">Baris Gencel quote</a>
+                        <br>
+
+                        <p style="background-color:lightseagreen; color: white; font-size: 30px;"><em><i>THANK YOU FOR SUPPORTING OUR URBAN AGRICULTURE PLATFORM!</i></em></p>-->    
+
+
+<div class="footer">
+  <p> <font size="2">By <a href="https://www.akpedzekonou.com/" title="Akuto Konou" target="_blank"> Akuto Konou</a>
+  <br>With the help of Bailey Hanson
+  <br>& w3css</font>
+  
+  </p>
+</div>
+
+
+</body>
+</html>
