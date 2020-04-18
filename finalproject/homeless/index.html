@@ -1,202 +1,536 @@
 <!DOCTYPE html>
 <html>
-<head>  
-<title>Exercise10</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+
+    <!––Including Leaflet CSS file in the head section––>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!––CSS Details––>
+            <style>
+                body {
+                    font-family: Calibri Light, Century Gothic, sans-serif;
+                }
+
+                html,
+                body {
+                    height: 100%;
+                    width: 100%;
+                }
+
+                #map {
+                    width: 100%;
+                    height: 500px;
+                    z-index: 0;
+                }
+
+                .legend {
+                    line-height: 10px;
+                    color: #555;
+                }
+
+                 .legend1 {
+                    line-height: 10px;
+                    color: #555;
+                }               
+                
+                 .legend2 {
+                    line-height: 10px;
+                    color: #555;
+                }  
+                
+                .legend i {
+                    width: 18px;
+                    height: 20px;
+                    float: left;
+                    margin-right: 8px;
+                    opacity: 0.9;
+                }               
+                
+                .info {
+                    padding: 6px 8px;
+                    font: 10px/20px Calibri Light, Century Gothic, sans-serif;
+                    background: rgba(255, 255, 255, 0.8);
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
+
+                }
+
+                .info h4 {
+                    margin: 0 0 5px;
+                    color: #777;
+                }
+
+                h1 {
+                    text-align: center;
+                    font-family: Calibri Light;
+                    font-size: 50px;
+                    color: green;
+                }
+
+                h4 {
+                    text-align: center;
+                    font-family: Calibri Light;
+                    font-size: 30px;
+                    color: lightseagreen;
+                }
+
+                p {
+                    font-weight: none;
+                    text-align: center;
+                    font-family: Calibri Light;
+                    font-size: 20px;
+                    color: gray;
+                }
+
+                img {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            </style>
+
 
 <meta name="description" content="LA/CRP 458/558 Leaflet starter file - 2020">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Getting Started with Leaflet</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
-    
-    
-    
-<style>
-	
-    html, body {
-			height: 100%;
-			margin: 0;
-		}
-		
-        #map {
-			width: 1837px;
-			height: 600px;
-            z-index: 0;
-		}
-html, body,
-        #map { width: 1837px; height: 600px; }
-    
-.legend {
-    line-height: 10px;
-    color: #555;
-}
-.legend i {
-    width: 18px;
-    height: 20px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.9;
-}
-.info {
-    padding: 6px 8px;
-    font: 10px/20px Arial, Helvetica, sans-serif;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Homeless</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
 
-}
-.info h4 {
-    margin: 0 0 5px;
-    color: #777;
-}
-    
-	</style>
+        <!––Including Leaflet JavaScript file after Leaflet’s CSS––>
+            <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 
-	<body>
-	
 
-        <script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/Dinnov.geojson"></script>
-        <script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/Innov.geojson"></script>
-</head>
+</head>  
 <body>
+
+
 <div id='map'></div>
-<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/Dinnov.js"></script>
+    
+                <input type="button" onclick="javascript:zoomOut()" value="Zoom out to Lome">
+                <input type="button" onclick="javascript:zoomIn()" value="Zoom in to housing camp">
+                <button id="beachBtn">Visit Lome beach!</button>
+                <br>           
+                
+                
+    
+<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/clusterzones.geojson"></script>
 <script type="text/javascript">
+<br> 
 
-        var map = L.map('map').setView([6.131944, 1.222778], 12);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            // This is my token
-            accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw' 
-        }).addTo(map);
+<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/geojson/"></script>
+                <script type="text/javascript">
+                    //Building the map with JavaScript part 
+                    var map = L.map('map').setView([6.1824878, 1.1766503], 12);
 
-	// get color depending on population density value
+                    //Accessing the map tile layers provided by Mapbox
+                    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                        maxZoom: 18,
+                        id: 'mapbox/streets-v11',
+                        // I used my token I got from my Mapbox account
+                        accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
+                    }).addTo(map);
+
+ 
+    
+    
+    
+    
+//Adding individual Innov layer geojson
+    var Innov = L.geoJson(Innov, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);    
+
+    
+                    //Adding using the default blue icon to the map and binds popup dialog to them       
+        var Hotel = L.marker([6.127645, 1.214083]).addTo(map)
+            .bindPopup('This is the "Hotel du 2 Février"')
+            .openPopup();
+
+        var Monument = L.marker([6.13, 1.216]).addTo(map)
+            .bindPopup('This is the Independence Monument')
+            .openPopup();
+    
+    
+//Creating the layer groups for landmarkers
+var DARLayerGroup = L.layerGroup([Hotel, Monument]).addTo(map);
+
+                 
+    
+//Adding individual Housing site layer geojson    
+var housing = [{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#555555",
+        "stroke-width": 2,
+        "stroke-opacity": 1,
+        "fill": "#ff0000",
+        "fill-opacity": 0.5,
+        "name": "Camp"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.2133455276489258,
+              6.140778795265254
+            ],
+            [
+              1.2140750885009766,
+              6.138666670694804
+            ],
+            [
+              1.2164568901062012,
+              6.139456051564933
+            ],
+            [
+              1.2157166004180908,
+              6.141568173004965
+            ],
+            [
+              1.2133455276489258,
+              6.140778795265254
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}];  
+    
+L.geoJSON(housing, {
+    style: function(feature) {
+        switch (feature.properties.area) {
+            case 'Camp': return {color: "#ff0000"};
+        }
+    }
+}).addTo(map)
+    .bindPopup('Space for the project "a Home for Homeless"')
+            .openPopup();
+ 
+//Creating the layer for Housing in the Layer control
+//var housing = L.layerGroup([housing]).addTo(map);    
+    
+    
+//------ Individual Dinnov layer geojson
+    var Dinnov = L.geoJson(Dinnov, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+    
+ 
+    
+    
+//Adding individual clusterzones layer geojson
+    var clusterzones = L.geoJson(clusterzones, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);         
+        
+    
+    
+    
+   	// For clusterzones: get color depending on innovation space density value per district
+//	function getColor(d) {
+//		return d > 26 ? '#4b305c' :
+//				d > 16  ? '#8856a7' :
+//				d > 10  ? '#756bb1' :
+//				d > 6   ? '#bcbddc' :
+//				d > 1   ? '#efedf5' :
+//							'#fafafc';
+//	}    
+    
+    
+ // For clusterzones: get color depending on innovation space density value per district
 	function getColor(d) {
-		return d > 26 ? '#7a0177' :
-				d > 16  ? '#c51b8a' :
-				d > 10  ? '#f768a1' :
-				d > 6   ? '#fa9fb5' :
-				d > 1   ? '#fcc5c0' :
-							'#feebe2';
-	}
-
+		return d > 100 ? '#756bb1' :
+				d > 60  ? '#bcbddc' :
+				d > 40  ? '#efedf5' :
+							'#fafafc';
+	}  
+    
+    
+    
 	function style(feature) {
 		return {
 			weight: 1,
 			opacity: 1,
 			color: 'white',
 			fillOpacity: 0.7,
-			fillColor: getColor(feature.properties.Join_Count)
+			fillColor: getColor(feature.properties.area)
 		};
 	}
-
-	function highlightFeature(e) {
-		var layer = e.target;
-
-		layer.setStyle({
-			weight: 2,
-			color: 'black',
-			dashArray: '',
-			fillOpacity: 0.7
-		});
-
-		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-			layer.bringToFront();
-		}
-
-	}
-
-	var geojson;
-
-	function resetHighlight(e) {
-		geojson.resetStyle(e.target);
-	}
-
-	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
-	}
-
-	function onEachFeature(feature, layer) {
-		layer.on({
-			click: zoomToFeature
-		});
-	}
-
-            
-//------ Individual layer geojson
-var Innov = L.geoJSON(Innov).bindPopup('Innovation Space').addTo(map);
-    var Dinnov = L.geoJson(Dinnov, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);
-
-var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-});
-    
-var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-	subdomains: 'abcd',
-	maxZoom: 19
-});
-
-var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
-	maxZoom: 19,
-	attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-    
-//Adding layer control
-var baseMaps = {
-    "Esri_WorldImagery": Esri_WorldImagery,
-    "CartoDB_PositronNoLabels": CartoDB_PositronNoLabels,
-    "OpenMapSurfer_Roads": OpenMapSurfer_Roads
-
-};
-
-var overlayMaps = {
-    "Dinnov": Dinnov,
-    "Innov": Innov,
-};
-L.control.layers(baseMaps, overlayMaps).addTo(map);
     
     
-//Create Legend
-var legend = L.control({
-  position: 'bottomleft'
+ //function style(feature) {
+		//return {
+			//weight: 1,
+			//opacity: 1,
+			//color: 'white',
+			//fillOpacity: 0.7,
+			//fillColor: getColor(feature.properties.Join_Count)
+		//};
+	//}   
+    
+    
+    
+    //Highlight function creation
+                    function highlightFeature(e) {
+                        var layer = e.target;
+
+                        layer.setStyle({
+                            weight: 1,
+                            color: 'black',
+                            dashArray: '',
+                            fillOpacity: 0.7
+                        });
+
+                        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                            layer.bringToFront();
+                        }
+
+                    }
+
+                    var geojson;
+
+                    function resetHighlight(e) {
+                        geojson.resetStyle(e.target);
+                    }
+
+                    function zoomToFeature(e) {
+                        map.fitBounds(e.target.getBounds());
+                    }
+
+                    function onEachFeature(feature, layer) {
+                        layer.on({
+                            click: zoomToFeature
+                        });
+                    }
+
+  
+                    //Adding dots and binds popup dialog to them
+                    var myPoints = [    
+                        ["1", 6.238641999603301, 1.2123584747314453, "Low"],
+                        ["2", 6.238748652580629, 1.2159419059753418, "Low"],
+                        ["3", 6.224286310947776, 1.2073373794555664, "Low"],
+                        ["4", 6.2216625691081004, 1.2071871757507324, "Low"],
+                        ["5", 6.17064632536962, 1.199709177017212, "Average"],
+                        ["6", 6.161120899088077, 1.2069511413574219, "Average"],
+                        ["7", 6.146869774250871, 1.2144184112548828, "Average"],
+                        ["8", 6.142453554753039, 1.217787265777588, "Average"],
+                        ["9", 6.203999966368851, 1.2409400939941406, "Average"],
+                        ["10", 6.113683229358828, 1.2005943059921265, "High"],
+                        ["11", 6.117427619741657, 1.211843490600586, "High"],
+                        ["12", 6.125065668079496, 1.2239456176757812, "High"],
+                        ["13", 6.1301860862418325, 1.2214994430541992, "High"],
+                        ["14", 1.2211561203002927, 6.135285120488311, "High"],
+                        ["15", 1.2263596057891846, 6.135615809309964, "High"],
+                        ["16", 1.2352323532104492, 6.133215643848732, "High"],
+                        ["17", 1.2344169616699219, 6.126388447477396, "High"],
+                        ["18", 1.2855935096740723, 6.156150116021156, "High"],
+                        ["19", 1.2973523139953613, 6.15264067249337, "High"],
+                        ["20", 1.3057637214660645, 6.153771377194256, "High"],
+                    ];    
+    
+                    //Set dots parameters with graduated symbols style
+                    function getColor(d) {
+                        return d == 'High' ? '#dd1c77' :
+                            d == 'Average' ? "#c994c7" :
+                            d == 'Low' ? "#e7e1ef" :
+                            "#FFFFFF";
+                    }
+                    //Adding dots to a layer group
+                    var HomelessGroup = L.layerGroup([]);
+                    for (var i = 0; i < myPoints.length; i++) {
+                        marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
+                                radius: myPoints[i][0] / 2 + 5,
+                                fillColor: getColor(myPoints[i][3]),
+                                color: "#000",
+                                weight: 2,
+                                opacity: 0.5,
+                                fillOpacity: 0.9
+                            })
+                            .bindPopup("Category: " + myPoints[i][3])
+                            .addTo(HomelessGroup);
+                        HomelessGroup.addTo(map);
+                    }
+
+
+
+
+                    // Getting color depending on area value
+                    function style(feature) {
+                        return {
+                            fillColor: getColor(feature.properties.Join_Count),
+                            weight: 2,
+                            opacity: 0.1,
+                            color: 'white',
+                            dashArray: '3',
+                            fillOpacity: 0
+                        };
+                    }
+
+
+    
+    
+    //Adding 3 basemap layers
+                    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                    });
+
+                    var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                        subdomains: 'abcd',
+                        maxZoom: 19
+                    });
+
+                    var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    });
+
+                    //Adding layer control
+                    var baseMaps = {
+                        "Esri World Imagery": Esri_WorldImagery,
+                        "Carto DB Positron": CartoDB_PositronNoLabels,
+                        "Open Map Surfer Roads": OpenMapSurfer_Roads
+
+                    };
+       
+                    var overlayMaps = {
+                        "Homeless Clusters": HomelessGroup,
+                        "Innovation Space Districts": Dinnov,
+                        "Landmarkers": DARLayerGroup,
+                        //"Homeless areas": clusterzones,
+                        //"Housing Project for Homeless": housing,
+                    };
+                    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+    
+    
+    
+    
+    
+//Create Legend1
+var legend1 = L.control({
+  position: 'bottomright'
 });
 
-legend.onAdd = function(map) {
+legend1.onAdd = function(map) {
+
+  //var div = L.DomUtil.create('div', 'info legend'),
+    //densityP = ['d > 26', 'd > 16', 'd > 10', 'd > 6', 'd > 1', 'd <= 1'],
+    //labels = [27,26,16,10,6,1,0];
 
   var div = L.DomUtil.create('div', 'info legend'),
-    densityP = ['d > 26', 'd > 16', 'd > 10', 'd > 6', 'd > 1', 'd <= 1'],
-    labels = [27,26,16,10,6,1,0];
-
-	
+    zone = ['Periphery', 'Inter zones', 'Center'],
+    labels = [101,100,60,40,1];	
 	//console.log(feature.length);
 	
-	 div.innerHTML += "<b>Density</b><br>";
+	 div.innerHTML += "<b>Homelessness Density in:</b><br>";
   // loop through items and generate a label with a colored square for each
 
-  for (var i = 0; i < densityP.length; i++) {
+  for (var i = 0; i < zone.length; i++) {
 	div.innerHTML +=
       '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
-      densityP[i] + (densityP ? '' + '<br>' : '');
+      zone[i] + (zone ? '' + '<br>' : '');
   }
 
   return div;
 };
-legend.addTo(map);    
-</script>
+legend1.addTo(map);                                        
+    
+    
+    
+
+//Creating Legend2
+                    var legend2 = L.control({
+                        position: 'bottomright'
+
+                    });
+
+                    legend2.onAdd = function(map) {
+
+                        var div = L.DomUtil.create('div', 'info legend'),
+                            availability = ['High', 'Average', 'Low'],
+                            labels = [''];
+
+                        div.innerHTML += "<b>Homelessness clusters as:</b><br>";
+
+                        // loop through items and generate a label with a colored square for each
+                        for (var i = 0; i < availability.length; i++) {
+                            div.innerHTML +=
+                                '<i style="background:' + getColor(availability[i]) + ' "></i> ' +
+                                availability[i] + (availability ? '' + '<br>' : '');
+                        }
+                        return div;
+                    };
+
+                    legend2.addTo(map);
+
+    
+ // Making possible to add and remove legend1 from layer when selected in control layer   
+                     map.on('overlayremove', function(eventLayer) {
+                        console.log(eventLayer.name + " off");
+                        if (eventLayer.name == "Clusters locations") {
+                            this.removeControl(legend1);
+                        }
+                    });
+
+                    map.on('overlayadd', function(eventLayer) {
+                        console.log(eventLayer.name + " on");
+                        if (eventLayer.name == "Clusters locations") {
+                            legend1.addTo(this);
+                        }
+                    });  
+       
+   
+// Making possible to add and remove legend2 from layer when selected in control layer
+                    map.on('overlayremove', function(eventLayer) {
+                        console.log(eventLayer.name + " off");
+                        if (eventLayer.name == "Available Land") {
+                            this.removeControl(legend2);
+                        }
+                    });
+
+                    map.on('overlayadd', function(eventLayer) {
+                        console.log(eventLayer.name + " on");
+                        if (eventLayer.name == "Available Land") {
+                            legend2.addTo(this);
+                        }
+                    });  
+
+    
+    
+                    //Setting Zoom out event
+                    function zoomOut() {
+                        map.setZoom(13);
+                    }
+
+                    //Setting Zoom
+                    function zoomIn() {
+                        map.setZoom(15);
+                    };
+
+
+                    //Adding an event listener for a click event on the button
+                    document.getElementById("beachBtn").addEventListener("click", beach);
+
+                    //Lome beach zoom function
+                    function beach() {
+                        map.setView(new L.LatLng(6.1496111, 1.2955639), 15);
+                    };
+                    
+
+                </script>
 </body>
+
 </html>
