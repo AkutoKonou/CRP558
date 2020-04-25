@@ -126,17 +126,12 @@
 <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/zone.geojson"></script>
 
 <script type="text/javascript">	
-<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/clusterzones.geojson"></script>
-
-<script type="text/javascript">	
 <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/homeless.geojson"></script>
 
 <script type="text/javascript">	
-<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/housing.geojson"></script>
-	
+<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/housing.geojson"></script>	
 <script type="text/javascript">	
-<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/SDF.geojson"></script>
-<script type="text/javascript">	
+
 			
                     //Building the map with JavaScript part 
                     var map = L.map('map').setView([6.1824878, 1.1766503], 12);
@@ -282,12 +277,13 @@ L.geoJSON(housing, {
     
     
  // For clusterzones: get color depending on innovation space density value per district
-	function getColor(d) {
-		return d > 100 ? '#756bb1' :
-				d > 60  ? '#bcbddc' :
-				d > 40  ? '#efedf5' :
-							'#fafafc';
-	}  
+// Get color depending on zone
+        function getColor(d) {
+            return d > 100 ? '#FF8C00' :
+                d > 60 ? '#FFA500' :
+                d > 40 ? '#FFD700' :
+                'F0E68C';
+        }
     
     
     
@@ -314,38 +310,56 @@ L.geoJSON(housing, {
     
     
     
-    //Highlight function creation
-                    function highlightFeature(e) {
-                        var layer = e.target;
+    function style(feature) {
+            return {
+                weight: 1,
+                opacity: 1,
+                color: 'white',
+                fillOpacity: 0.7,
+                fillColor: getColor(feature.properties.area)
+            };
+        }
 
-                        layer.setStyle({
-                            weight: 1,
-                            color: 'black',
-                            dashArray: '',
-                            fillOpacity: 0.7
-                        });
+        //------ Individual layer geojson
 
-                        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-                            layer.bringToFront();
-                        }
+        var zone = L.geoJson(zone, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map);
 
-                    }
 
-                    var geojson;
+        //Highlight function creation
+        function highlightFeature(e) {
+            var layer = e.target;
 
-                    function resetHighlight(e) {
-                        geojson.resetStyle(e.target);
-                    }
+            layer.setStyle({
+                weight: 1,
+                color: 'black',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
 
-                    function zoomToFeature(e) {
-                        map.fitBounds(e.target.getBounds());
-                    }
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                layer.bringToFront();
+            }
 
-                    function onEachFeature(feature, layer) {
-                        layer.on({
-                            click: zoomToFeature
-                        });
-                    }
+        }
+
+        var geojson;
+
+        function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                click: zoomToFeature
+            });
+        }
 
   
                     //Adding dots and binds popup dialog to them
@@ -398,7 +412,7 @@ L.geoJSON(housing, {
 
 
 
-                    // Getting color depending on area value
+/*                    // Getting color depending on area value
                     function style(feature) {
                         return {
                             fillColor: getColor(feature.properties.Join_Count),
@@ -408,7 +422,7 @@ L.geoJSON(housing, {
                             dashArray: '3',
                             fillOpacity: 0
                         };
-                    }
+                    }*/
 
 
     
@@ -439,11 +453,11 @@ L.geoJSON(housing, {
        
                     var overlayMaps = {
                         "Homeless Clusters": HomelessGroup,
-                        "Innovation Space Districts": Dinnov,
+                        "Homeless clusters density": zone,  
                         "Landmarkers": DARLayerGroup,
-			//"SDF": SDF,
-                        //"Homeless areas": clusterzones,
-                        //"Housing Project for Homeless": housing,
+			//"Housing Project for Homeless": housing,
+                        //"Innovation Space Districts": Dinnov,
+                        
                     };
                     L.control.layers(baseMaps, overlayMaps).addTo(map);
 
@@ -453,33 +467,31 @@ L.geoJSON(housing, {
     
     
 //Create Legend1
-var legend1 = L.control({
-  position: 'bottomright'
-});
+        var legend1 = L.control({
+            position: 'bottomleft'
+        });
 
-legend1.onAdd = function(map) {
+        legend1.onAdd = function(map) {
 
-  //var div = L.DomUtil.create('div', 'info legend'),
-    //densityP = ['d > 26', 'd > 16', 'd > 10', 'd > 6', 'd > 1', 'd <= 1'],
-    //labels = [27,26,16,10,6,1,0];
+            var div = L.DomUtil.create('div', 'info legend'),
+                zone = ['0 - 4 Clusters', '5 - 10 Clusters', '10 + Clusters'],
+                labels = [101,100,60,40,1];
 
-  var div = L.DomUtil.create('div', 'info legend'),
-    zone = ['Periphery', 'Inter zones', 'Center'],
-    labels = [101,100,60,40,1];	
-	//console.log(feature.length);
-	
-	 div.innerHTML += "<b>Homelessness Density in:</b><br>";
-  // loop through items and generate a label with a colored square for each
 
-  for (var i = 0; i < zone.length; i++) {
-	div.innerHTML +=
-      '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
-      zone[i] + (zone ? '' + '<br>' : '');
-  }
+            //console.log(feature.length);
 
-  return div;
-};
-legend1.addTo(map);                                        
+            div.innerHTML += "<b>Zones</b><br>";
+            // loop through items and generate a label with a colored square for each
+
+            for (var i = 0; i < zone.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
+                    zone[i] + (zone ? '' + '<br>' : '');
+            }
+
+            return div;
+        };
+        legend1.addTo(map);                       
     
     
     
@@ -510,37 +522,35 @@ legend1.addTo(map);
                     legend2.addTo(map);
 
     
- // Making possible to add and remove legend1 from layer when selected in control layer   
-                     map.on('overlayremove', function(eventLayer) {
-                        console.log(eventLayer.name + " off");
-                        if (eventLayer.name == "Clusters locations") {
-                            this.removeControl(legend1);
-                        }
-                    });
+ map.on('overlayremove', function(eventLayer) {
+            console.log(eventLayer.name + " off");
+            if (eventLayer.name == "Zones") {
+                this.removeControl(legend1);
+            }
+        });
 
-                    map.on('overlayadd', function(eventLayer) {
-                        console.log(eventLayer.name + " on");
-                        if (eventLayer.name == "Clusters locations") {
-                            legend1.addTo(this);
-                        }
-                    });  
-       
-   
-// Making possible to add and remove legend2 from layer when selected in control layer
-                    map.on('overlayremove', function(eventLayer) {
-                        console.log(eventLayer.name + " off");
-                        if (eventLayer.name == "Available Land") {
-                            this.removeControl(legend2);
-                        }
-                    });
+        map.on('overlayadd', function(eventLayer) {
+            console.log(eventLayer.name + " on");
+            if (eventLayer.name == "Zones") {
+                legend1.addTo(this);
+            }
+        });
 
-                    map.on('overlayadd', function(eventLayer) {
-                        console.log(eventLayer.name + " on");
-                        if (eventLayer.name == "Available Land") {
-                            legend2.addTo(this);
-                        }
-                    });  
 
+        // Making possible to add and remove legend2 from layer when selected in control layer
+        map.on('overlayremove', function(eventLayer) {
+            console.log(eventLayer.name + " off");
+            if (eventLayer.name == "Available Land") {
+                this.removeControl(legend2);
+            }
+        });
+
+        map.on('overlayadd', function(eventLayer) {
+            console.log(eventLayer.name + " on");
+            if (eventLayer.name == "Available Land") {
+                legend2.addTo(this);
+            }
+        });
     
     
                     //Setting Zoom out event
