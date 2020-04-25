@@ -210,7 +210,7 @@
                     <!––Adding geojson files from github repository––>
                         <script src="https://AkutoKonou.github.io/CRP558/geojson/DARAirport.geojson"></script>
                         <script src="https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson"></script>
-                        <script src="https://akutokonou.github.io/CRP558/geojson/DARESAL2.geojson"></script>
+                        <script src="https://akutokonou.github.io/CRP558/geojson/Dinnov.geojson"></script>
 
 
 </head>
@@ -234,7 +234,7 @@
             <img src="https://akutokonou.github.io/CRP558/assignment2b/image/UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;"></strong></p>
 
 
-    <!-- you had too many script tags and I moved up your script that connects to the DARESAL2 layer with the other geojson layers -->
+    <!-- you had too many script tags and I moved up your script that connects to the Dinnov layer with the other geojson layers -->
 
     <script>
         //Building the map with JavaScript part 
@@ -252,9 +252,11 @@
 
         // Get color depending on zone
         function getColor(d) {
-            return d > 400 ? '#7a0177' :
-                d > 100 ? '#c51b8a' :
-                d > 50 ? '#f768a1' :
+            return d > 26 ? '4b305c' :
+                d > 16 ? '#8856a7' :
+                d > 10 ? '#756bb1' :
+                d > 6 ? '#bcbddc' :
+                d > 1 ? '#efedf5' :
                 'black';
         }
 
@@ -264,13 +266,13 @@
                 opacity: 1,
                 color: 'white',
                 fillOpacity: 0.7,
-                fillColor: getColor(feature.properties.area)
+                fillColor: getColor(feature.properties.Join_Count)
             };
         }
 
         //------ Individual layer geojson
 
-        var DARESAL2 = L.geoJson(DARESAL2, {
+        var Dinnov = L.geoJson(Dinnov, {
             style: style,
             onEachFeature: onEachFeature
         }).addTo(map);
@@ -388,7 +390,7 @@
 
 
         var overlayMaps = {
-            "Zones": DARESAL2,
+            "Zones": Dinnov,
             "Dar es Salaam Airport": DARAirport,
             "River bassin": reserve,
             "Available Land": LandLayerGroup,
@@ -407,7 +409,7 @@
 
             var div = L.DomUtil.create('div', 'info legend'),
                 zone = ['Peri-urban', 'Middle zone', 'Urban center'],
-                labels = [401, 400, 100, 50, 1];
+                labels = [27,26,16,10,6,1,0];
 
 
             //console.log(feature.length);
