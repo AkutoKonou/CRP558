@@ -257,7 +257,7 @@
                 d > 10 ? '#756bb1' :
                 d > 6 ? '#bcbddc' :
                 d > 1 ? '#efedf5' :
-                'black';
+            '#fafafc';
         }
 
         function style(feature) {
@@ -408,7 +408,7 @@
         legend1.onAdd = function(map) {
 
             var div = L.DomUtil.create('div', 'info legend'),
-                zone = [['d > 26', 'd > 16', 'd > 10', 'd > 6', 'd > 1', 'd <= 1']],
+                zone = ['d > 26', 'd > 16', 'd > 10', 'd > 6', 'd > 1', 'd <= 1'],
                 labels = [27,26,16,10,6,1,0];
 
 
