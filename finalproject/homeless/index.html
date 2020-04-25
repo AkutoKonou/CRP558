@@ -117,9 +117,6 @@
 <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/clusterzones.geojson"></script>
 
 <script type="text/javascript">	
-<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/Dinnov.geojson"></script>
-
-<script type="text/javascript">	
 <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/Innov.geojson"></script>
 
 <script type="text/javascript">	
@@ -150,131 +147,7 @@
     
     
     
-//Adding individual Innov layer geojson
-    var Innov = L.geoJson(Innov, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);    
 
-    
-//Adding individual Innov layer geojson
-/*    var SDF = L.geoJson(SDF, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);*/
-	
-	
-	
-//Adding Innov layer geojson	
-//L.geoJSON(Innov).addTo(map);
-	
-//Adding Innov layer geojson	
-//L.geoJSON(SDF).addTo(map);	
-	
-	
-	
-                    //Adding using the default blue icon to the map and binds popup dialog to them       
-        var Hotel = L.marker([6.127645, 1.214083]).addTo(map)
-            .bindPopup('This is the "Hotel du 2 Février"')
-            .openPopup();
-
-        var Monument = L.marker([6.13, 1.216]).addTo(map)
-            .bindPopup('This is the Independence Monument')
-            .openPopup();
-    
-    
-//Creating the layer groups for landmarkers
-var DARLayerGroup = L.layerGroup([Hotel, Monument]).addTo(map);
-
-
-    
-//Adding individual Housing site layer geojson    
-var housing = [{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "stroke": "#555555",
-        "stroke-width": 2,
-        "stroke-opacity": 1,
-        "fill": "#ff0000",
-        "fill-opacity": 0.5,
-        "name": "Camp"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              1.2133455276489258,
-              6.140778795265254
-            ],
-            [
-              1.2140750885009766,
-              6.138666670694804
-            ],
-            [
-              1.2164568901062012,
-              6.139456051564933
-            ],
-            [
-              1.2157166004180908,
-              6.141568173004965
-            ],
-            [
-              1.2133455276489258,
-              6.140778795265254
-            ]
-          ]
-        ]
-      }
-    }
-  ]
-}];  
-    
-L.geoJSON(housing, {
-    style: function(feature) {
-        switch (feature.properties.area) {
-            case 'Camp': return {color: "#ff0000"};
-        }
-    }
-}).addTo(map)
-    .bindPopup('Space for the project "a Home for Homeless"')
-            .openPopup();
- 
-//Creating the layer for Housing in the Layer control
-//var housing = L.layerGroup([housing]).addTo(map);    
-    
-    
-//------ Individual Dinnov layer geojson
-    var Dinnov = L.geoJson(Dinnov, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);
-    
- 
-    
-    
-//Adding individual clusterzones layer geojson
-    var clusterzones = L.geoJson(clusterzones, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);         
-        
-
-    
-    
-   	// For clusterzones: get color depending on innovation space density value per district
-//	function getColor(d) {
-//		return d > 26 ? '#4b305c' :
-//				d > 16  ? '#8856a7' :
-//				d > 10  ? '#756bb1' :
-//				d > 6   ? '#bcbddc' :
-//				d > 1   ? '#efedf5' :
-//							'#fafafc';
-//	}    
-    
     
  // For clusterzones: get color depending on innovation space density value per district
 // Get color depending on zone
@@ -571,7 +444,131 @@ L.geoJSON(housing, {
                     function beach() {
                         map.setView(new L.LatLng(6.1496111, 1.2955639), 15);
                     };
-                    
+//Adding individual Innov layer geojson
+    var Innov = L.geoJson(Innov, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);    
+
+    
+//---------Adding individual Innov layer geojson
+/*    var SDF = L.geoJson(SDF, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);*/
+	
+	
+	
+//---------Adding Innov layer geojson	
+//L.geoJSON(Innov).addTo(map);
+	
+//-----------Adding Innov layer geojson	
+//L.geoJSON(SDF).addTo(map);	
+	
+	
+	
+                    //Adding using the default blue icon to the map and binds popup dialog to them       
+        var Hotel = L.marker([6.127645, 1.214083]).addTo(map)
+            .bindPopup('This is the "Hotel du 2 Février"')
+            .openPopup();
+
+        var Monument = L.marker([6.13, 1.216]).addTo(map)
+            .bindPopup('This is the Independence Monument')
+            .openPopup();
+    
+    
+//Creating the layer groups for landmarkers
+var DARLayerGroup = L.layerGroup([Hotel, Monument]).addTo(map);
+
+
+    
+//Adding individual Housing site layer geojson    
+var housing = [{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stroke": "#555555",
+        "stroke-width": 2,
+        "stroke-opacity": 1,
+        "fill": "#ff0000",
+        "fill-opacity": 0.5,
+        "name": "Camp"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.2133455276489258,
+              6.140778795265254
+            ],
+            [
+              1.2140750885009766,
+              6.138666670694804
+            ],
+            [
+              1.2164568901062012,
+              6.139456051564933
+            ],
+            [
+              1.2157166004180908,
+              6.141568173004965
+            ],
+            [
+              1.2133455276489258,
+              6.140778795265254
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}];  
+    
+L.geoJSON(housing, {
+    style: function(feature) {
+        switch (feature.properties.area) {
+            case 'Camp': return {color: "#ff0000"};
+        }
+    }
+}).addTo(map)
+    .bindPopup('Space for the project "a Home for Homeless"')
+            .openPopup();
+ 
+//Creating the layer for Housing in the Layer control
+//var housing = L.layerGroup([housing]).addTo(map);    
+    
+    
+//------ Individual Dinnov layer geojson
+    var Dinnov = L.geoJson(Dinnov, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+    
+ 
+    
+    
+//Adding individual clusterzones layer geojson
+    var clusterzones = L.geoJson(clusterzones, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);         
+        
+
+    
+    
+   	// For clusterzones: get color depending on innovation space density value per district
+//	function getColor(d) {
+//		return d > 26 ? '#4b305c' :
+//				d > 16  ? '#8856a7' :
+//				d > 10  ? '#756bb1' :
+//				d > 6   ? '#bcbddc' :
+//				d > 1   ? '#efedf5' :
+//							'#fafafc';
+//	}    
+                        
 
                 </script>
 </body>
