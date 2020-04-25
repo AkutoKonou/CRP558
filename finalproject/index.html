@@ -7,32 +7,47 @@
 <style>
 
     
+html, body{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
+.empty-space-20{
+  height: 20vh;
+  background-color: lime;
+}
     
 /* Create a Parallax Effect */
 .parallax2, .parallax3, .parallax4 {
   background-attachment: fixed;
-  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
+  height: calc(50vw - 20vh);
 }
 
+.empty-space{
+  height: 1000px;
+  background-color: coral;
+}    
+    
+    
 /* First image (Mont Agou) */
 .parallax2 {
   background-image: url('image/parallax2.jpg');
-  height: 100%;
+  min-height: 100%;
 }
 
 /* Second image (Portfolio) */
 .parallax3 {
   background-image: url('image/parallax3.jpg');
- height: 100%;
+ min-height: 100%;
 }
 
 /* Third image (Portfolio) */
 .parallax4 {
   background-image: url('image/parallax4.jpg');
-  height: 100%;
+  min-height: 100%;
 }    
     
     
@@ -43,7 +58,7 @@
 @media only screen and (max-device-width: 1600px) {
   .parallax2, .parallax3, .parallax4 {
     background-attachment: scroll;
-    height: 300px;
+    min-height: 300px;
   }
 }
  
@@ -371,13 +386,20 @@ h10 {
   </div>
 </div>
 
+   
+    
+    
 <!-- First Parallax Image with Portfolio Text-->
-<div class="parallax3 display-container opacity-min">
+<div class="empty-space-20">some empty space</div>
+    <div class="parallax3 display-container opacity-min">
   <div class="display-middle">
     <span class="xxlarge text-white wide"><h10>M A P S</h10></span>
   </div>
 </div>
 
+<div class="empty-space">some empty space</div>
+    
+    
 <!-- Container-->
 <div class="content container padding-64" id="portfolio">
 
@@ -416,11 +438,19 @@ h10 {
     </div>
     
 <!-- Second Parallax Image-->
+          
+    
+<div class="empty-space-20">some empty space</div>
 <div class="parallax2 display-container opacity-min" id="home">
   <div class="display-middle" style="white-space:nowrap;">
     <span class="center padding-large black xlarge wide animate-opacity"><span class="hide-small"><h10>I N N O V A T I O N S</h10></span>
     </div>
 </div>
+
+<div class="empty-space">some empty space</div> 
+    
+    
+    
     
 
 <!-- Container (About Section) -->
@@ -434,15 +464,24 @@ h10 {
       <p>Some text..</p>
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
-    
-<!-- Troisieme Parallax Image-->
+   
+      
+      
+      
+<!-- Troisieme Parallax Image-->   
+      <div class="empty-space-20">some empty space</div>
+
 <div class="parallax4 display-container opacity-min" id="home">
   <div class="display-middle" style="white-space:nowrap;">
     <span class="center padding-large black xlarge wide animate-opacity"><span class="hide-small"><h10>I N N O V A T I O N S</h10></span>
     </div>
 </div>
    
+    <div class="empty-space">some empty space</div>
 
+    
+    
+    
 <!-- Container (About Section) -->
 <div class="row">
   <div class="leftcolumn">
