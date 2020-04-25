@@ -317,7 +317,35 @@ h10 {
         </div>
   </div>
   
-
+<div id="SlideShow">
+          <h3>
+        <img name="slide" id="slide" width="1275" height="564" src=" "></h3>
+       <script>
+//images
+           var i =0; 
+           var images = [];
+           var time = 3000;
+           
+           images [0] = "Sunset";
+           images [1] = "image/parallax2.jpg";
+           images [2] = "image/parallax4.jpg";
+           images [3] = "image/parallax5.jpg";
+     
+           
+//function: show slides of images
+           function changeImg() {
+               document.slide.src = images [i];
+               
+               if(i < images.length - 1){
+                 i++;
+               } else {
+                   i =0;
+               }
+            setTimeout("changeImg()", time);
+           }
+           
+           window.onload = changeImg;
+  </div>
 
 <div class="container">
   <img src="image/sun.jpg" alt="Sunset" style="width:100%;">
@@ -325,7 +353,7 @@ h10 {
       <img src="image/LogoH4HwhiteYES.png" alt="logo" style="width:40%; z-index: 1;">
   </div>
 </div> 
- 
+       </script>
 
 <div class="topnav">
   <a href="https://github.com/AkutoKonou/CRP558" style="float:right">Report</a>
@@ -435,12 +463,12 @@ h10 {
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
     
-<!-- Troisieme Parallax Image -->
+<!-- Troisieme Parallax Image
 <div class="parallax4 display-container opacity-min" id="home">
   <div class="display-middle" style="white-space:nowrap;">
     <span class="center padding-large black xlarge wide animate-opacity"><span class="hide-small"><h10>I N N O V A T I O N S</h10></span>
     </div>
-</div>
+</div> -->
    
 
 <!-- Container (About Section) -->
@@ -449,7 +477,7 @@ h10 {
     <div class="card">
       <h2>WHAT PLACE FOR HOMELESS DURING A CRISIS LIKE COVID-19?<br></h2>
       <h5>Title description, Dec 7, 2017</h5>
-<iframe width="75%" height="800" frameborder="0" src="https://akutokonou.github.io/CRP558/finalproject/crowdmap/" allowfullscreen
+<iframe width="100%" height="800" frameborder="0" src="https://akutokonou.github.io/CRP558/finalproject/crowdmap/" allowfullscreen
             webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
       <p>Some text..</p>
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
