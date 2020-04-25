@@ -181,17 +181,7 @@
 		//};
 	//}   
     
-    
-    
-    function style(feature) {
-            return {
-                weight: 1,
-                opacity: 1,
-                color: 'white',
-                fillOpacity: 0.7,
-                fillColor: getColor(feature.properties.area)
-            };
-        }
+   
 
         //------ Individual layer geojson
 
@@ -578,16 +568,15 @@ L.geoJSON(housing, {
                     };
        
                     var overlayMaps = {
-                        "Homeless Clusters": HomelessGroup,
-                        "Homeless clusters density": zone,  
+                        "zone": zone,
+			"Homeless Clusters": HomelessGroup,
                         "Landmarkers": DARLayerGroup,
-			//"Housing Project for Homeless": housing,
-                        //"Innovation Space Districts": Dinnov,
                         
                     };
                     L.control.layers(baseMaps, overlayMaps).addTo(map);
 
-    
+			//"Housing Project for Homeless": housing,
+                        //"Innovation Space Districts": Dinnov,    
                 </script>
 </body>
 
