@@ -210,7 +210,7 @@
                     <!––Adding geojson files from github repository––>
                         <script src="https://AkutoKonou.github.io/CRP558/geojson/DARAirport.geojson"></script>
                         <script src="https://AkutoKonou.github.io/CRP558/geojson/reserve.geojson"></script>
-                        <script src="https://akutokonou.github.io/CRP558/geojson/DARESAL2.geojson"></script>
+                        <script src="https://akutokonou.github.io/CRP558/geojson/zone.geojson"></script>
 
 
 </head>
@@ -234,7 +234,7 @@
             <img src="https://akutokonou.github.io/CRP558/assignment2b/image/UrbanAgri.jpg" width="1100" height="770" alt="A picture showing Urban Farming in Tanzania:" style="width:auto;"></strong></p>
 
 
-    <!-- you had too many script tags and I moved up your script that connects to the DARESAL2 layer with the other geojson layers -->
+    <!-- you had too many script tags and I moved up your script that connects to the zone layer with the other geojson layers -->
 
     <script>
         //Building the map with JavaScript part 
@@ -252,10 +252,10 @@
 
         // Get color depending on zone
         function getColor(d) {
-            return d > 400 ? '#7a0177' :
-                d > 100 ? '#c51b8a' :
-                d > 50 ? '#f768a1' :
-                'black';
+            return d > 100 ? '#756bb1' :
+                d > 60 ? '#bcbddc' :
+                d > 40 ? '#efedf5' :
+                'fafafc';
         }
 
         function style(feature) {
@@ -270,7 +270,7 @@
 
         //------ Individual layer geojson
 
-        var DARESAL2 = L.geoJson(DARESAL2, {
+        var zone = L.geoJson(zone, {
             style: style,
             onEachFeature: onEachFeature
         }).addTo(map);
@@ -388,7 +388,7 @@
 
 
         var overlayMaps = {
-            "Zones": DARESAL2,
+            "Zones": zone,
             "Dar es Salaam Airport": DARAirport,
             "River bassin": reserve,
             "Available Land": LandLayerGroup,
@@ -407,7 +407,7 @@
 
             var div = L.DomUtil.create('div', 'info legend'),
                 zone = ['Peri-urban', 'Middle zone', 'Urban center'],
-                labels = [401, 400, 100, 50, 1];
+                labels = [101,100,60,40,1];
 
 
             //console.log(feature.length);
