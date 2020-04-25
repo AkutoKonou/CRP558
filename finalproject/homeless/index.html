@@ -133,6 +133,9 @@
 
 <script type="text/javascript">	
 <script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/housing.geojson"></script>
+	
+<script type="text/javascript">	
+<script type="text/javascript" src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/SDF.geojson"></script>
 <script type="text/javascript">	
 			
                     //Building the map with JavaScript part 
@@ -159,6 +162,13 @@
 	}).addTo(map);    
 
     
+//Adding individual Innov layer geojson
+    var SDF = L.geoJson(SDF, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);    	
+	
+	
                     //Adding using the default blue icon to the map and binds popup dialog to them       
         var Hotel = L.marker([6.127645, 1.214083]).addTo(map)
             .bindPopup('This is the "Hotel du 2 Février"')
@@ -172,7 +182,7 @@
 //Creating the layer groups for landmarkers
 var DARLayerGroup = L.layerGroup([Hotel, Monument]).addTo(map);
 
-                 
+
     
 //Adding individual Housing site layer geojson    
 var housing = [{
@@ -422,6 +432,7 @@ L.geoJSON(housing, {
                         "Homeless Clusters": HomelessGroup,
                         "Innovation Space Districts": Dinnov,
                         "Landmarkers": DARLayerGroup,
+			"SDF": SDF,
                         //"Homeless areas": clusterzones,
                         //"Housing Project for Homeless": housing,
                     };
