@@ -317,7 +317,7 @@
                     });
 
                     //Adding layer control
-                    var baseMaps = {
+/*                    var baseMaps = {
                         "Esri World Imagery": Esri_WorldImagery,
                         "Carto DB Positron": CartoDB_PositronNoLabels,
                         "Open Map Surfer Roads": OpenMapSurfer_Roads
@@ -332,7 +332,7 @@
                         //"Innovation Space Districts": Dinnov,
                         
                     };
-                    L.control.layers(baseMaps, overlayMaps).addTo(map);
+                    L.control.layers(baseMaps, overlayMaps).addTo(map);*/
 
     
     
@@ -569,7 +569,25 @@ L.geoJSON(housing, {
 //							'#fafafc';
 //	}    
                         
+                    //Adding layer control
+                    var baseMaps = {
+                        "Esri World Imagery": Esri_WorldImagery,
+                        "Carto DB Positron": CartoDB_PositronNoLabels,
+                        "Open Map Surfer Roads": OpenMapSurfer_Roads
 
+                    };
+       
+                    var overlayMaps = {
+                        "Homeless Clusters": HomelessGroup,
+                        "Homeless clusters density": zone,  
+                        "Landmarkers": DARLayerGroup,
+			//"Housing Project for Homeless": housing,
+                        //"Innovation Space Districts": Dinnov,
+                        
+                    };
+                    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+    
                 </script>
 </body>
 
