@@ -320,36 +320,7 @@ h10 {
 
 
 <div class="container">
-    <div id="SlideShow">
-          <h3>
-        <img name="slide" id="slide" width="1275" height="564" src=" "></h3>
-       <script>
-//images
-           var i =0; 
-           var images = [];
-           var time = 3000;
-           
-           images [0] = "Sunset";
-           images [1] = "image/parallax2.jpg";
-           images [2] = "image/parallax4.jpg";
-           images [3] = "image/parallax5.jpg";
-     
-           
-//function: show slides of images
-           function changeImg() {
-               document.slide.src = images [i];
-               
-               if(i < images.length - 1){
-                 i++;
-               } else {
-                   i =0;
-               }
-            setTimeout("changeImg()", time);
-           }
-           
-           window.onload = changeImg;
-  </div>
-  <!--<img src="image/sun.jpg" alt="Sunset" style="width:100%;">-->
+  <img src="image/sun.jpg" alt="Sunset" style="width:100%;">
   <div class="centered"><h1>a Home for Homeless</h1><br>
       <img src="image/LogoH4HwhiteYES.png" alt="logo" style="width:40%; z-index: 1;">
   </div>
