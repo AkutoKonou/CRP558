@@ -299,19 +299,19 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         legend1.onAdd = function(map) {
 
             var div = L.DomUtil.create('div', 'info legend'),
-                zone = ['0 - 4 Clusters', '5 - 10 Clusters', '10 + Clusters'],
+                Cluszone = ['0 - 4 Clusters', '5 - 10 Clusters', '10 + Clusters'],
                 labels = [101,100,60,40,1];
 
 
             //console.log(feature.length);
 
-            div.innerHTML += "<b>Zones</b><br>";
+            div.innerHTML += "<b>Clusters per zones</b><br>";
             // loop through items and generate a label with a colored square for each
 
-            for (var i = 0; i < zone.length; i++) {
+            for (var i = 0; i < Cluszone.length; i++) {
                 div.innerHTML +=
                     '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
-                    zone[i] + (zone ? '' + '<br>' : '');
+                    Cluszone[i] + (Cluszone ? '' + '<br>' : '');
             }
 
             return div;
