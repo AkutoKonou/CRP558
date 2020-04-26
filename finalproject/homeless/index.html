@@ -664,9 +664,20 @@
             if (eventLayer.name == "Available Land") {
                 legend2.addTo(this);
             }
-        });*/
+        });
     
     
+	
+	
+	
+	
+	
+	
+	
+Ce que j'avais laisse en bas avant	
+	
+	
+	
                     //Setting Zoom out event
                     function zoomOut() {
                         map.setZoom(13);
@@ -692,22 +703,6 @@
 	}).addTo(map);    
 
     
-//---------Adding individual Innov layer geojson
-/*    var SDF = L.geoJson(SDF, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);*/
-	
-	
-	
-//---------Adding Innov layer geojson	
-//L.geoJSON(Innov).addTo(map);
-	
-//-----------Adding Innov layer geojson	
-//L.geoJSON(SDF).addTo(map);	
-	
-	
-	
                     //Adding using the default blue icon to the map and binds popup dialog to them       
         var Hotel = L.marker([6.127645, 1.214083]).addTo(map)
             .bindPopup('This is the "Hotel du 2 Février"')
@@ -776,41 +771,9 @@ L.geoJSON(housing, {
     }
 }).addTo(map)
     .bindPopup('Space for the project "a Home for Homeless"')
-            .openPopup();
+            .openPopup();*/
  
-//Creating the layer for Housing in the Layer control
-//var housing = L.layerGroup([housing]).addTo(map);    
-    
-    
-//------ Individual Dinnov layer geojson
-    var Dinnov = L.geoJson(Dinnov, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);
-    
- 
-    
-    
-//Adding individual clusterzones layer geojson
-    var clusterzones = L.geoJson(clusterzones, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);         
-        
-
-    
-    
-   	// For clusterzones: get color depending on innovation space density value per district
-//	function getColor(d) {
-//		return d > 26 ? '#4b305c' :
-//				d > 16  ? '#8856a7' :
-//				d > 10  ? '#756bb1' :
-//				d > 6   ? '#bcbddc' :
-//				d > 1   ? '#efedf5' :
-//							'#fafafc';
-//	}    
-  
-                </script>
+</script>
 </body>
 
 </html>
