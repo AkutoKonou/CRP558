@@ -334,7 +334,7 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
                 availability = ['High', 'Average', 'Low'],
                 labels = [''];
 
-            div.innerHTML += "<b>Farming Land Availability</b><br>";
+            div.innerHTML += "<b>Homeless clusters per area</b><br>";
 
             // loop through items and generate a label with a colored square for each
             for (var i = 0; i < availability.length; i++) {
@@ -350,14 +350,14 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         // Making possible to add and remove legend1 from layer when selected in control layer   
         map.on('overlayremove', function(eventLayer) {
             console.log(eventLayer.name + " off");
-            if (eventLayer.name == "Clusters Zones") {
+            if (eventLayer.name == "Clusters per zones") {
                 this.removeControl(legend1);
             }
         });
 
         map.on('overlayadd', function(eventLayer) {
             console.log(eventLayer.name + " on");
-            if (eventLayer.name == "Clusters Zones") {
+            if (eventLayer.name == "Clusters per zones") {
                 legend1.addTo(this);
             }
         });
@@ -366,14 +366,14 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         // Making possible to add and remove legend2 from layer when selected in control layer
         map.on('overlayremove', function(eventLayer) {
             console.log(eventLayer.name + " off");
-            if (eventLayer.name == "Available Land") {
+            if (eventLayer.name == "Homeless clusters") {
                 this.removeControl(legend2);
             }
         });
 
         map.on('overlayadd', function(eventLayer) {
             console.log(eventLayer.name + " on");
-            if (eventLayer.name == "Available Land") {
+            if (eventLayer.name == "Homeless clusters") {
                 legend2.addTo(this);
             }
         });
@@ -395,7 +395,7 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
 
         var overlayMaps = {
             "Homeless clusters density": zoneF,
-            "Homeless Clusters": HomelessGroup,
+            "Homeless clusters": HomelessGroup,
             "Landmarkers": landmarkGroup,
         };
         L.control.layers(baseMaps, overlayMaps).addTo(map);
