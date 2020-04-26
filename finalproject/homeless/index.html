@@ -686,24 +686,7 @@ Ce que j'avais laisse en bas avant
 	
 	
 	
-                    //Setting Zoom out event
-                    function zoomOut() {
-                        map.setZoom(13);
-                    }
-
-                    //Setting Zoom
-                    function zoomIn() {
-                        map.setZoom(15);
-                    };
-
-
-                    //Adding an event listener for a click event on the button
-                    document.getElementById("beachBtn").addEventListener("click", beach);
-
-                    //Lome beach zoom function
-                    function beach() {
-                        map.setView(new L.LatLng(6.1496111, 1.2955639), 15);
-                    };
+                    
 //Adding individual Innov layer geojson
     var Innov = L.geoJson(Innov, {
 		style: style,
@@ -780,7 +763,29 @@ L.geoJSON(housing, {
 }).addTo(map)
     .bindPopup('Space for the project "a Home for Homeless"')
             .openPopup();
- 
+
+	
+	
+//Setting Zoom out event
+                    function zoomOut() {
+                        map.setZoom(13);
+                    }
+
+                    //Setting Zoom
+                    function zoomIn() {
+                        map.setZoom(15);
+                    };
+
+
+                    //Adding an event listener for a click event on the button
+                    document.getElementById("beachBtn").addEventListener("click", beach);
+
+                    //Lome beach zoom function
+                    function beach() {
+                        map.setView(new L.LatLng(6.1496111, 1.2955639), 15);
+                    };	
+	
+	
 </script>
 </body>
 
