@@ -101,8 +101,10 @@
         <!––Including Leaflet JavaScript file after Leaflet’s CSS––>
             <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>	
 	
-
-                
+<!––Adding geojson files from github repository––>
+<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/zone.geojson"></script>
+<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/homeless.geojson"></script>
+<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/housing.geojson"></script>               
 
 	
 	
@@ -120,11 +122,9 @@
 
 
 
-<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/zone.geojson"></script>
-
-<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/homeless.geojson"></script>
-
-<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/housing.geojson"></script>		
+	
+	
+	
 	 
 
 			
@@ -139,10 +139,7 @@
                         // I used my token I got from my Mapbox account
                         accessToken: 'pk.eyJ1IjoiYWtwZWR6ZSIsImEiOiJjazZzbGNlczYwZXU4M21wOWlqZmRiMGEzIn0.wqODclsSfEeAlFi8WyFTuw'
                     }).addTo(map);   
-    
-    
 
-	
 	
 // Get color depending on zone
         function getColor(d) {
