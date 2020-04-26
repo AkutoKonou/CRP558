@@ -123,7 +123,7 @@
 
 	
 
-<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/zone.geojson"></script>
+<script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/zoneF.geojson"></script>
 
 <script src="https://AkutoKonou.github.io/CRP558/finalproject/geojson/homeless.geojson"></script>
 
@@ -166,7 +166,7 @@
 
         //------ Individual layer geojson
 
-        var zone = L.geoJson(zone, {
+        var zoneF = L.geoJson(zoneF, {
             style: style,
             onEachFeature: onEachFeature
         }).addTo(map);
@@ -392,7 +392,7 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
 
 
         var overlayMaps = {
-            "Homeless clusters density": zone,
+            "Homeless clusters density": zoneF,
             "Homeless Clusters": HomelessGroup,
             "Landmarkers": landmarkGroup,
         };
