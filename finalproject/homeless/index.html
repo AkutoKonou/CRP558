@@ -272,21 +272,7 @@
                         attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     });
 
-        //Adding layer control
-        var baseMaps = {
-            "Esri World Imagery": Esri_WorldImagery,
-            "Carto DB Positron": CartoDB_PositronNoLabels,
-            "Open Map Surfer Roads": OpenMapSurfer_Roads
-
-        };
-
-
-        var overlayMaps = {
-            "Homeless clusters density": zone,
-            "Homeless Clusters": HomelessGroup,
-            "Landmarkers": DARLayerGroup,
-        };
-        L.control.layers(baseMaps, overlayMaps).addTo(map);
+       
 
 			//"Housing Project for Homeless": housing,
                         //"Innovation Space Districts": Dinnov,
@@ -385,7 +371,21 @@
 	
 	
 	
-	
+	 //Adding layer control
+        var baseMaps = {
+            "Esri World Imagery": Esri_WorldImagery,
+            "Carto DB Positron": CartoDB_PositronNoLabels,
+            "Open Map Surfer Roads": OpenMapSurfer_Roads
+
+        };
+
+
+        var overlayMaps = {
+            "Homeless clusters density": zone,
+            "Homeless Clusters": HomelessGroup,
+            "Landmarkers": DARLayerGroup,
+        };
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
 	
 	
 	
