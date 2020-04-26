@@ -366,14 +366,14 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         // Making possible to add and remove legend2 from layer when selected in control layer
         map.on('overlayremove', function(eventLayer) {
             console.log(eventLayer.name + " off");
-            if (eventLayer.name == "Homeless clusters") {
+            if (eventLayer.name == "Homeless clusters density") {
                 this.removeControl(legend2);
             }
         });
 
         map.on('overlayadd', function(eventLayer) {
             console.log(eventLayer.name + " on");
-            if (eventLayer.name == "Homeless clusters") {
+            if (eventLayer.name == "Homeless clusters density") {
                 legend2.addTo(this);
             }
         });
