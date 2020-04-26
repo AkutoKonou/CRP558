@@ -145,9 +145,263 @@
     
     
 
-    
- // For clusterzones: get color depending on innovation space density value per district
+	
+	
 // Get color depending on zone
+        function getColor(d) {
+            return d > 100 ? '#756bb1' :
+                d > 60 ? '#bcbddc' :
+                d > 40 ? '#efedf5' :
+                'fafafc';
+        }
+
+        function style(feature) {
+            return {
+                weight: 1,
+                opacity: 1,
+                color: 'white',
+                fillOpacity: 0.7,
+                fillColor: getColor(feature.properties.area)
+            };
+        }
+
+        //------ Individual layer geojson
+
+        var zone = L.geoJson(zone, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map);
+
+
+        //Highlight function creation
+        function highlightFeature(e) {
+            var layer = e.target;
+
+            layer.setStyle({
+                weight: 1,
+                color: 'black',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                layer.bringToFront();
+            }
+
+        }
+
+        var geojson;
+
+        function resetHighlight(e) {
+            geojson.resetStyle(e.target);
+        }
+
+        function zoomToFeature(e) {
+            map.fitBounds(e.target.getBounds());
+        }
+
+        function onEachFeature(feature, layer) {
+            layer.on({
+                click: zoomToFeature
+            });
+        }
+
+        //map.attributionControl.addAttribution('Population data &copy; <a href="http://geoportal.icpac.net/layers/geonode%3Adar_es_salaam_luse_2002</a>');
+
+
+        //Adding dots and binds popup dialog to them
+
+        var myPoints = [
+		["1", 6.238641999603301, 1.2123584747314453, "Low"],
+                ["2", 6.238748652580629, 1.2159419059753418, "Low"],
+                ["3", 6.224286310947776, 1.2073373794555664, "Low"],
+                ["4", 6.2216625691081004, 1.2071871757507324, "Low"],
+                ["5", 6.17064632536962, 1.199709177017212, "Average"],
+                ["6", 6.161120899088077, 1.2069511413574219, "Average"],
+                ["7", 6.146869774250871, 1.2144184112548828, "Average"],
+                ["8", 6.142453554753039, 1.217787265777588, "Average"],
+                ["9", 6.203999966368851, 1.2409400939941406, "Average"],
+                ["10", 6.113683229358828, 1.2005943059921265, "High"],
+                ["11", 6.117427619741657, 1.211843490600586, "High"],
+                ["12", 6.125065668079496, 1.2239456176757812, "High"],
+                ["13", 6.1301860862418325, 1.2214994430541992, "High"],
+                ["14", 6.135285120488311, 1.2211561203002927,"High"],
+                ["15", 6.135615809309964, 1.2263596057891846, "High"],
+                ["16", 6.133215643848732, 1.2352323532104492, "High"],
+                ["17", 6.126388447477396, 1.2344169616699219, "High"],
+                ["18", 6.156150116021156, 1.2855935096740723, "High"],
+                ["19", 6.15264067249337, 1.2973523139953613, "High"],
+                ["20", 6.153771377194256, 1.3057637214660645, "High"],            		
+        ];
+
+
+        //Set dots parameters with graduated symbols style
+        function getColor2(d) {
+            return d == 'High' ? '#0B5345' :
+                d == 'Average' ? "#27AE60" :
+                d == 'Low' ? "#ABEBC6" :
+                "#FFFFFF";
+        }
+        //Adding dots to a layer group
+        var LandLayerGroup = L.layerGroup([]);
+        for (var i = 0; i < myPoints.length; i++) {
+            marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
+                    radius: myPoints[i][0] / 2 + 5,
+                    fillColor: getColor2(myPoints[i][3]),
+                    color: "#000",
+                    weight: 2,
+                    opacity: 0.5,
+                    fillOpacity: 0.9
+                })
+                .bindPopup("Category: " + myPoints[i][3])
+                .addTo(LandLayerGroup);
+            LandLayerGroup.addTo(map);
+        }
+
+
+    //Adding 3 basemap layers
+                    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+                    });
+
+                    var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                        subdomains: 'abcd',
+                        maxZoom: 19
+                    });
+
+                    var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    });
+
+        //Adding layer control
+        var baseMaps = {
+            "Esri World Imagery": Esri_WorldImagery,
+            "Carto DB Positron": CartoDB_PositronNoLabels,
+            "Open Map Surfer Roads": OpenMapSurfer_Roads
+
+        };
+
+
+        var overlayMaps = {
+            "Homeless clusters density": zone,
+            "Homeless Clusters": HomelessGroup,
+            "Landmarkers": DARLayerGroup,
+        };
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+			//"Housing Project for Homeless": housing,
+                        //"Innovation Space Districts": Dinnov,
+
+
+        //Create Legend1
+        var legend1 = L.control({
+            position: 'bottomleft'
+        });
+
+        legend1.onAdd = function(map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                zone = ['0 - 4 Clusters', '5 - 10 Clusters', '10 + Clusters'],
+                labels = [101,100,60,40,1];
+
+
+            //console.log(feature.length);
+
+            div.innerHTML += "<b>Zones</b><br>";
+            // loop through items and generate a label with a colored square for each
+
+            for (var i = 0; i < zone.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor(labels[i]) + ' "></i> ' +
+                    zone[i] + (zone ? '' + '<br>' : '');
+            }
+
+            return div;
+        };
+        legend1.addTo(map);
+
+
+
+
+        //Creating Legend2
+        var legend2 = L.control({
+            position: 'bottomright'
+
+        });
+
+        legend2.onAdd = function(map) {
+
+            var div = L.DomUtil.create('div', 'info legend'),
+                availability = ['High', 'Average', 'Low'],
+                labels = [''];
+
+            div.innerHTML += "<b>Farming Land Availability</b><br>";
+
+            // loop through items and generate a label with a colored square for each
+            for (var i = 0; i < availability.length; i++) {
+                div.innerHTML +=
+                    '<i style="background:' + getColor2(availability[i]) + ' "></i> ' +
+                    availability[i] + (availability ? '' + '<br>' : '');
+            }
+            return div;
+        };
+
+        legend2.addTo(map);
+
+
+        // Making possible to add and remove legend1 from layer when selected in control layer   
+        map.on('overlayremove', function(eventLayer) {
+            console.log(eventLayer.name + " off");
+            if (eventLayer.name == "Zones") {
+                this.removeControl(legend1);
+            }
+        });
+
+        map.on('overlayadd', function(eventLayer) {
+            console.log(eventLayer.name + " on");
+            if (eventLayer.name == "Zones") {
+                legend1.addTo(this);
+            }
+        });
+
+
+        // Making possible to add and remove legend2 from layer when selected in control layer
+        map.on('overlayremove', function(eventLayer) {
+            console.log(eventLayer.name + " off");
+            if (eventLayer.name == "Available Land") {
+                this.removeControl(legend2);
+            }
+        });
+
+        map.on('overlayadd', function(eventLayer) {
+            console.log(eventLayer.name + " on");
+            if (eventLayer.name == "Available Land") {
+                legend2.addTo(this);
+            }
+        });
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    
+ //----------------- For clusterzones: get color depending on innovation space density value per district
+/*// Get color depending on zone
         function getColor(d) {
             return d > 100 ? '#FF8C00' :
                 d > 60 ? '#FFA500' :
@@ -267,7 +521,7 @@
                             .bindPopup("Category: " + myPoints[i][3])
                             .addTo(HomelessGroup);
                         HomelessGroup.addTo(map);
-                    }
+                    }*/
 
 
 
@@ -282,7 +536,7 @@
                             dashArray: '3',
                             fillOpacity: 0
                         };
-                    }*/
+                    }
 
 
     
@@ -301,7 +555,7 @@
                     var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
                         maxZoom: 19,
                         attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    });
+                    });*/
 
                     //Adding layer control
 /*                    var baseMaps = {
@@ -319,7 +573,7 @@
                         //"Innovation Space Districts": Dinnov,
                         
                     };
-                    L.control.layers(baseMaps, overlayMaps).addTo(map);*/
+                    L.control.layers(baseMaps, overlayMaps).addTo(map);
 
     
     
@@ -410,7 +664,7 @@
             if (eventLayer.name == "Available Land") {
                 legend2.addTo(this);
             }
-        });
+        });*/
     
     
                     //Setting Zoom out event
@@ -555,25 +809,7 @@ L.geoJSON(housing, {
 //				d > 1   ? '#efedf5' :
 //							'#fafafc';
 //	}    
-                        
-                    //Adding layer control
-                    var baseMaps = {
-                        "Esri World Imagery": Esri_WorldImagery,
-                        "Carto DB Positron": CartoDB_PositronNoLabels,
-                        "Open Map Surfer Roads": OpenMapSurfer_Roads
-
-                    };
-       
-                    var overlayMaps = {
-                        "zone": zone,
-			"Homeless Clusters": HomelessGroup,
-                        "Landmarkers": DARLayerGroup,
-                        
-                    };
-                    L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-			//"Housing Project for Homeless": housing,
-                        //"Innovation Space Districts": Dinnov,    
+  
                 </script>
 </body>
 
