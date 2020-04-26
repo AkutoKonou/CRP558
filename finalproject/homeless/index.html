@@ -134,8 +134,8 @@
 
 <script>			
                     //Building the map with JavaScript part 
-                    var map = L.map('map').setView([6.1824878, 1.1766503], 12);
-
+		    var map = L.map('map').setView([6.1895852, 1.157703], 12);
+                    //var map = L.map('map').setView([6.1824878, 1.1766503], 12);
                     //Accessing the map tile layers provided by Mapbox
                     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -399,13 +399,7 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         L.control.layers(baseMaps, overlayMaps).addTo(map);
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
     
  //----------------- For clusterzones: get color depending on innovation space density value per district
@@ -484,109 +478,6 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         }
 
   
-                    //Adding dots and binds popup dialog to them
-                    var myPoints = [    
-                        ["1", 6.238641999603301, 1.2123584747314453, "Low"],
-                        ["2", 6.238748652580629, 1.2159419059753418, "Low"],
-                        ["3", 6.224286310947776, 1.2073373794555664, "Low"],
-                        ["4", 6.2216625691081004, 1.2071871757507324, "Low"],
-                        ["5", 6.17064632536962, 1.199709177017212, "Average"],
-                        ["6", 6.161120899088077, 1.2069511413574219, "Average"],
-                        ["7", 6.146869774250871, 1.2144184112548828, "Average"],
-                        ["8", 6.142453554753039, 1.217787265777588, "Average"],
-                        ["9", 6.203999966368851, 1.2409400939941406, "Average"],
-                        ["10", 6.113683229358828, 1.2005943059921265, "High"],
-                        ["11", 6.117427619741657, 1.211843490600586, "High"],
-                        ["12", 6.125065668079496, 1.2239456176757812, "High"],
-                        ["13", 6.1301860862418325, 1.2214994430541992, "High"],
-                        ["14", 6.135285120488311, 1.2211561203002927,"High"],
-                        ["15", 6.135615809309964, 1.2263596057891846, "High"],
-                        ["16", 6.133215643848732, 1.2352323532104492, "High"],
-                        ["17", 6.126388447477396, 1.2344169616699219, "High"],
-                        ["18", 6.156150116021156, 1.2855935096740723, "High"],
-                        ["19", 6.15264067249337, 1.2973523139953613, "High"],
-                        ["20", 6.153771377194256, 1.3057637214660645, "High"],
-                    ];    
-    
-                    //Set dots parameters with graduated symbols style
-                    function getColor(d) {
-                        return d == 'High' ? '#dd1c77' :
-                            d == 'Average' ? "#c994c7" :
-                            d == 'Low' ? "#e7e1ef" :
-                            "#FFFFFF";
-                    }
-                    //Adding dots to a layer group
-                    var HomelessGroup = L.layerGroup([]);
-                    for (var i = 0; i < myPoints.length; i++) {
-                        marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
-                                radius: myPoints[i][0] / 2 + 5,
-                                fillColor: getColor(myPoints[i][3]),
-                                color: "#000",
-                                weight: 2,
-                                opacity: 0.5,
-                                fillOpacity: 0.9
-                            })
-                            .bindPopup("Category: " + myPoints[i][3])
-                            .addTo(HomelessGroup);
-                        HomelessGroup.addTo(map);
-                    }*/
-
-
-
-
-/*                    // Getting color depending on area value
-                    function style(feature) {
-                        return {
-                            fillColor: getColor(feature.properties.Join_Count),
-                            weight: 2,
-                            opacity: 0.1,
-                            color: 'white',
-                            dashArray: '3',
-                            fillOpacity: 0
-                        };
-                    }
-
-
-    
-    
-    //Adding 3 basemap layers
-                    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-                    });
-
-                    var CartoDB_PositronNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                        subdomains: 'abcd',
-                        maxZoom: 19
-                    });
-
-                    var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    });*/
-
-                    //Adding layer control
-/*                    var baseMaps = {
-                        "Esri World Imagery": Esri_WorldImagery,
-                        "Carto DB Positron": CartoDB_PositronNoLabels,
-                        "Open Map Surfer Roads": OpenMapSurfer_Roads
-
-                    };
-       
-                    var overlayMaps = {
-                        "Homeless Clusters": HomelessGroup,
-                        "Homeless clusters density": zone,  
-                        "Landmarkers": DARLayerGroup,
-			//"Housing Project for Homeless": housing,
-                        //"Innovation Space Districts": Dinnov,
-                        
-                    };
-                    L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-    
-    
-    
-    
     
 //Create Legend1
         var legend1 = L.control({
@@ -617,32 +508,7 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
     
     
     
-
-//Creating Legend2
-                    var legend2 = L.control({
-                        position: 'bottomright'
-
-                    });
-
-                    legend2.onAdd = function(map) {
-
-                        var div = L.DomUtil.create('div', 'info legend'),
-                            availability = ['High', 'Average', 'Low'],
-                            labels = [''];
-
-                        div.innerHTML += "<b>Homelessness clusters as:</b><br>";
-
-                        // loop through items and generate a label with a colored square for each
-                        for (var i = 0; i < availability.length; i++) {
-                            div.innerHTML +=
-                                '<i style="background:' + getColor(availability[i]) + ' "></i> ' +
-                                availability[i] + (availability ? '' + '<br>' : '');
-                        }
-                        return div;
-                    };
-
-                    legend2.addTo(map);
-
+-------------------------------Adding on/off function to legend1
     
  map.on('overlayremove', function(eventLayer) {
             console.log(eventLayer.name + " off");
@@ -658,31 +524,11 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
             }
         });
 
-
-        // Making possible to add and remove legend2 from layer when selected in control layer
-        map.on('overlayremove', function(eventLayer) {
-            console.log(eventLayer.name + " off");
-            if (eventLayer.name == "Available Land") {
-                this.removeControl(legend2);
-            }
-        });
-
-        map.on('overlayadd', function(eventLayer) {
-            console.log(eventLayer.name + " on");
-            if (eventLayer.name == "Available Land") {
-                legend2.addTo(this);
-            }
-        });
-    
-    
 	
 	
 	
 	
-	
-	
-	
-Ce que j'avais laisse en bas avant	
+--------------------------What I've left before at the end
 	
 	
 	
@@ -771,20 +617,27 @@ L.geoJSON(housing, {
                         map.setZoom(13);
                     }
 
-                    //Setting Zoom
+//Setting Zoom in event
                     function zoomIn() {
                         map.setZoom(15);
                     };
 
 
-                    //Adding an event listener for a click event on the button
+//Adding a "beah" event listener for a click event on the button
                     document.getElementById("beachBtn").addEventListener("click", beach);
 
-                    //Lome beach zoom function
+//Lome beach zoom function
                     function beach() {
                         map.setView(new L.LatLng(6.1496111, 1.2955639), 15);
                     };	
-	
+	            
+//Adding a "camp" event listener for a click event on the button
+                    document.getElementById("beachBtn").addEventListener("click", camp);	
+
+//Housing for homeless zoom function
+                    function camp() {
+                        map.setView(new L.LatLng(6.1406182, 1.2121828), 15);
+                    };	
 	
 </script>
 </body>
