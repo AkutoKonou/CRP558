@@ -350,14 +350,14 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         // Making possible to add and remove legend1 from layer when selected in control layer   
         map.on('overlayremove', function(eventLayer) {
             console.log(eventLayer.name + " off");
-            if (eventLayer.name == "Clusters per zones") {
+            if (eventLayer.name == "Homeless clusters density") {
                 this.removeControl(legend1);
             }
         });
 
         map.on('overlayadd', function(eventLayer) {
             console.log(eventLayer.name + " on");
-            if (eventLayer.name == "Clusters per zones") {
+            if (eventLayer.name == "Homeless clusters density") {
                 legend1.addTo(this);
             }
         });
@@ -366,14 +366,14 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
         // Making possible to add and remove legend2 from layer when selected in control layer
         map.on('overlayremove', function(eventLayer) {
             console.log(eventLayer.name + " off");
-            if (eventLayer.name == "Homeless clusters density") {
+            if (eventLayer.name == "Homeless clusters") {
                 this.removeControl(legend2);
             }
         });
 
         map.on('overlayadd', function(eventLayer) {
             console.log(eventLayer.name + " on");
-            if (eventLayer.name == "Homeless clusters density") {
+            if (eventLayer.name == "Homeless clusters") {
                 legend2.addTo(this);
             }
         });
