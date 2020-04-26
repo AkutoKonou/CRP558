@@ -413,7 +413,7 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
 
     
 //Adding individual Dinnov layer geojson
-    var Innov = L.geoJson(Dinnov, {
+    var Dinnov = L.geoJson(Dinnov, {
 		style: style,
 		onEachFeature: onEachFeature
 	}).addTo(map);    
