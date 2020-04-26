@@ -113,9 +113,11 @@
 
 <div id='map'></div>
     
-                <input type="button" onclick="javascript:zoomOut()" value="Zoom out to Lome">
-                <input type="button" onclick="javascript:zoomIn()" value="Zoom in to housing camp">
-                <button id="beachBtn">Visit Lome beach!</button>
+                <input type="button" onclick="javascript:zoomOut()" value="Zoom out to Lomé">
+                <input type="button" onclick="javascript:zoomIn()" value="Zoom in to Lomé">
+                <button id="beachBtn">Visit Lomé beach!</button>
+                <button id="campBtn">Visit Homeless new Home!</button>
+	
                 <br>           
 
 
@@ -632,7 +634,7 @@ L.geoJSON(housing, {
                     };	
 	            
 //Adding a "camp" event listener for a click event on the button
-                    document.getElementById("beachBtn").addEventListener("click", camp);	
+                    document.getElementById("campBtn").addEventListener("click", camp);	
 
 //Housing for homeless zoom function
                     function camp() {
