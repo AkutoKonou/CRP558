@@ -240,7 +240,7 @@
                 "#FFFFFF";
         }
         //Adding dots to a layer group
-        var LandLayerGroup = L.layerGroup([]);
+        var HomelessGroup = L.layerGroup([]);
         for (var i = 0; i < myPoints.length; i++) {
             marker = new L.circleMarker([myPoints[i][1], myPoints[i][2]], {
                     radius: myPoints[i][0] / 2 + 5,
@@ -251,8 +251,8 @@
                     fillOpacity: 0.9
                 })
                 .bindPopup("Category: " + myPoints[i][3])
-                .addTo(LandLayerGroup);
-            LandLayerGroup.addTo(map);
+                .addTo(HomelessGroup);
+            HomelessGroup.addTo(map);
         }
 
 
