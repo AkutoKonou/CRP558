@@ -254,7 +254,18 @@
                 .addTo(HomelessGroup);
             HomelessGroup.addTo(map);
         }
-
+ 
+//Adding using the default blue icon to the map and binds popup dialog to them       
+        var Hotel = L.marker([6.127645, 1.214083]).addTo(map)
+            .bindPopup('This is the "Hotel du 2 Février"')
+            .openPopup();
+        var Monument = L.marker([6.13, 1.216]).addTo(map)
+            .bindPopup('This is the Independence Monument')
+            .openPopup();
+    
+    
+//Creating the layer groups for landmarkers
+var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
 
     //Adding 3 basemap layers
                     var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -383,7 +394,7 @@
         var overlayMaps = {
             "Homeless clusters density": zone,
             "Homeless Clusters": HomelessGroup,
-            "Landmarkers": DARLayerGroup,
+            "Landmarkers": landmarkGroup,
         };
         L.control.layers(baseMaps, overlayMaps).addTo(map);
 	
