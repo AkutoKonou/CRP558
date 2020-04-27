@@ -511,10 +511,8 @@ h10 {
       <center><p><i>Want to suggest, encourage, donate? Please, send a message:<br>
         Vous souhaitez suggérer, encourager, faire un don? S'il vous plaît envoyez nous un message:</i></p>
       <form action="/action_page.php" target="_blank">
-        <div class="row-padding" style="margin:0 -16px 8px -16px">
-
-            
-            
+        <div class="row-padding" style="margin:0 -32px 16px -32px">
+  
         <button class="button black left section" type="submit">
             <a href="mailto:contact@akdurabiliterre.com">Send message | Envoyer le message</a>
         </button>
@@ -525,7 +523,11 @@ h10 {
     </div>
   </div>
 
-    
+<p>Click on the button to display today's GMT date and time.</p>
+<button type="button"
+onclick="document.getElementById('but').innerHTML = Date()">
+Click me for GMT</button>
+<p id="but"></p>    
   </div>
 </div>
 
