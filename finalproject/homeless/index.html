@@ -121,15 +121,7 @@
                 <br>           
 
 
-
-
-	
-
-<script src="https://AkutoKonou.github.io/CRP558/finalproject/homeless/zoneF.geojson"></script>
-
-<script src="https://AkutoKonou.github.io/CRP558/finalproject/homeless/Dinnov.geojson"></script>	
-
-<script src="https://AkutoKonou.github.io/CRP558/finalproject/homeless/Innov.geojson"></script>		
+<script src="https://AkutoKonou.github.io/CRP558/finalproject/homeless/zoneF.geojson"></script>	
 
 <script>			
                     //Building the map with JavaScript part 
@@ -301,10 +293,6 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
 
        
 
-			//"Housing Project for Homeless": housing,
-                        //"Innovation Space Districts": Dinnov,
-
-
         //Create Legend1
         var legend1 = L.control({
             position: 'bottomleft'
@@ -392,45 +380,309 @@ var landmarkGroup = L.layerGroup([Hotel, Monument]).addTo(map);
 	
 	
 	
+//Adding individual homeless people surveyed geojson layer  
+var SDF = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 1,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.21852,
+          6.1505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 2,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.2185,
+          6.1505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 3,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22046,
+          6.13655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 4,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22046,
+          6.13655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 5,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22205,
+          6.13346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 6,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22229,
+          6.13309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 7,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22482,
+          6.13501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 8,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22479,
+          6.13501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 9,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.2249,
+          6.13499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 10,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22601,
+          6.13484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 11,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22479,
+          6.13506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 12,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22996,
+          6.15085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 13,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22994,
+          6.15098
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 14,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22988,
+          6.15116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 15,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22237,
+          6.16517
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 16,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.22216,
+          6.16496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 17,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.21478,
+          6.16291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": 18,
+        "LAYER": "Unknown Point Feature",
+        "KML_STYLE": "m_ylw-pushpin",
+        "KML_FOLDER": "CoordonnÃ©es Rolande_"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.21479,
+          6.16291
+        ]
+      }
+    }
+  ]
+}
+var layerGroup = L.geoJSON(SDF, {
+  onEachFeature: function (feature, layer) {
+                    layer.bindPopup('<h2>'+feature.properties.NAME+'</h2><p>Homeless surveyed #<br>Sans-abris interviewé N°: '+feature.properties.NAME+'</p>');
+  }
+}).addTo(map); 	
+	
+
 	
 	
-	
-	
-	 //Adding layer control
-        var baseMaps = {
-            "Esri World Imagery": Esri_WorldImagery,
-            "Carto DB Positron": CartoDB_PositronNoLabels,
-            "Open Map Surfer Roads": OpenMapSurfer_Roads
-
-        };
-
-
-        var overlayMaps = {
-            "Homeless clusters density": zoneF,
-            "Homeless clusters": HomelessGroup,
-            "Landmarkers": landmarkGroup,
-        };
-        L.control.layers(baseMaps, overlayMaps).addTo(map);
-	
-	
-
-	
-                    
-//Adding individual Innov layer geojson
-    var Innov = L.geoJson(Innov, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);    
-
-    
-//Adding individual Dinnov layer geojson
-    var Dinnov = L.geoJson(Dinnov, {
-		style: style,
-		onEachFeature: onEachFeature
-	}).addTo(map);    
-
-
-    
 //Adding individual Housing site layer geojson    
 var housing = [{
   "type": "FeatureCollection",
@@ -485,6 +737,35 @@ L.geoJSON(housing, {
 }).addTo(map)
     .bindPopup('Space for the project "a Home for Homeless"')
             .openPopup();
+	
+	
+	
+	
+	 //Adding layer control
+        var baseMaps = {
+            "Esri World Imagery": Esri_WorldImagery,
+            "Carto DB Positron": CartoDB_PositronNoLabels,
+            "Open Map Surfer Roads": OpenMapSurfer_Roads
+
+        };
+
+
+        var overlayMaps = {
+            "Homeless clusters density": zoneF,
+            "Homeless clusters": HomelessGroup,
+            "Landmarkers": landmarkGroup,
+	    "Homeless Surveyed": SDF,
+		"Housing Project for Homeless": housing,
+        };
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
+	
+	
+
+	
+	
+	
+	
+    
 
 	
 	
