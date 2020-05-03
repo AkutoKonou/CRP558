@@ -590,7 +590,57 @@ Une enquête de terrain a été faite du 13 au 19 Avril 2020. Elle n’a pas ét
 </div>  	
 		  
 	  
-	  
+<script>
+	
+    // Drawing chart1
+Highcharts.chart('container1', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Do you have a place to sleep?'
+    },
+    subtitle: {
+        text: 'Source: Our field survey, April 2020'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+   plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'orange'
+                }
+            }
+        }
+    },
+    series: [{
+        name: 'Income',
+        colorByPoint: true,
+        data: [{
+            name: 'No',
+            y: 50,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Yes',
+            y: 50
+        }]
+    }]
+});
+    
+	
+	
+	
+	  </script>	
 
 	  
 <!-- Container (About Section) -->
