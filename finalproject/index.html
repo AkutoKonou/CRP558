@@ -36,19 +36,19 @@ html, body{
 }    
     
     
-/* First image (Mont Agou) */
+/* First image */
 .parallax5 {
   background-image: url('image/parallax5.jpg');
   min-height: 100%;
 }
 
-/* Second image (Portfolio) */
+/* Second image */
 .parallax4b {
   background-image: url('image/parallax4b.jpg');
  min-height: 100%;
 }
 
-/* Third image (Portfolio) */
+/* Third image */
 .parallax2 {
   background-image: url('image/parallax2.jpg');
   min-height: 100%;
@@ -58,13 +58,13 @@ html, body{
 .wide {letter-spacing: 10px;}
 .hover-opacity {cursor: pointer;}
 
-/* Turn off parallax scrolling for tablets and phones */
+/* Turn off parallax scrolling for tablets and phones 
 @media only screen and (max-device-width: 1600px) {
   .parallax5, .parallax4b, .parallax2 {
     background-attachment: scroll;
     min-height: 300px;
   }
-}
+}*/
  
  
  /* Centered text */
@@ -168,6 +168,9 @@ body {
 .topnav {
   overflow: hidden;
   background-color: #333;
+	position: fixed;
+        top: 0;
+        width: 100%;
 }
 
 /* Style the topnav links */
@@ -186,6 +189,7 @@ body {
   color: black;
 }
 
+	
 	
 /* Create three equal columns that floats next to each other */
 .column1, .column2 {
@@ -212,7 +216,7 @@ body {
   clear: both;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+/* Responsive layout - makes all columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) {
   .column1, .column2 {
     width: 100%;
@@ -238,28 +242,6 @@ body {
 
 .header h1 {
   font-size: 50px;
-}
-
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
 }
 
 /* Create two unequal columns that floats next to each other */
@@ -307,7 +289,8 @@ body {
 }   
 	
 	
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+/* Responsive layout - when the screen is less than 800px wide, make the two columns 
+	stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn, .iframe {   
     width: 100%;
@@ -315,7 +298,8 @@ body {
   }
 }
 
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+/* Responsive layout - when the screen is less than 400px wide, make the navigation 
+	links stack on top of each other instead of next to each other */
 @media screen and (max-width: 400px) {
   .topnav a, .dropdown .dropbtn {
     float: none;
@@ -323,11 +307,8 @@ body {
   }
 }
 
-h10 {
-  color: white;
-  text-shadow: 2px 2px 4px #000000;
-}
-
+	
+	
 </style>
 </head>
 <body>
@@ -336,7 +317,8 @@ h10 {
 
 <div class="top">
   <div class="bar" id="myNavbar">
-    <a class="bar-item button hover-black hide-medium hide-large right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+    <a class="bar-item button hover-black hide-medium hide-large right" href="javascript:void(0);" 
+       onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
         <!--<div class="card bg-light text-dark">
@@ -534,7 +516,8 @@ Cette première carte présente plusieurs choses :<br>
 	  
 <div class="parallax4b display-container opacity-min" id="action">
   <div class="display-middle" style="white-space:nowrap;">
-    <span class="center padding-large black xlarge wide animate-opacity"><span class="hide-small"><h1 style="color: #f4d03f;">ACTION</h1></span>
+    <span class="center padding-large black xlarge wide animate-opacity">
+	    <span class="hide-small"><h1 style="color: #f4d03f;">ACTION</h1></span>
     </div>
 </div>
     
@@ -711,17 +694,22 @@ COMMENT REMPLIR CETTE CARTE?<br>
 	  
 <div class="row">
   <div class="column2">
-Innovations is a link we make with a study we did in 2019 on the innovation spaces closest to the green areas of Lomé, so that they can integrate urban agriculture into their field of activity. 
-	      The animated heat map below shows the zones where these different clusters reside. Someone who is in these areas and who is part of an innovation center can contact us so that they can 
+Innovations is a link we make with a study we did in 2019 on the innovation spaces closest to the green areas 
+	  of Lomé, so that they can integrate urban agriculture into their field of activity. 
+	      The animated heat map below shows the zones where these different clusters reside. 
+	  Someone who is in these areas and who is part of an innovation center can contact us so that they can 
 	  contribute to the project of empowering the homeless through urban agriculture.
 
 </p>
   </div>
   
   <div class="column2">
-    <p>Innovations est un lien que nous faisons avec une étude que nous avons faite en 2019 sur les espaces d’innovation les plus proches des zones vertes de Lomé, afin qu’ils puissent intégrer
-        l’agriculture urbaine dans leur champ d’activité. La carte de chaleur animée ci-dessous montre les zones ou résident ces différents clusters. Quelqu’un qui se retrouve dans ces zones,
-        et qui fait partie d’un centre d’innovation peut nous contacter afin qu’il puisse contribuer au projet d’autonomisation des sans-abris par l’agriculture urbaine.<br><br>
+    <p>Innovations est un lien que nous faisons avec une étude que nous avons faite en 2019 sur les espaces 
+	    d’innovation les plus proches des zones vertes de Lomé, afin qu’ils puissent intégrer
+        l’agriculture urbaine dans leur champ d’activité. La carte de chaleur animée ci-dessous montre les 
+	    zones ou résident ces différents clusters. Quelqu’un qui se retrouve dans ces zones,
+        et qui fait partie d’un centre d’innovation peut nous contacter afin qu’il puisse contribuer au projet 
+	    d’autonomisation des sans-abris par l’agriculture urbaine.<br><br>
 <br>
 </p>
   </div>
@@ -737,7 +725,8 @@ Innovations is a link we make with a study we did in 2019 on the innovation spac
     <div class="card">
       <h2>ANIMATED HEAT MAP | CARTE DE CHALEUR ANIMEE<br></h2>
 
-<iframe width="100%" height="800" frameborder="0" src="https://akutokonou.carto.com/builder/f72f54ae-084f-4f50-a3a0-5f14a41a1c00/embed" allowfullscreen
+<iframe width="100%" height="800" frameborder="0" 
+	src="https://akutokonou.carto.com/builder/f72f54ae-084f-4f50-a3a0-5f14a41a1c00/embed" allowfullscreen
             webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>        
     </div>      
 
@@ -750,7 +739,8 @@ Innovations is a link we make with a study we did in 2019 on the innovation spac
 <div class="row">
   <div class="column2">
     <h2>Objectives & How to use this map?</h2>
-    <p>The objectives are to locate the most suitable green lands zones for Urban Agriculture, and to find the well-located Innovation Spaces, 
+    <p>The objectives are to locate the most suitable green lands zones for Urban Agriculture, 
+	    and to find the well-located Innovation Spaces, 
 	potential agro/agri-startups according to their proximity to Green cultivable Spaces. The results are the following ones:<br>
 - Best lands for agriculture are situated in the suburbs cultivable lands are also available in the center;<br>
 - More than 50% innovation spaces (IS) are well located for urban farming and more than 75% are private<br>
@@ -767,7 +757,8 @@ Innovations is a link we make with a study we did in 2019 on the innovation spac
   
   <div class="column2">
     <h2>Objectifs & Comment utiliser la carte ?</h2>
-    <p>Les objectifs sont de localiser les zones vertes les plus adaptées à l'Agriculture Urbaine, et de trouver les Espaces d'Innovation bien situés, des agro-startups potentielles en fonction 
+    <p>Les objectifs sont de localiser les zones vertes les plus adaptées à l'Agriculture Urbaine, 
+	    et de trouver les Espaces d'Innovation bien situés, des agro-startups potentielles en fonction 
 de leur proximité avec les Espaces Cultivables Verts. Les résultats sont les suivants:<br>
 - Les meilleures terres pour l'agriculture sont situées en banlieue des terres cultivables sont également disponibles dans le centre;<br>
 - Plus de 50% des espaces d'innovation (SI) sont bien situés pour l'agriculture urbaine et plus de 75% sont privés<br>
@@ -800,7 +791,8 @@ de leur proximité avec les Espaces Cultivables Verts. Les résultats sont les s
     <div class="col m8 panel">
       <div class="large margin-bottom">
         <center><i class="fa fa-map-marker fa-fw hover-text-black xlarge margin-right"></i> Lomé, Togo<br></center>
-        <center><i class="fa fa-phone fa-fw hover-text-black xlarge margin-right"></i> Phone/WhatsApp: +228 92 10 9268 / 90 79 6996 / 90 03 2810 / 96 11 1877<br></center>
+        <center><i class="fa fa-phone fa-fw hover-text-black xlarge margin-right"></i> Phone/WhatsApp: 
+		+228 92 10 9268 / 90 79 6996 / 90 03 2810 / 96 11 1877<br></center>
         <center><i class="fa fa-envelope fa-fw hover-text-black xlarge margin-right"></i> Email: contact@axedurable.com<br></center>
       </div>
       <center><p><i>Want to suggest, encourage, donate? Please, send a message:<br>
@@ -819,7 +811,8 @@ de leur proximité avec les Espaces Cultivables Verts. Les résultats sont les s
   </div>
 
 <center><p>Little bonus game :) | Petit jeu bonus :)</p><br>            
-<center><p><i>Click to display GMT date and time; thanks and have a great day! | Clique pour connaître la date et l'heure GMT; merci et passe une belle journée! .<i/></p>
+<center><p><i>Click to display GMT date and time; thanks and have a great day! | Clique pour connaître la date et l'heure GMT; 
+	merci et passe une belle journée! .<i/></p>
 <center><button type="button"
 onclick="document.getElementById('but').innerHTML = Date()">
 Click me for GMT</button>
@@ -830,8 +823,10 @@ Click me for GMT</button>
 
 <div class="footer">
   <p> <font size="2">By <a href="https://www.akpedzekonou.com/" title="Akuto Konou" target="_blank"> Akuto Konou</a>
-  <br>With the support of <a href="https://www.extension.iastate.edu/communities/bailey-hanson" title="Bailey Hanson" target="_blank"> Bailey Hanson</a>
-  <br>& <a href="https://akutokonou.github.io/CRP558/finalproject/sourcesFinalProject/" title="Sources!" target="_blank"> many others!</a></font>
+  <br>With the support of <a href="https://www.extension.iastate.edu/communities/bailey-hanson" 
+			     title="Bailey Hanson" target="_blank"> Bailey Hanson</a>
+  <br>& <a href="https://akutokonou.github.io/CRP558/finalproject/sourcesFinalProject/" title="Sources!" 
+	   target="_blank"> many others!</a></font>
   
   </p>
 </div>
