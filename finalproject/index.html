@@ -10,7 +10,27 @@
 	
 <style>
 
-    
+
+header.topbar{
+    background-color: #f8f6f6;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    opacity: 0.7;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+#content{
+    z-index: 0;
+    position: absolute;
+}
+.bodyPan{
+	padding-top:100px;
+}	
+	
+	
 html, body{
   width: 90%;
   margin: 10%;
@@ -168,7 +188,7 @@ body {
                     display: block;
                 }    
     
-/* Style the top navigation bar */
+/* Style the top navigation bar
 .topnav b{
   overflow: hidden;
   background-color: #F5F5F5;
@@ -177,7 +197,7 @@ body {
         width: 100%;
 }    
 
-/* Style the topnav links */
+/* Style the topnav links
 .topnav b {
   float: left;
   display: block;
@@ -187,12 +207,11 @@ body {
   text-decoration: none;
 }
 
-/* Change color on hover */
+/* Change color on hover
 .topnav b:hover {
   background-color: gray;
   color: black;
-}
-	
+}*/
 	
 
 	
@@ -352,14 +371,21 @@ body {
       <i class="fa fa-bars"></i>
     </a>
 
-<div class="topnav">    
+	  
+<header class="topbar">
 <a href="#content" class="bar-item button hide-small">CONTENT |</a>
 <a href="#inventory" class="bar-item button hide-small">INVENTORY |</a>
 <a href="#action" class="bar-item button">ACTION |</a>
 <a href="#innovations" class="bar-item button hide-small">INNOVATIONS |</a>
 <a href="#contact" class="bar-item button hide-small">CONTACT</a>
-</div>
-  
+        </header>
+<div class="bodyPan">	  
+	  
+	  
+***********************************************************************
+	
+	
+***********************************************************************
 
 
 <div class="container">
@@ -368,7 +394,7 @@ body {
   
 
 
-<div class="topnav b">
+<div class="topnav">
   <a href="https://github.com/AkutoKonou/CRP558" style="float:right">Sources</a>
 	<a href="https://github.com/AkutoKonou/CRP558" style="float:right">Report</a>
    <a href="https://github.com/AkutoKonou" style="float:right">Github</a>
