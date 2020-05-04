@@ -4,13 +4,7 @@
 <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon" />
 <title>UI Final project</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>	
+<meta name="viewport" content="width=device-width, initial-scale=1">	
 	
 	
 	
@@ -601,54 +595,31 @@ Une enquête de terrain a été faite du 13 au 19 Avril 2020. Elle n’a pas ét
 	  
 <script>
 	
-    // Drawing chart1
-Highcharts.chart('container1', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Do you have a place to sleep?'
-    },
-    subtitle: {
-        text: 'Source: Our field survey, April 2020'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-   plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                style: {
-                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'orange'
-                }
-            }
-        }
-    },
-    series: [{
-        name: 'Income',
-        colorByPoint: true,
-        data: [{
-            name: 'No',
-            y: 50,
-            sliced: true,
-            selected: true
-        }, {
-            name: 'Yes',
-            y: 50
-        }]
-    }]
-});
-    
-	
-	
-	
+<div id="piechart"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Response', 'Number of Homeless people giving the response'],
+  ['Yes, but for $20/night and it is not safe', 9],
+  ['No', 9]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Do you have a place to sleep?', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+
 	  </script>	
 
 	  
