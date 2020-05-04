@@ -86,14 +86,24 @@ html, body{
 .wide {letter-spacing: 10px;}
 .hover-opacity {cursor: pointer;}
 
-/* Turn off parallax scrolling for tablets and phones 
+	
+	
+	
+	
+	
+	
+/* Turn off parallax scrolling for tablets and phones*/ 
 @media only screen and (max-device-width: 1600px) {
-  .parallax5, .parallax4b, .parallax2 {
+  .parallax5, .parallax4, .parallax2 {
     background-attachment: scroll;
     min-height: 300px;
   }
-}*/
+}
  
+	
+	
+	
+	
  
  /* Centered text */
 .centered {
@@ -124,31 +134,10 @@ body {
   padding: 20px;
   text-align: center;
 }
-
-    
-/*
-                .navbar2 {
-                    overflow: hidden;
-                    background-color: #f2f2f2;
-			position: fixed;
-			top: 0;
-			width: 100%;
-                }
-
-                .navbar2 a {
-                    float: right;
-                    font-size: 18px;
-                    color: slategray;
-                    text-align: center;
-                    padding: 14px 16px;
-                    text-decoration: none;
-                }
-*/
-	
 	
 	
                 .dropdown {
-                    float: right;
+                    float: left;
                     overflow: hidden;
                 }
 
@@ -196,33 +185,7 @@ body {
                     display: block;
                 }    
     
-/* Style the top navigation bar
-.topnav b{
-  overflow: hidden;
-  background-color: #F5F5F5;
-	position: fixed;
-        top: 0;
-        width: 100%;
-}    
 
-/* Style the topnav links
-.topnav b {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover
-.topnav b:hover {
-  background-color: gray;
-  color: black;
-}*/
-	
-
-	
 /* Style the top navigation bar */
 .topnav {
   overflow: hidden;
@@ -360,12 +323,24 @@ body {
 /* Responsive layout - when the screen is less than 400px wide, make the navigation 
 	links stack on top of each other instead of next to each other */
 @media screen and (max-width: 400px) {
-  .topnav a, .dropdown .dropbtn header.topbar .iframe {
+  .topnav a, .dropdown .dropbtn .iframe {
     float: none;
     width: 100%;
   }
 }
 
+
+	
+
+/* Responsive layout - when the screen is less than 200px wide, make the navigation 
+	links stack on top of each other instead of next to each other */
+@media screen and (max-width: 200px) {
+  .dropdown, .topnav, .topnav a, .iframe{
+    float: none;
+    width: 100%;
+  }
+}
+	
 	
 	
 </style>
