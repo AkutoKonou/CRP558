@@ -162,17 +162,41 @@ body {
                     display: block;
                 }    
     
-    
-
 /* Style the top navigation bar */
-.topnav {
+.topnav b{
   overflow: hidden;
   background-color: #333;
 	position: fixed;
         top: 0;
         width: 100%;
+}    
+
+/* Style the topnav links */
+.topnav b {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
+/* Change color on hover */
+.topnav b:hover {
+  background-color: gray;
+  color: black;
+}
+	
+	
+
+	
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+	
+	
 /* Style the topnav links */
 .topnav a {
   float: left;
@@ -323,7 +347,7 @@ body {
     </a>
         <!--<div class="card bg-light text-dark">
     <div class="card-body">-->
-    
+<div class="topnav b">    
 <a href="#content" class="bar-item button hide-small">CONTENT |</a>
     <a href="#inventory" class="bar-item button hide-small">INVENTORY |</a>
 	  <a href="#action" class="bar-item button">ACTION |</a>
